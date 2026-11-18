@@ -74,6 +74,10 @@
       if (el.dataset.esPlaceholder === undefined) el.dataset.esPlaceholder = el.placeholder;
       el.placeholder = lang === 'en' ? el.dataset.enPlaceholder : el.dataset.esPlaceholder;
     });
+    $$('[data-en-alt]').forEach(function (el) {
+      if (el.dataset.esAlt === undefined) el.dataset.esAlt = el.alt;
+      el.alt = lang === 'en' ? el.dataset.enAlt : el.dataset.esAlt;
+    });
     $$('[data-partir]').forEach(partir);
     pintarContacto(); pintarInstagram();
     $$('[data-idioma]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.idioma === lang)); });
@@ -142,8 +146,9 @@
   /* ---------- Instagram ---------- */
   function pintarInstagram() {
     var rej = $('#ig-rejilla'); if (!rej) return;
-    var perfil = $('#ig-perfil'), nota = $('#ig-nota'), u = SR.instagram;
-    if (u) { perfil.hidden = false; perfil.href = 'https://www.instagram.com/' + u + '/'; perfil.textContent = '@' + u; }
+    var nota = $('#ig-nota'), u = SR.instagram, seguir = $('#ig-seguir'), usuario = $('#ig-usuario');
+    if (usuario) usuario.textContent = u;
+    if (seguir) seguir.href = 'https://www.instagram.com/' + u + '/';
     if (u && SR.instagramPosts.length) {
       if (rej.dataset.listo) return;
       rej.dataset.listo = '1'; rej.classList.add('ig-incrustado'); if (nota) nota.hidden = true;
@@ -153,10 +158,17 @@
       var sc = d.createElement('script'); sc.async = true; sc.src = 'https://www.instagram.com/embed.js'; d.body.appendChild(sc);
       return;
     }
-    // Sin publicaciones cargadas: rejilla con sus propios mármoles que lleva al perfil (o al catálogo)
-    var destino = u ? 'https://www.instagram.com/' + u + '/' : '#catalogo';
-    rej.innerHTML = SR.catalogo.slice(0, 6).map(function (m) {
-      return '<a class="ig-celda" href="' + destino + '"' + (u ? ' target="_blank" rel="noopener"' : '') + '><img src="' + imgDe(m) + '" alt="' + m[1] + '" width="400" height="400" loading="lazy"><span>' + m[1] + '</span></a>';
+    // Vista previa: 9 publicaciones de muestra con sus placas y fotos de obra (sin cifras inventadas)
+    var icono = {
+      carrusel: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 3h11a3 3 0 0 1 3 3v11h-2V6a1 1 0 0 0-1-1H7zM3 8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
+      video: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>'
+    };
+    rej.innerHTML = SR.instagramMuestra.map(function (p) {
+      var pie = L(p[2], p[3]), tipo = p[1];
+      return '<button type="button" class="ig-celda" data-visor data-pie="' + pie + '" aria-label="' + pie + '">' +
+        '<img src="' + SR.base + 'assets/img/' + p[0] + '.webp" alt="' + pie + '" width="400" height="400" loading="lazy">' +
+        (tipo ? '<span class="ig-tipo" aria-hidden="true">' + icono[tipo] + '</span>' : '') +
+        '<span class="ig-pie" aria-hidden="true">' + pie + '</span></button>';
     }).join('');
   }
 
@@ -395,7 +407,7 @@
     var nombre = b.querySelector('span').textContent, uso = $('.obras-visor figcaption a');
     var cambiar = function () {
       oImg.onload = function () { oImg.classList.remove('cambiando'); };
-      oImg.src = SR.base + 'assets/img/usos/' + b.dataset.img + '.webp'; oImg.alt = b.dataset.alt; oNom.textContent = nombre;
+      oImg.src = SR.base + 'assets/img/usos/' + b.dataset.img + '.webp'; oImg.alt = L(b.dataset.alt, b.dataset.altEn); oImg.removeAttribute('data-en-alt'); oNom.textContent = nombre;
       if (uso) uso.dataset.uso = nombre;
     };
     if (reduce) cambiar(); else { oImg.classList.add('cambiando'); setTimeout(cambiar, 250); }
@@ -425,7 +437,7 @@
     if (b && visor) {
       quien = b; var img = b.querySelector('img');
       $('img', visor).src = img.src; $('img', visor).alt = img.alt;
-      $('p', visor).textContent = b.parentNode.querySelector('.t-m').textContent;
+      $('p', visor).textContent = b.dataset.pie || b.parentNode.querySelector('.t-m').textContent;
       visor.classList.add('abierto'); if (lenis) lenis.stop(); $('.cerrar', visor).focus();
       return;
     }

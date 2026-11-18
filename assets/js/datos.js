@@ -6,9 +6,22 @@ window.SR = {
   telefono: '',
   telefonoEN: '',
   correo: 'alexvmh@stoneroyale.com.mx',
-  /* INSTAGRAM: usuario sin @ (p. ej. 'stoneroyale') y, si se quiere, enlaces de publicaciones para incrustarlas. */
-  instagram: '',
+  /* INSTAGRAM: usuario sin @. 'stoneroyale.mx' es PROVISIONAL: cambiarlo aquí por el usuario real.
+     instagramPosts: enlaces de publicaciones reales; si hay alguno, sustituyen a la vista previa. */
+  instagram: 'stoneroyale.mx',
   instagramPosts: [],
+  /* Vista previa del perfil: [imagen en assets/img sin .webp, '' | 'carrusel' | 'video', pie ES, pie EN] */
+  instagramMuestra: [
+    ['mat/blanco-iceberg-hd', 'carrusel', 'Ónix Blanco Iceberg: así luce la placa antes de cortarla.', 'Blanco Iceberg onyx: the slab before cutting.'],
+    ['usos/obra-regadera', '', 'Regadera revestida en mármol blanco, del piso al techo.', 'Shower clad in white marble, floor to ceiling.'],
+    ['usos/cantera-trabajo', 'video', 'Así se extrae un bloque de mármol en cantera.', 'How a marble block is extracted at the quarry.'],
+    ['mat/dorado-tepexi-hd', '', 'Dorado Tepexi pulido, de veta dorada.', 'Polished Dorado Tepexi, with golden veining.'],
+    ['usos/obra-encimera', 'carrusel', 'Isla de cocina con cubierta de mármol blanco.', 'Kitchen island with a white marble top.'],
+    ['usos/obra-fachada', '', 'Travertino en muro exterior y piso.', 'Travertine on an exterior wall and paving.'],
+    ['mat/beige-maya-hd', '', 'Beige Maya, el mármol cálido de México.', 'Beige Maya, Mexico’s warm marble.'],
+    ['usos/placas-taller', 'video', 'Placas listas en el taller para salir a obra.', 'Slabs ready in the workshop, on their way to site.'],
+    ['usos/obra-backsplash', '', 'Salpicadero de cocina en una sola placa de mármol.', 'Kitchen backsplash in a single marble slab.']
+  ],
   /* Envío del cotizador (correo con antispam en servidor). */
   envio: 'https://josegaspard.dev/cotizador/stoneroyale.php',
   /* MATERIALES QUE NO SE MANEJAN: poner aquí el slug (primera columna del catálogo) y desaparecen del catálogo,
