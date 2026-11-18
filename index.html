@@ -6,9 +6,9 @@
 <title>Stone Royale · Mármol mexicano desde la cantera</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Extracción, transformación y venta de mármol, travertino y ónix mexicanos en México y Estados Unidos. Mina propia en Tatatila, Veracruz.">
-<meta name="theme-color" content="#E7E7E4">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="preload" href="assets/fonts/commissioner-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/sitio.css">
+<link rel="stylesheet" href="assets/css/sitio.css?v=1118m">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 38'%3E%3Crect x='9' y='9' width='20' height='27' fill='%23111'/%3E%3Crect x='3' y='2' width='20' height='27' fill='%238C8C8C'/%3E%3C/svg%3E">
 <script>document.documentElement.className = 'js';</script>
 </head>
@@ -22,9 +22,9 @@
   <div class="contenedor">
     <a class="marca" href="#inicio" aria-label="Stone Royale, inicio"><svg class="iso" aria-hidden="true"><use href="#iso"/></svg><span>STONE <b>ROYALE</b></span></a>
     <nav class="nav" aria-label="Principal">
-      <a href="#catalogo" data-en="Catalog">Catálogo</a>
+      <a href="#colecciones" data-en="Collections">Colecciones</a>
+      <a href="#cantera" data-en="Made to measure">A medida</a>
       <a href="#proyectos" data-en="Projects">Proyectos</a>
-      <a href="#cantera" data-en="Quarry">Cantera</a>
       <a href="#empresa" data-en="Company">Empresa</a>
       <a href="#cotizar" data-en="Get a quote">Cotizar</a>
     </nav>
@@ -35,9 +35,9 @@
   </div>
 </header>
 <div class="menu" id="menu">
-  <a href="#catalogo" data-en="Catalog">Catálogo</a>
+  <a href="#colecciones" data-en="Collections">Colecciones</a>
+  <a href="#cantera" data-en="Made to measure">A medida</a>
   <a href="#proyectos" data-en="Projects">Proyectos</a>
-  <a href="#cantera" data-en="Quarry">Cantera</a>
   <a href="#empresa" data-en="Company">Empresa</a>
   <a href="#cotizar" data-en="Get a quote">Cotizar</a>
   <p class="meta"><span data-tel-texto hidden></span><a href="mailto:alexvmh@stoneroyale.com.mx">alexvmh@stoneroyale.com.mx</a></p>
@@ -47,15 +47,19 @@
   <section class="heroe" aria-label="Presentación">
     <div class="heroe-pegado">
       <canvas id="losa" aria-hidden="true"></canvas>
-      <div class="heroe-estatico" aria-hidden="true"><div class="losa"><img src="assets/img/mat/blanco-iceberg-hd.webp" alt=""></div></div>
       <div class="heroe-texto">
-        <h1 class="t-xxl" data-partir data-en="Mexican marble, from the quarry to final delivery">Mármol mexicano, de la cantera a la entrega final</h1>
-        <p class="entrada" data-en="Extraction, transformation and sale in Mexico and the United States. Our own mine in Tatatila, Veracruz.">Extracción, transformación y venta en México y Estados Unidos. Mina propia en Tatatila, Veracruz.</p>
+        <h1 class="heroe-titulo">
+          <span class="linea suave" data-en="Marble is born in our quarry.">El mármol nace en nuestra cantera.</span>
+          <span class="linea suave" data-en="We cut it to your project’s measure.">Lo cortamos a la medida de tu obra.</span>
+          <span class="linea fuerte" data-en="From Tatatila to your project.">De Tatatila a tu proyecto.</span>
+        </h1>
+        <p class="entrada" data-en="Mexican marble, travertine and onyx from our own mine in Tatatila, Veracruz. Sales in Mexico and export to the United States.">Mármol, travertino y ónix mexicanos de nuestra mina en Tatatila, Veracruz. Venta en México y exportación a Estados Unidos.</p>
         <div class="heroe-botones">
-          <a class="boton" href="#catalogo" data-en="See the catalog">Ver catálogo</a>
-          <a class="enlace" href="#cotizar" data-en="Request a quote">Pedir cotización</a>
+          <a class="boton" href="#cotizar" data-en="Quote your material">Cotiza tu material</a>
+          <a class="boton boton--claro" href="#colecciones" data-en="Explore the collection">Explorar colección</a>
         </div>
       </div>
+      <div class="heroe-estatico" aria-hidden="true"><div class="losa"><img src="assets/img/mat/blanco-iceberg-hd.webp" alt="" width="800" height="800" fetchpriority="high"></div></div>
       <div class="heroe-material" aria-live="polite">
         <span class="meta" data-en="On the slab">En la losa</span>
         <a class="nombre" id="nombre-losa" href="#catalogo">Blanco Iceberg</a>
@@ -79,31 +83,87 @@
     </div>
   </section>
 
-  <section class="seccion empresa" id="empresa">
-    <div class="contenedor rejilla">
-      <div class="declaracion revela">
-        <h2 class="t-xl" data-en="Mexican marble comes in many colors and patterns, born from the country’s geological diversity">El mármol mexicano presenta diversos colores y patrones que vienen de su diversidad geológica</h2>
-      </div>
-      <div class="texto revela">
-        <p class="entrada" data-en="For more than 5 years, Stone Royale has specialized in extracting, transforming and selling top-quality stone in Mexico and the United States.">Desde hace más de 5 años, Stone Royale se especializa en la extracción, transformación y venta de piedras de la más alta calidad en México y Estados Unidos.</p>
-        <p data-en="We work in different formats and categories, mainly of national origin, and we can also offer alternatives and recommendations. For export, we have our own mine in Tatatila, Veracruz.">Trabajamos en diferentes formatos y categorías, principalmente de origen nacional, y también podemos ofrecer alternativas y recomendaciones de producto. Para la exportación contamos con nuestra propia mina en Tatatila, Veracruz.</p>
+  <section class="seccion criterio" id="empresa" aria-labelledby="criterio-titulo">
+    <div class="contenedor criterio-rejilla">
+      <div class="criterio-texto revela">
+        <h2 class="t-l" id="criterio-titulo" data-en="With our own quarry, we know every block before it reaches your project.">Con cantera propia, conocemos cada bloque antes de que llegue a tu obra.</h2>
+        <p data-en="For more than 5 years, Stone Royale has specialized in extracting, transforming and selling top-quality stone in Mexico and the United States. We work in different formats and categories, mainly of national origin, and we can also offer alternatives and recommendations.">Desde hace más de 5 años, Stone Royale se especializa en la extracción, transformación y venta de piedras de la más alta calidad en México y Estados Unidos. Trabajamos en diferentes formatos y categorías, principalmente de origen nacional, y también podemos ofrecer alternativas y recomendaciones de producto.</p>
         <p data-en="With a rich history in architecture and sculpture since the ancient Mesoamerican civilizations, Mexican marble is recognized worldwide for its quality.">Con una rica historia en arquitectura y escultura desde las antiguas civilizaciones mesoamericanas, los mármoles mexicanos son reconocidos a nivel mundial por su calidad.</p>
+        <p><a class="enlace" href="#cantera" data-en="See how we work the stone →">Cómo trabajamos la piedra →</a></p>
       </div>
-      <figure class="foto revela" style="margin:0"><img src="assets/img/usos/leon-de-marmol-blanco.webp" alt="León tallado en mármol blanco" width="740" height="557" loading="lazy"></figure>
-    </div>
-    <div class="contenedor">
-      <div class="mision revela">
-        <div><h3 class="t-m" data-en="Mission">Misión</h3><p data-en="To provide the highest quality products and personalized service, committed to excellence and customer satisfaction. We highlight the natural beauty, elegance and durability of marble in every project.">Brindar productos de la más alta calidad y un servicio personalizado, comprometidos con la excelencia y la satisfacción del cliente. Resaltamos la belleza natural, la elegancia y la durabilidad de los mármoles en cada proyecto.</p></div>
-        <div><h3 class="t-m" data-en="Vision">Visión</h3><p data-en="To be the leading authority in the marble industry in Mexico and the U.S., transforming spaces with the timeless quality of Mexican marble.">Ser la autoridad líder en la industria del mármol en México y Estados Unidos, transformando espacios con la calidad atemporal de los mármoles mexicanos.</p></div>
+      <div class="criterio-fotos revela">
+        <img class="f1" src="assets/img/usos/leon-de-marmol-blanco.webp" alt="León tallado en mármol blanco" width="740" height="557" loading="lazy">
+        <img class="f2" src="assets/img/fin/santo-tomas-busardeado.webp" alt="Mármol Santo Tomás con acabado busardeado" width="800" height="800" loading="lazy">
+        <img class="f3" src="assets/img/usos/bodega-marmol.webp" alt="Bodega con placas de mármol en exhibición" width="1200" height="900" loading="lazy">
       </div>
     </div>
   </section>
 
-  <section class="seccion catalogo" id="catalogo" style="padding-top:0">
+  <section class="seccion pasos" id="como-cotizar" aria-labelledby="pasos-titulo">
+    <div class="contenedor">
+      <h2 class="t-l revela" id="pasos-titulo" data-en="Getting a quote from Stone Royale is simple">Cotizar con Stone Royale es simple</h2>
+      <ol class="pasos-lista">
+        <li class="revela"><span class="paso-n">1</span><h3 class="t-m" data-en="Choose your material">Elige tu material</h3><p data-en="From the catalog, or tell us the vein, finish and format you are looking for.">Desde el catálogo, o cuéntanos qué veta, acabado y formato buscas.</p></li>
+        <li class="revela"><span class="paso-n">2</span><h3 class="t-m" data-en="Get your quote">Recibe tu cotización</h3><p data-en="With price, availability and delivery times, straight from our own quarry in Tatatila, Veracruz.">Con precio, disponibilidad y tiempos de entrega, directo de nuestra cantera en Tatatila, Veracruz.</p></li>
+        <li class="revela"><span class="paso-n">3</span><h3 class="t-m" data-en="Receive it on site">Recíbelo en obra</h3><p data-en="We coordinate delivery anywhere in Mexico and export to the United States.">Coordinamos la entrega en todo México y exportamos a Estados Unidos.</p></li>
+      </ol>
+      <p class="revela pasos-cta"><a class="boton" href="#cotizar" data-en="Request a quote">Pide tu cotización</a></p>
+    </div>
+  </section>
+
+  <section class="seccion destacado oscuro" id="destacado" aria-labelledby="destacado-titulo">
+    <div class="contenedor">
+      <div class="destacado-cabeza revela">
+        <h2 class="t-l" id="destacado-titulo" data-en="One stone, many ways to live with it">Una piedra, muchas formas de vivirla</h2>
+        <a class="enlace" href="#catalogo" data-en="See the full catalog →">Ver todo el catálogo →</a>
+      </div>
+      <div class="destacado-rejilla">
+        <figure class="destacado-visual revela">
+          <div class="dv-marco">
+            <img class="dv-img activa" data-vista="placa" src="assets/img/mat/blanco-iceberg-hd.webp" alt="Placa de ónix Blanco Iceberg" width="800" height="800" loading="lazy">
+            <img class="dv-img" data-vista="obra" src="assets/img/usos/cocina.webp" alt="Isla de cocina forrada en piedra blanca con vetas grises" width="900" height="988" loading="lazy">
+          </div>
+          <div class="dv-conmutador" role="group" aria-label="Cambiar vista">
+            <button type="button" data-vista="placa" aria-pressed="true" data-en="Natural slab">Placa natural</button>
+            <button type="button" data-vista="obra" aria-pressed="false" data-en="On site">En obra</button>
+          </div>
+          <figcaption class="meta dv-nota" data-en="On-site photo for reference.">Foto en obra de referencia.</figcaption>
+        </figure>
+        <div class="destacado-datos revela">
+          <p class="meta" data-en="Onyx · Mexico">Ónix · México</p>
+          <h3 class="destacado-nombre">Blanco Iceberg</h3>
+          <p data-en="Onyx is a natural stone: each piece may vary in its tones and veins. White background with fine grey veins, for walls, countertops and bathrooms.">El ónix es de origen natural: cada pieza puede presentar variantes en sus tonos y vetas. Fondo blanco con vetas grises finas, para muros, encimeras y baños.</p>
+          <dl class="destacado-lista">
+            <div><dt data-en="Formats">Formatos</dt><dd data-en="Slab, free lengths, cut to format, custom">Placa, largos libres, en formato, personalizado</dd></div>
+            <div><dt data-en="Thickness">Espesor</dt><dd data-en="1 cm and 2 cm · average slab 2.40 × 1.70 × 2 cm">1 cm y 2 cm · lámina promedio 2.40 × 1.70 × 2 cm</dd></div>
+            <div><dt data-en="Uses">Usos</dt><dd data-en="Walls, countertops, showers, backsplashes">Paredes, encimeras, regaderas, lavaderos</dd></div>
+          </dl>
+          <div class="destacado-acciones">
+            <a class="boton" href="#cotizar" data-material="Blanco Iceberg" data-en="Quote this material">Cotizar este material</a>
+            <a class="enlace" href="#catalogo" data-filtro-ir="onix" data-en="See all onyx">Ver todos los ónix</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="colecciones" id="colecciones" aria-labelledby="col-titulo">
+    <div class="contenedor colecciones-cabeza">
+      <h2 class="t-l revela" id="col-titulo" data-en="Stone with its own character">Piedra con carácter propio</h2>
+      <p class="revela" data-en="An exceptional collection from Mexico’s most prestigious quarries.">Una colección proveniente de las canteras más prestigiosas de México.</p>
+    </div>
+    <ul class="colecciones-lista">
+      <li><a href="#catalogo" data-filtro-ir="marmol"><span class="col-foto" style="background-image:url(assets/img/mat/sto-tomas-hd.webp)" aria-hidden="true"></span><span class="col-num">I</span><span class="col-nombre" data-en="Marble">Mármol</span><span class="col-cuenta" data-cuenta="marmol"></span><span class="col-flecha" aria-hidden="true">→</span></a></li>
+      <li><a href="#catalogo" data-filtro-ir="travertino"><span class="col-foto" style="background-image:url(assets/img/mat/travertino-oro-hd.webp)" aria-hidden="true"></span><span class="col-num">II</span><span class="col-nombre" data-en="Travertine">Travertino</span><span class="col-cuenta" data-cuenta="travertino"></span><span class="col-flecha" aria-hidden="true">→</span></a></li>
+      <li><a href="#catalogo" data-filtro-ir="onix"><span class="col-foto" style="background-image:url(assets/img/mat/onix-lava-hd.webp)" aria-hidden="true"></span><span class="col-num">III</span><span class="col-nombre" data-en="Onyx">Ónix</span><span class="col-cuenta" data-cuenta="onix"></span><span class="col-flecha" aria-hidden="true">→</span></a></li>
+    </ul>
+  </section>
+
+  <section class="seccion catalogo" id="catalogo">
     <div class="contenedor">
       <div class="catalogo-cabeza">
-        <h2 class="t-xl revela" data-en="Catalog">Catálogo</h2>
-        <div class="texto revela"><p data-en="An exceptional collection from Mexico’s most prestigious quarries. If you don’t find the marble you’re looking for, let us know and we’ll source it for you.">Una colección proveniente de las canteras más prestigiosas de México. Si no encuentra el mármol que busca, infórmenos y lo buscaremos para usted.</p></div>
+        <h2 class="t-l revela" data-en="Catalog">Catálogo</h2>
+        <div class="texto revela"><p data-en="If you don’t find the marble you’re looking for, let us know and we’ll source it for you.">Si no encuentra el mármol que busca, infórmenos y lo buscaremos para usted.</p></div>
       </div>
       <div class="filtros" role="group" aria-label="Filtrar por tipo">
         <button type="button" data-filtro="todos" aria-pressed="true"><span data-en="All">Todos</span><sup></sup></button>
@@ -112,110 +172,77 @@
         <button type="button" data-filtro="onix" aria-pressed="false"><span data-en="Onyx">Ónix</span><sup></sup></button>
       </div>
       <ul class="materiales" id="materiales"></ul>
+    </div>
+  </section>
 
-      <div class="especificaciones">
-        <div class="revela">
-          <h3 class="t-m" data-en="Marble and onyx sizes">Medidas de mármol y ónix</h3>
-          <ul>
-            <li>.305 × .305 × 1</li><li>.40 × .40 × 1</li><li>.305 × .60 × 1</li><li>.40 × .60 × 1</li><li>.60 × .60 × 1</li>
-            <li data-en=".305 / .40 / .60 × free length × 1">.305 / .40 / .60 × largo libre × 1</li>
-            <li data-en="Mosaic: 0.05 × 0.05 × 1 on .305 sheets, .10 × .10 × 1 (tumbled)">Mosaico: 0.05 × 0.05 × 1 en piezas de .305 y .10 × .10 × 1 (tombaleado)</li>
-            <li data-en="Same sizes available in 2 cm">Las mismas medidas en 2 cm</li>
-            <li data-en="Average slab: 2.40 × 1.70 × 2 cm">Lámina promedio: 2.40 × 1.70 × 2 cm</li>
-          </ul>
+  <section class="seccion amedida" id="cantera" aria-labelledby="amedida-titulo">
+    <div class="contenedor">
+      <div class="amedida-cabeza revela">
+        <h2 class="t-l" id="amedida-titulo" data-en="Made to measure: formats, thicknesses and finishes">A medida: formatos, espesores y acabados</h2>
+        <p data-en="We are experts in every stage of marble production, from quarry extraction to transformation and final delivery.">Somos expertos en cada etapa de la producción de mármol, desde la extracción en cantera hasta la transformación y la entrega final.</p>
+      </div>
+      <ul class="amedida-lista">
+        <li class="revela">
+          <div class="am-foto"><img src="assets/img/fin/santo-tomas-martelinado.webp" alt="Mármol Santo Tomás con acabado martelinado" width="800" height="800" loading="lazy"></div>
+          <h3 class="t-m" data-en="Selection at the quarry">Selección en cantera</h3>
+          <p data-en="Our own mine in Tatatila, Veracruz, and direct connections with Mexico’s leading quarries. That is how we hand-pick the finest marble.">Mina propia en Tatatila, Veracruz, y conexión directa con las principales canteras de México. Así seleccionamos a mano el mármol más fino.</p>
+        </li>
+        <li class="revela">
+          <div class="am-foto"><img src="assets/img/usos/bodega-marmol.webp" alt="Placas de mármol en bodega" width="1200" height="900" loading="lazy"></div>
+          <h3 class="t-m" data-en="Formats, thicknesses and finishes">Formatos, espesores y acabados</h3>
+          <p data-en="Slabs, free lengths, cut-to-format pieces or custom work, in 1 or 2 cm, with the finish your project needs: polished, matte, bush-hammered, aged and more.">Placa, largos libres, piezas en formato o a la medida, en 1 o 2 cm, con el acabado que pide tu proyecto: pulido, mate, busardeado, avejentado y más.</p>
+        </li>
+        <li class="revela">
+          <div class="am-foto mapa"></div>
+          <h3 class="t-m" data-en="Export">Exportación</h3>
+          <p data-en="We sell in Mexico and the United States and export your products to the country of your choice.">Vendemos en México y Estados Unidos, y exportamos tus productos al país de tu preferencia.</p>
+        </li>
+      </ul>
+      <details class="medidas revela">
+        <summary data-en="Standard sizes, finishes and formats">Medidas estándar, acabados y formatos</summary>
+        <div class="especificaciones">
+          <div>
+            <h3 class="t-m" data-en="Marble and onyx sizes">Medidas de mármol y ónix</h3>
+            <ul>
+              <li>.305 × .305 × 1</li><li>.40 × .40 × 1</li><li>.305 × .60 × 1</li><li>.40 × .60 × 1</li><li>.60 × .60 × 1</li>
+              <li data-en=".305 / .40 / .60 × free length × 1">.305 / .40 / .60 × largo libre × 1</li>
+              <li data-en="Mosaic: 0.05 × 0.05 × 1 on .305 sheets, .10 × .10 × 1 (tumbled)">Mosaico: 0.05 × 0.05 × 1 en piezas de .305 y .10 × .10 × 1 (tombaleado)</li>
+              <li data-en="Same sizes available in 2 cm">Las mismas medidas en 2 cm</li>
+              <li data-en="Average slab: 2.40 × 1.70 × 2 cm">Lámina promedio: 2.40 × 1.70 × 2 cm</li>
+            </ul>
+          </div>
+          <div><h3 class="t-m" data-en="Finishes">Tipos de acabado</h3><ul id="lista-acabados"></ul></div>
+          <div><h3 class="t-m" data-en="Formats">Formatos</h3><ul id="lista-formatos"></ul>
+            <p class="nota" data-en="Onyx and granite are natural stones, so their tones and veins may vary.">Nota importante: el ónix y el granito son de origen natural y pueden presentar variantes en sus tonos y vetas.</p></div>
         </div>
-        <div class="revela">
-          <h3 class="t-m" data-en="Finishes">Tipos de acabado</h3>
-          <ul id="lista-acabados"></ul>
-        </div>
-        <div class="revela">
-          <h3 class="t-m" data-en="Formats">Formatos</h3>
-          <ul id="lista-formatos"></ul>
-          <p class="nota" data-en="Onyx and granite are natural stones, so their tones and veins may vary.">Nota importante: el ónix y el granito son de origen natural y pueden presentar variantes en sus tonos y vetas.</p>
-        </div>
+      </details>
+      <div class="amedida-banda revela">
+        <p class="t-m" data-en="Looking for a specific marble, tone or size? Tell us and we’ll source it for you.">¿Buscas un mármol, un tono o una medida en particular? Cuéntanos y lo buscamos por ti.</p>
+        <a class="boton" href="#cotizar" data-en="Quote a custom piece →">Cotizar una pieza a medida →</a>
       </div>
     </div>
   </section>
 
-  <section class="seccion proyectos oscuro" id="proyectos">
+  <section class="seccion proyectos oscuro" id="proyectos" aria-labelledby="proy-titulo">
     <div class="contenedor proyectos-cabeza">
-      <h2 class="t-xl revela" data-en="Project examples">Muestras de proyectos</h2>
-      <p class="revela" data-en="Applications for all types of projects: a wide range of materials to fit your design.">Aplicaciones para todo tipo de proyectos: una amplia gama de materiales para satisfacer sus necesidades de diseño.</p>
+      <h2 class="t-l revela" id="proy-titulo" data-en="Applications for every type of project">Aplicaciones para todo tipo de proyecto</h2>
       <p class="meta revela nota-fotos" data-en="Reference photos. Soon: real projects by Stone Royale.">Fotos de referencia. Pronto, obras reales de Stone Royale.</p>
     </div>
-    <div class="pista-envoltura">
-      <div class="pista" id="pista">
-        <figure class="obra"><button type="button" data-visor><img src="assets/img/usos/project-marble1.webp" alt="Regadera revestida en mármol blanco con nicho" width="800" height="800" loading="lazy"></button><figcaption><span class="t-m" data-en="Shower">Regadera</span><a href="#cotizar" data-uso="Regadera" data-en="Quote">Cotizar</a></figcaption></figure>
-        <figure class="obra"><button type="button" data-visor><img src="assets/img/usos/project-marble7.webp" alt="Encimera de cocina en mármol blanco con vetas oscuras" width="800" height="800" loading="lazy"></button><figcaption><span class="t-m" data-en="Countertop">Encimera</span><a href="#cotizar" data-uso="Encimera" data-en="Quote">Cotizar</a></figcaption></figure>
-        <figure class="obra"><button type="button" data-visor><img src="assets/img/usos/project-marble5.webp" alt="Exterior de casa con muros y pisos de piedra" width="800" height="800" loading="lazy"></button><figcaption><span class="t-m" data-en="Exterior">Exterior</span><a href="#cotizar" data-uso="Exterior" data-en="Quote">Cotizar</a></figcaption></figure>
-        <figure class="obra"><button type="button" data-visor><img src="assets/img/usos/interior-wall.webp" alt="Muro de sala revestido en mármol blanco con vetas doradas" width="800" height="800" loading="lazy"></button><figcaption><span class="t-m" data-en="Interior wall">Paredes</span><a href="#cotizar" data-uso="Paredes" data-en="Quote">Cotizar</a></figcaption></figure>
-        <figure class="obra"><button type="button" data-visor><img src="assets/img/usos/project-marble2.webp" alt="Alberca con piso de travertino" width="800" height="800" loading="lazy"></button><figcaption><span class="t-m" data-en="Pool">Alberca</span><a href="#cotizar" data-uso="Alberca" data-en="Quote">Cotizar</a></figcaption></figure>
-        <figure class="obra"><button type="button" data-visor><img src="assets/img/usos/backsplash.webp" alt="Lavadero de cocina con muro de mármol" width="800" height="800" loading="lazy"></button><figcaption><span class="t-m" data-en="Backsplash">Lavadero</span><a href="#cotizar" data-uso="Lavadero" data-en="Quote">Cotizar</a></figcaption></figure>
-        <figure class="obra"><button type="button" data-visor><img src="assets/img/usos/cocina.webp" alt="Isla de cocina forrada en mármol blanco" width="900" height="988" loading="lazy"></button><figcaption><span class="t-m" data-en="Kitchen">Cocina</span><a href="#cotizar" data-uso="Encimera" data-en="Quote">Cotizar</a></figcaption></figure>
-        <figure class="obra"><button type="button" data-visor><img src="assets/img/usos/bathroom.webp" alt="Baño con muro y lavabo de mármol" width="630" height="760" loading="lazy"></button><figcaption><span class="t-m" data-en="Bathroom">Baño</span><a href="#cotizar" data-uso="Paredes" data-en="Quote">Cotizar</a></figcaption></figure>
-        <figure class="obra"><button type="button" data-visor><img src="assets/img/usos/fachada-marmol.webp" alt="Fachada de edificio revestida en piedra" width="850" height="567" loading="lazy"></button><figcaption><span class="t-m" data-en="Façade">Fachada</span><a href="#cotizar" data-uso="Exterior" data-en="Quote">Cotizar</a></figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="seccion cantera" id="cantera">
-    <div class="contenedor rejilla">
-      <div class="cantera-visual" aria-hidden="true">
-        <figure class="activa" data-paso="0"><img src="assets/img/fin/santo-tomas-busardeado.webp" alt=""></figure>
-        <figure data-paso="1"><img src="assets/img/usos/bodega-marmol.webp" alt=""></figure>
-        <figure class="mapa" data-paso="2"></figure>
-      </div>
-      <div class="cantera-pasos">
-        <div class="intro revela">
-          <h2 class="t-xl" data-en="From Tatatila to your project">De Tatatila a tu obra</h2>
-          <p class="entrada" style="margin-top:1.5rem" data-en="We are experts in every stage of marble production, from quarry extraction to transformation and final delivery.">Somos expertos en cada etapa de la producción de mármol, desde la extracción en cantera hasta la transformación y la entrega final.</p>
-        </div>
-        <article class="paso" data-paso="0">
-          <div class="paso-foto"><img src="assets/img/fin/santo-tomas-busardeado.webp" alt="" loading="lazy"></div>
-          <span class="marca-paso"></span>
-          <h3 class="t-l" data-en="Extraction">Extracción</h3>
-          <p data-en="Our own mine in Tatatila, Veracruz, and direct connections with Mexico’s leading quarries. That is how we hand-pick the finest marble.">Mina propia en Tatatila, Veracruz, y conexión directa con las principales canteras de México. Así seleccionamos a mano el mármol más fino.</p>
-        </article>
-        <article class="paso" data-paso="1">
-          <div class="paso-foto"><img src="assets/img/usos/bodega-marmol.webp" alt="" loading="lazy"></div>
-          <span class="marca-paso"></span>
-          <h3 class="t-l" data-en="Transformation">Transformación</h3>
-          <p data-en="Slabs, free lengths, cut-to-format pieces or custom work, with the finish your project needs: polished, matte, bush-hammered, aged and more.">Placa, largos libres, piezas en formato o a la medida, con el acabado que pide tu proyecto: pulido, mate, busardeado, avejentado y más.</p>
-        </article>
-        <article class="paso" data-paso="2">
-          <div class="paso-foto mapa-movil"></div>
-          <span class="marca-paso"></span>
-          <h3 class="t-l" data-en="Export">Exportación</h3>
-          <p data-en="We sell in Mexico and the United States and export your products to the country of your choice.">Vendemos en México y Estados Unidos, y exportamos tus productos al país de tu preferencia.</p>
-          <p><a class="enlace" href="#cotizar" data-en="Quote an export order">Cotizar una exportación</a></p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="seccion servicios">
-    <div class="contenedor">
-      <h2 class="t-xl revela" data-en="Professional services">Servicios profesionales</h2>
-      <ul>
-        <li class="revela"><h3 class="t-m" data-en="Unmatched quality">Calidad inigualable</h3><p data-en="Our team of professionals will help you choose the most suitable products for your project.">Nuestro equipo de profesionales le ayuda a elegir los productos más adecuados para su proyecto.</p></li>
-        <li class="revela"><h3 class="t-m" data-en="Extensive material range">Amplia gama de materiales</h3><p data-en="An extensive catalog so you can choose what best suits your project.">Un catálogo amplio para elegir los productos que mejor se adapten a tu proyecto.</p></li>
-        <li class="revela"><h3 class="t-m" data-en="Customization">Personalización</h3><p data-en="You can customize your product according to your needs.">Puede personalizar su producto según sus necesidades.</p></li>
-        <li class="revela"><h3 class="t-m" data-en="Expert guidance">Orientación experta</h3><p data-en="Save time and effort with efficient solutions from our experts.">Ahorre tiempo y esfuerzo con soluciones eficientes de nuestros expertos.</p></li>
-        <li class="revela"><h3 class="t-m" data-en="Export options">Opciones de exportación</h3><p data-en="We export your products to the country of your choice.">Exportamos tus productos al país de tu preferencia.</p></li>
-        <li class="revela"><h3 class="t-m" data-en="Personalized attention">Atención personalizada</h3><p data-en="We assign an expert to help you choose the best solution for your project.">Te asignamos un experto para apoyarte a elegir la mejor solución para tu proyecto.</p></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="seccion servicios pasos" id="como-cotizar">
-    <div class="contenedor">
-      <h2 class="t-xl revela" data-en="Getting a quote is simple">Cotizar con Stone Royale es simple</h2>
-      <ul>
-        <li class="revela"><h3 class="t-m" data-en="1. Choose your material">1. Elige tu material</h3><p data-en="From the catalog, or tell us the vein, finish and format you are looking for.">Desde el catálogo, o cuéntanos qué veta, acabado y formato buscas.</p></li>
-        <li class="revela"><h3 class="t-m" data-en="2. Get your quote">2. Recibe tu cotización</h3><p data-en="With price, availability and delivery times, straight from our own quarry in Tatatila, Veracruz.">Con precio, disponibilidad y tiempos de entrega, directo de nuestra cantera en Tatatila, Veracruz.</p></li>
-        <li class="revela"><h3 class="t-m" data-en="3. Receive it on site">3. Recíbelo en obra</h3><p data-en="We coordinate delivery anywhere in Mexico and export to the United States.">Coordinamos la entrega en todo México y exportamos a Estados Unidos.</p></li>
-      </ul>
-      <p class="revela" style="margin-top:2rem"><a class="boton" href="#cotizar" data-en="Get a quote">Cotiza tu material</a></p>
+    <div class="contenedor obras">
+      <figure class="obras-visor revela">
+        <button type="button" data-visor aria-label="Ampliar foto"><img id="obra-img" src="assets/img/usos/project-marble1.webp" alt="Regadera revestida en mármol blanco con nicho" width="800" height="800" loading="lazy"></button>
+        <figcaption><span class="t-m" id="obra-nombre">Regadera</span><a href="#cotizar" data-uso="Regadera" data-en="Quote">Cotizar</a></figcaption>
+      </figure>
+      <ol class="obras-lista" id="obras-lista">
+        <li><button type="button" aria-pressed="true" data-img="project-marble1" data-alt="Regadera revestida en mármol blanco con nicho"><span data-en="Shower">Regadera</span><span class="meta" data-en="Bathroom">Baño</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="project-marble7" data-alt="Encimera de cocina en mármol blanco con vetas oscuras"><span data-en="Countertop">Encimera</span><span class="meta" data-en="Kitchen">Cocina</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="interior-wall" data-alt="Muro de sala revestido en mármol blanco con vetas doradas"><span data-en="Interior wall">Paredes</span><span class="meta" data-en="Living room">Sala</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="project-marble2" data-alt="Alberca con piso de travertino"><span data-en="Pool">Alberca</span><span class="meta" data-en="Outdoor">Exterior</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="backsplash" data-alt="Lavadero de cocina con muro de mármol"><span data-en="Backsplash">Lavadero</span><span class="meta" data-en="Kitchen">Cocina</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="bathroom" data-alt="Baño con muro y lavabo de mármol"><span data-en="Bathroom">Baño</span><span class="meta" data-en="Residential">Residencial</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="project-marble5" data-alt="Exterior de casa con muros y pisos de piedra"><span data-en="Exterior">Exterior</span><span class="meta" data-en="Residential">Residencial</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="fachada-marmol" data-alt="Fachada de edificio revestida en piedra"><span data-en="Façade">Fachada</span><span class="meta" data-en="Building">Edificio</span></button></li>
+      </ol>
     </div>
   </section>
 
@@ -283,8 +310,8 @@
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="assets/js/datos.js"></script>
-<script src="assets/js/sitio.js"></script>
-<script type="module" src="assets/js/losa.js"></script>
+<script src="assets/js/datos.js?v=1118m"></script>
+<script src="assets/js/sitio.js?v=1118m"></script>
+<script type="module" src="assets/js/losa.js?v=1118m"></script>
 </body>
 </html>

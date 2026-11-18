@@ -33,6 +33,7 @@
     cerrarMenu();
     if (a.dataset.uso) preseleccionar({ uso: a.parentNode.querySelector('.t-m').textContent });
     if (a.dataset.material) preseleccionar({ material: a.dataset.material });
+    if (a.dataset.filtroIr) { var fb = $('.filtros button[data-filtro="' + a.dataset.filtroIr + '"]'); if (fb) fb.click(); }
     irA(h);
   });
 
@@ -101,6 +102,10 @@
     $$('.filtros button').forEach(function (b) {
       var f = b.dataset.filtro;
       b.querySelector('sup').textContent = f === 'todos' ? SR.catalogo.length : SR.catalogo.filter(function (m) { return m[2] === f; }).length;
+    });
+    $$('[data-cuenta]').forEach(function (el) {
+      var n = SR.catalogo.filter(function (m) { return m[2] === el.dataset.cuenta; }).length;
+      el.textContent = n + ' ' + L(n === 1 ? 'material' : 'materiales', n === 1 ? 'material' : 'materials');
     });
   }
   d.addEventListener('click', function (e) {
@@ -338,11 +343,13 @@
   /* ---------- Héroe: entrada y salida del texto ---------- */
   if (gsap && $('.heroe')) {
     if (!reduce) {
-      gsap.from('.heroe h1 .palabra > span', { yPercent: 110, duration: 1.3, ease: 'power4.out', stagger: .06, delay: .25 });
-      gsap.from('.heroe .entrada, .heroe-botones, .heroe-material', { opacity: 0, y: 20, duration: 1.2, ease: 'power3.out', delay: .8, stagger: .12 });
-      gsap.to('.heroe-texto, .heroe-material', { opacity: 0, y: -60, ease: 'none', scrollTrigger: { trigger: '.heroe', start: 'top top', end: '9% top', scrub: true } });
-      gsap.fromTo('#heroe-ficha', { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.heroe', start: '8% top', end: '13% top', scrub: true } });
-      gsap.to('.heroe-avance i', { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '.heroe', start: 'top top', end: 'bottom bottom', scrub: true } });
+      gsap.from('.heroe h1 .linea', { opacity: 0, y: 24, duration: 1.1, ease: 'power3.out', stagger: .14, delay: .15 });
+      gsap.from('.heroe .entrada, .heroe-botones, .heroe-material', { opacity: 0, y: 20, duration: 1.1, ease: 'power3.out', delay: .55, stagger: .1 });
+      if (ST) ST.matchMedia({ '(min-width: 821px)': function () {
+        gsap.to('.heroe-texto, .heroe-material', { opacity: 0, y: -60, ease: 'none', scrollTrigger: { trigger: '.heroe', start: 'top top', end: '9% top', scrub: true } });
+        gsap.fromTo('#heroe-ficha', { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.heroe', start: '8% top', end: '13% top', scrub: true } });
+        gsap.to('.heroe-avance i', { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '.heroe', start: 'top top', end: 'bottom bottom', scrub: true } });
+      } });
     }
   }
 
@@ -365,7 +372,34 @@
     '<path class="ruta" d="M292 226 C 300 150, 210 70, 150 62"/>' +
     '<text x="282" y="258" text-anchor="end">Tatatila, Veracruz</text><text x="150" y="40" text-anchor="middle">' + L('Estados Unidos', 'United States') + '</text>' +
     '<text x="206" y="168" fill-opacity=".55">' + L('México', 'Mexico') + '</text></svg>';
-  $$('.cantera-visual .mapa, .mapa-movil').forEach(function (el) { el.innerHTML = mapaSVG; });
+  $$('.cantera-visual .mapa, .mapa-movil, .am-foto.mapa').forEach(function (el) { el.innerHTML = mapaSVG; });
+  if ('IntersectionObserver' in w) $$('.am-foto.mapa').forEach(function (el) {
+    new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { el.classList.add('activa'); o.disconnect(); } }, { threshold: .4 }).observe(el);
+  }); else $$('.am-foto.mapa').forEach(function (el) { el.classList.add('activa'); });
+
+  /* ---------- Material destacado: placa natural / en obra ---------- */
+  var dv = $('.destacado-visual');
+  if (dv) d.addEventListener('click', function (e) {
+    var b = e.target.closest('.dv-conmutador button'); if (!b) return;
+    var v = b.dataset.vista;
+    $$('.dv-conmutador button', dv).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    $$('.dv-img', dv).forEach(function (im) { im.classList.toggle('activa', im.dataset.vista === v); });
+    dv.classList.toggle('obra-activa', v === 'obra');
+  });
+
+  /* ---------- Proyectos: lista de obras con visor ---------- */
+  var oLista = $('#obras-lista'), oImg = $('#obra-img'), oNom = $('#obra-nombre');
+  if (oLista && oImg) oLista.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b || b.getAttribute('aria-pressed') === 'true') return;
+    $$('button', oLista).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    var nombre = b.querySelector('span').textContent, uso = $('.obras-visor figcaption a');
+    var cambiar = function () {
+      oImg.onload = function () { oImg.classList.remove('cambiando'); };
+      oImg.src = SR.base + 'assets/img/usos/' + b.dataset.img + '.webp'; oImg.alt = b.dataset.alt; oNom.textContent = nombre;
+      if (uso) uso.dataset.uso = nombre;
+    };
+    if (reduce) cambiar(); else { oImg.classList.add('cambiando'); setTimeout(cambiar, 250); }
+  });
   var figs = $$('.cantera-visual figure');
   var mapaMovil = $('.mapa-movil'); if (mapaMovil) mapaMovil.classList.add('mapa');
   if ('IntersectionObserver' in w) {

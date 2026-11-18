@@ -15,7 +15,9 @@ const MARMOLES = SEC.marmoles.map((m) => [m[0], m[1], m[3] ? window.SR.rutaFicha
 function sinWebGL() { doc.classList.add('sin-webgl'); }
 
 let renderer;
-try {
+// Móvil: losa estática debajo del titular (más ligera y sin tapar el texto)
+if (matchMedia('(max-width: 820px)').matches) sinWebGL();
+else try {
   renderer = new THREE.WebGLRenderer({ canvas: lienzo, antialias: true, alpha: true, powerPreference: 'high-performance' });
 } catch (e) { sinWebGL(); }
 
