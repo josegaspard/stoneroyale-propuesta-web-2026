@@ -143,33 +143,21 @@
     $$('[data-wa]').forEach(function (el) { el.href = num ? 'https://wa.me/' + dig : '#'; });
   }
 
-  /* ---------- Instagram ---------- */
+  /* ---------- Instagram: perfil oficial con sus últimas publicaciones (se carga al acercarse) ---------- */
   function pintarInstagram() {
-    var rej = $('#ig-rejilla'); if (!rej) return;
-    var nota = $('#ig-nota'), u = SR.instagram, seguir = $('#ig-seguir'), usuario = $('#ig-usuario');
+    var caja = $('#ig-embed'); if (!caja) return;
+    var u = SR.instagram, url = 'https://www.instagram.com/' + u + '/', seguir = $('#ig-seguir'), usuario = $('#ig-usuario');
     if (usuario) usuario.textContent = u;
-    if (seguir) seguir.href = 'https://www.instagram.com/' + u + '/';
-    if (u && SR.instagramPosts.length) {
-      if (rej.dataset.listo) return;
-      rej.dataset.listo = '1'; rej.classList.add('ig-incrustado'); if (nota) nota.hidden = true;
-      rej.innerHTML = SR.instagramPosts.slice(0, 6).map(function (url) {
-        return '<blockquote class="instagram-media" data-instgrm-permalink="' + url + '" data-instgrm-version="14"><a href="' + url + '" target="_blank" rel="noopener">Instagram</a></blockquote>';
-      }).join('');
-      var sc = d.createElement('script'); sc.async = true; sc.src = 'https://www.instagram.com/embed.js'; d.body.appendChild(sc);
-      return;
-    }
-    // Vista previa: 9 publicaciones de muestra con sus placas y fotos de obra (sin cifras inventadas)
-    var icono = {
-      carrusel: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 3h11a3 3 0 0 1 3 3v11h-2V6a1 1 0 0 0-1-1H7zM3 8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
-      video: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>'
+    if (seguir) seguir.href = url;
+    if (caja.dataset.espera) return;
+    caja.dataset.espera = '1';
+    var poner = function () {
+      caja.innerHTML = '<blockquote class="instagram-media" data-instgrm-permalink="' + url + '?utm_source=ig_embed" data-instgrm-version="14"><a href="' + url + '" target="_blank" rel="noopener">@' + u + '</a></blockquote>';
+      if (w.instgrm && w.instgrm.Embeds) w.instgrm.Embeds.process();
+      else { var sc = d.createElement('script'); sc.async = true; sc.src = 'https://www.instagram.com/embed.js'; d.body.appendChild(sc); }
     };
-    rej.innerHTML = SR.instagramMuestra.map(function (p) {
-      var pie = L(p[2], p[3]), tipo = p[1];
-      return '<button type="button" class="ig-celda" data-visor data-pie="' + pie + '" aria-label="' + pie + '">' +
-        '<img src="' + SR.base + 'assets/img/' + p[0] + '.webp" alt="' + pie + '" width="400" height="400" loading="lazy">' +
-        (tipo ? '<span class="ig-tipo" aria-hidden="true">' + icono[tipo] + '</span>' : '') +
-        '<span class="ig-pie" aria-hidden="true">' + pie + '</span></button>';
-    }).join('');
+    if ('IntersectionObserver' in w) new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { o.disconnect(); poner(); } }, { rootMargin: '900px 0px' }).observe(caja);
+    else poner();
   }
 
   /* ---------- Cotizador: ubicación → material → acabado → formato → m², luego datos de contacto ---------- */
@@ -378,12 +366,12 @@
   }
 
   /* ---------- Cantera ---------- */
-  var mapaSVG = '<svg viewBox="0 0 400 300" role="img" aria-label="' + L('Ruta de Tatatila, Veracruz, a Estados Unidos', 'Route from Tatatila, Veracruz, to the United States') + '">' +
-    '<circle cx="292" cy="226" r="5" fill="#A8854F"/><circle cx="292" cy="226" r="14" fill="none" stroke="#A8854F" stroke-opacity=".4"/>' +
+  var mapaSVG = '<svg viewBox="0 0 400 300" role="img" aria-label="' + L('Ruta de Querétaro a Estados Unidos', 'Route from Querétaro to the United States') + '">' +
+    '<circle cx="246" cy="206" r="5" fill="#A8854F"/><circle cx="246" cy="206" r="14" fill="none" stroke="#A8854F" stroke-opacity=".4"/>' +
     '<circle cx="150" cy="62" r="4" fill="#DCDBD6"/>' +
-    '<path class="ruta" d="M292 226 C 300 150, 210 70, 150 62"/>' +
-    '<text x="282" y="258" text-anchor="end">Tatatila, Veracruz</text><text x="150" y="40" text-anchor="middle">' + L('Estados Unidos', 'United States') + '</text>' +
-    '<text x="206" y="168" fill-opacity=".55">' + L('México', 'Mexico') + '</text></svg>';
+    '<path class="ruta" d="M246 206 C 260 140, 200 75, 150 62"/>' +
+    '<text x="246" y="238" text-anchor="middle">Querétaro</text><text x="150" y="40" text-anchor="middle">' + L('Estados Unidos', 'United States') + '</text>' +
+    '<text x="150" y="168" fill-opacity=".55">' + L('México', 'Mexico') + '</text></svg>';
   $$('.cantera-visual .mapa, .mapa-movil, .am-foto.mapa').forEach(function (el) { el.innerHTML = mapaSVG; });
   if ('IntersectionObserver' in w) $$('.am-foto.mapa').forEach(function (el) {
     new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { el.classList.add('activa'); o.disconnect(); } }, { threshold: .4 }).observe(el);
