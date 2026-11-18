@@ -608,3 +608,13 @@ button { font: inherit; color: inherit; }
   .heroe-titulo .fuerte { font-size: 2.125rem; }
 }
 @media (min-width: 1001px) { .dv-marco { aspect-ratio: 1; } }
+
+/* ---------- Instagram centrado (18-nov) ---------- */
+.ig-cabeza { text-align: center; }
+.ig-cabeza .t-xl { margin-left: auto; margin-right: auto; }
+@media (max-width: 600px) {
+  .ig-perfil-cab { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 1rem; align-items: center; }
+  .ig-fila { justify-content: center; }
+  .ig-bio { margin-left: auto; margin-right: auto; }
+}
+@media (min-width: 601px) { .ig-perfil-cab { grid-template-columns: auto auto; justify-content: center; } }
