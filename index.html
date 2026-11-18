@@ -8,7 +8,7 @@
 <meta name="description" content="Venta de mármol y travertino mexicanos de alta calidad en México y Estados Unidos. Cotiza tu material por correo.">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="preload" href="assets/fonts/commissioner-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/sitio.css?v=1118t">
+<link rel="stylesheet" href="assets/css/sitio.css?v=1118u">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 38'%3E%3Crect x='9' y='9' width='20' height='27' fill='%23111'/%3E%3Crect x='3' y='2' width='20' height='27' fill='%238C8C8C'/%3E%3C/svg%3E">
 <script>document.documentElement.className = 'js';</script>
 </head>
@@ -87,7 +87,7 @@
     <div class="contenedor criterio-rejilla">
       <div class="criterio-texto revela">
         <h2 class="t-l" id="criterio-titulo" data-en="We know every stone, from the quarry to your project.">Conocemos cada piedra, de la cantera a tu obra.</h2>
-        <p data-en="For more than 5 years, Stone Royale has specialized in extracting, transforming and selling top-quality stone in Mexico and the United States. We work in different formats and categories, mainly of national origin, and we can also offer alternatives and recommendations.">Desde hace más de 5 años, Stone Royale se especializa en la extracción, transformación y venta de piedras de la más alta calidad en México y Estados Unidos. Trabajamos en diferentes formatos y categorías, principalmente de origen nacional, y también podemos ofrecer alternativas y recomendaciones de producto.</p>
+        <p data-en="For more than 10 years, Stone Royale has specialized in extracting, transforming and selling top-quality stone in Mexico and the United States. We work in different formats and categories, mainly of national origin, and we can also offer alternatives and recommendations.">Desde hace más de 10 años, Stone Royale se especializa en la extracción, transformación y venta de piedras de la más alta calidad en México y Estados Unidos. Trabajamos en diferentes formatos y categorías, principalmente de origen nacional, y también podemos ofrecer alternativas y recomendaciones de producto.</p>
         <p data-en="With a rich history in architecture and sculpture since the ancient Mesoamerican civilizations, Mexican marble is recognized worldwide for its quality.">Con una rica historia en arquitectura y escultura desde las antiguas civilizaciones mesoamericanas, los mármoles mexicanos son reconocidos a nivel mundial por su calidad.</p>
         <p><a class="enlace" href="#cantera" data-en="See how we work the stone →">Cómo trabajamos la piedra →</a></p>
       </div>
@@ -168,8 +168,14 @@
         <button type="button" data-filtro="todos" aria-pressed="true"><span data-en="All">Todos</span><sup></sup></button>
         <button type="button" data-filtro="marmol" aria-pressed="false"><span data-en="Marble">Mármol</span><sup></sup></button>
         <button type="button" data-filtro="travertino" aria-pressed="false"><span data-en="Travertine">Travertino</span><sup></sup></button>
+        <button type="button" data-filtro="granito" aria-pressed="false" hidden><span data-en="Granite">Granito</span><sup></sup></button>
+        <button type="button" data-filtro="cuarcita" aria-pressed="false" hidden><span data-en="Quartzite">Cuarcita</span><sup></sup></button>
       </div>
       <ul class="materiales" id="materiales"></ul>
+      <div class="catalogo-otro revela">
+        <p class="t-m" data-en="Looking for another material? Ask about availability: we can also source materials that are not in the catalog.">¿Buscas otro material? Pregunta por disponibilidad: también conseguimos materiales que no están en el catálogo.</p>
+        <a class="boton" href="#cotizar" data-material="__otro" data-en="Ask about another material">Preguntar por otro material</a>
+      </div>
     </div>
   </section>
 
@@ -223,21 +229,23 @@
 
   <section class="seccion proyectos oscuro" id="proyectos" aria-labelledby="proy-titulo">
     <div class="contenedor proyectos-cabeza">
-      <h2 class="t-l revela" id="proy-titulo" data-en="Casa Abierta, in downtown Querétaro">Casa Abierta, en el centro de Querétaro</h2>
-      <p class="meta revela nota-fotos" data-en="Bathrooms, countertops and marble furniture by Stone Royale. Photos: Sandra Hernández.">Baños, encimeras y muebles de mármol de Stone Royale. Fotos: Sandra Hernández.</p>
+      <h2 class="t-l revela" id="proy-titulo" data-en="Projects that speak for us">Proyectos que hablan por nosotros</h2>
+      <p class="meta revela nota-fotos" data-en="Real Stone Royale projects: façades, floors, bathrooms and marble furniture. Casa Abierta photos: Sandra Hernández.">Obras reales de Stone Royale: fachadas, pisos, baños y muebles de mármol. Fotos de Casa Abierta: Sandra Hernández.</p>
     </div>
     <div class="contenedor obras">
       <figure class="obras-visor revela">
-        <button type="button" data-visor aria-label="Ampliar foto"><img id="obra-img" src="assets/img/usos/ca-regadera-marmol-blanco.webp" alt="Regadera revestida en mármol blanco veteado con nicho, Casa Abierta, Querétaro" data-en-alt="Shower clad in veined white marble with a niche, Casa Abierta, Querétaro" width="1600" height="1200" loading="lazy"></button>
-        <figcaption><span class="t-m" id="obra-nombre">Regadera</span><a href="#cotizar" data-uso="Regadera" data-en="Quote">Cotizar</a></figcaption>
+        <button type="button" data-visor aria-label="Ampliar foto"><img id="obra-img" src="assets/img/usos/pr-cordelia-fachada-travertino.webp" alt="Fachada de la plaza Cordelia revestida en Travertino Xalapa al corte" data-en-alt="Plaza Cordelia façade clad in saw-cut Xalapa travertine" width="927" height="789" loading="lazy"></button>
+        <figcaption><span class="t-m" id="obra-nombre">Fachada · Plaza Cordelia</span><a href="#cotizar" data-uso="Fachada" data-en="Quote">Cotizar</a></figcaption>
       </figure>
       <ol class="obras-lista" id="obras-lista">
-        <li><button type="button" aria-pressed="true" data-img="ca-regadera-marmol-blanco" data-alt="Regadera revestida en mármol blanco veteado con nicho, Casa Abierta, Querétaro" data-alt-en="Shower clad in veined white marble with a niche, Casa Abierta, Querétaro"><span data-en="Shower">Regadera</span><span class="meta" data-en="Bathroom">Baño</span></button></li>
-        <li><button type="button" aria-pressed="false" data-img="ca-bano-regadera-veteada" data-alt="Baño con regadera de mármol veteado y lavabo sobre cubierta de mármol, Casa Abierta" data-alt-en="Bathroom with a veined marble shower and a sink on a marble top, Casa Abierta"><span data-en="Full bathroom">Baño completo</span><span class="meta" data-en="Suite">Suite</span></button></li>
-        <li><button type="button" aria-pressed="false" data-img="ca-lavabo-cubierta-marmol" data-alt="Lavabo sobre cubierta de mármol gris junto a la regadera de mármol, Casa Abierta" data-alt-en="Sink on a grey marble top next to the marble shower, Casa Abierta"><span data-en="Vanity top">Encimera de baño</span><span class="meta" data-en="Sink">Lavabo</span></button></li>
-        <li><button type="button" aria-pressed="false" data-img="ca-lavabo-regadera" data-alt="Cubierta de mármol con lavabo y regadera de mármol veteado al fondo, Casa Abierta" data-alt-en="Marble vanity top with a sink and a veined marble shower behind, Casa Abierta"><span data-en="Sink and shower">Lavabo y regadera</span><span class="meta" data-en="Bathroom">Baño</span></button></li>
-        <li><button type="button" aria-pressed="false" data-img="ca-mesa-comedor-marmol" data-alt="Mesa de comedor con cubierta de mármol negro veteado, Casa Abierta" data-alt-en="Dining table with a veined black marble top, Casa Abierta"><span data-en="Dining table">Mesa de comedor</span><span class="meta" data-en="Marble furniture">Mueble de mármol</span></button></li>
-        <li><button type="button" aria-pressed="false" data-img="ca-mesa-centro-marmol" data-alt="Mesa de centro redonda con cubierta de mármol negro veteado, Casa Abierta" data-alt-en="Round coffee table with a veined black marble top, Casa Abierta"><span data-en="Coffee table">Mesa de centro</span><span class="meta" data-en="Marble furniture">Mueble de mármol</span></button></li>
+        <li><button type="button" aria-pressed="true" data-img="pr-cordelia-fachada-travertino" data-alt="Fachada de la plaza Cordelia revestida en Travertino Xalapa al corte" data-alt-en="Plaza Cordelia façade clad in saw-cut Xalapa travertine"><span data-en="Façade">Fachada</span><span class="meta" data-en="Plaza Cordelia">Plaza Cordelia</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="pr-rancho-piso-barra-santo-tomas" data-alt="Piso y frente de barra en mármol Santo Tomás pulido brillado, Rancho del Fraile" data-alt-en="Floor and bar front in high-polish Santo Tomás marble, Rancho del Fraile"><span data-en="Floor and bar">Piso y barra</span><span class="meta" data-en="Rancho del Fraile">Rancho del Fraile</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="pr-rancho-salon-santo-tomas" data-alt="Salón con piso de mármol Santo Tomás pulido, Rancho del Fraile" data-alt-en="Hall with a polished Santo Tomás marble floor, Rancho del Fraile"><span data-en="Hall">Salón</span><span class="meta" data-en="Rancho del Fraile">Rancho del Fraile</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="ca-regadera-marmol-blanco" data-alt="Regadera revestida en mármol blanco veteado con nicho, hotel Casa Abierta" data-alt-en="Shower clad in veined white marble with a niche, Casa Abierta hotel"><span data-en="Shower">Regadera</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="ca-bano-regadera-veteada" data-alt="Baño con regadera de mármol veteado y lavabo sobre cubierta de mármol, hotel Casa Abierta" data-alt-en="Bathroom with a veined marble shower and a sink on a marble top, Casa Abierta hotel"><span data-en="Full bathroom">Baño completo</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="ca-lavabo-cubierta-marmol" data-alt="Lavabo sobre cubierta de mármol junto a la regadera de mármol, hotel Casa Abierta" data-alt-en="Sink on a marble top next to the marble shower, Casa Abierta hotel"><span data-en="Vanity top">Encimera de baño</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="ca-mesa-comedor-marmol" data-alt="Mesa de comedor con cubierta de mármol Negro Querétaro, hotel Casa Abierta" data-alt-en="Dining table with a Negro Querétaro marble top, Casa Abierta hotel"><span data-en="Dining table">Mesa de comedor</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="ca-mesa-centro-marmol" data-alt="Mesa de centro redonda con cubierta de mármol Negro Querétaro, hotel Casa Abierta" data-alt-en="Round coffee table with a Negro Querétaro marble top, Casa Abierta hotel"><span data-en="Coffee table">Mesa de centro</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
       </ol>
     </div>
   </section>
@@ -280,6 +288,7 @@
       <form class="formulario revela" id="formulario" novalidate>
         <div class="campo ancho"><label for="f-ubicacion" data-en="Project location">Ubicación de la obra</label><input id="f-ubicacion" name="ubicacion" autocomplete="address-level2" placeholder="Ciudad, estado y país" data-en-placeholder="City, state and country" maxlength="120"></div>
         <div class="campo"><label for="f-material" data-en="Material">Material</label><select id="f-material" name="material"></select></div>
+        <div class="campo ancho" id="campo-otro" hidden><label for="f-material-otro" data-en="Which material are you looking for?">¿Qué material buscas?</label><input id="f-material-otro" name="material_otro" maxlength="120" placeholder="Ej. granito Negro San Gabriel, cuarcita…" data-en-placeholder="E.g. Negro San Gabriel granite, quartzite…"></div>
         <div class="campo"><label for="f-acabado" data-en="Finish">Acabado</label><select id="f-acabado" name="acabado"></select></div>
         <div class="campo"><label for="f-formato" data-en="Format">Formato</label><select id="f-formato" name="formato"></select></div>
         <div class="campo"><label for="f-m2" data-en="Square meters">Metros cuadrados</label><input id="f-m2" name="m2" inputmode="decimal" placeholder="Ej. 45" data-en-placeholder="E.g. 45" maxlength="9"></div>
@@ -318,8 +327,8 @@
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="assets/js/datos.js?v=1118t"></script>
-<script src="assets/js/sitio.js?v=1118t"></script>
-<script type="module" src="assets/js/losa.js?v=1118t"></script>
+<script src="assets/js/datos.js?v=1118u"></script>
+<script src="assets/js/sitio.js?v=1118u"></script>
+<script type="module" src="assets/js/losa.js?v=1118u"></script>
 </body>
 </html>

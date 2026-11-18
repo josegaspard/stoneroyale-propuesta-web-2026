@@ -105,7 +105,8 @@
     ul.innerHTML = SR.catalogo.map(tarjeta).join('');
     $$('.filtros button').forEach(function (b) {
       var f = b.dataset.filtro;
-      b.querySelector('sup').textContent = f === 'todos' ? SR.catalogo.length : SR.catalogo.filter(function (m) { return m[2] === f; }).length;
+      var n = f === 'todos' ? SR.catalogo.length : SR.catalogo.filter(function (m) { return m[2] === f; }).length;
+      b.querySelector('sup').textContent = n; b.hidden = f !== 'todos' && !n;
     });
     $$('[data-cuenta]').forEach(function (el) {
       var n = SR.catalogo.filter(function (m) { return m[2] === el.dataset.cuenta; }).length;
@@ -167,6 +168,7 @@
   }
   function pintarAcabados() {
     var sm = $('#f-material'), sa = $('#f-acabado'); if (!sa) return;
+    var co = $('#campo-otro'); if (co) co.hidden = sm.value !== '__otro';
     var va = sa.value, f = fichaDe(sm.value);
     var lista = f ? f.acabados : SR.acabados;
     sa.innerHTML = '<option value="">' + L('Por definir', 'To be defined') + '</option>' + lista.map(function (x) { return '<option value="' + x[0] + '">' + L(x[0], x[1]) + '</option>'; }).join('');
@@ -176,7 +178,8 @@
     var sm = $('#f-material'), sf = $('#f-formato');
     if (!sm) return;
     var vm = sm.value, vf = sf.value;
-    sm.innerHTML = '<option value="">' + L('Aún no lo sé', 'Not sure yet') + '</option>' + SR.catalogo.map(function (m) { return '<option>' + m[1] + '</option>'; }).join('');
+    sm.innerHTML = '<option value="">' + L('Aún no lo sé', 'Not sure yet') + '</option>' + SR.catalogo.map(function (m) { return '<option>' + m[1] + '</option>'; }).join('') +
+      '<option value="__otro">' + L('Otro material (escríbelo)', 'Other material (type it)') + '</option>';
     sf.innerHTML = '<option value="">' + L('Por definir', 'To be defined') + '</option>' + SR.formatos.map(function (x) { return '<option value="' + x[0] + '">' + L(x[0], x[1]) + '</option>'; }).join('');
     if (vm) sm.value = vm; if (vf) sf.value = vf;
     pintarAcabados();
@@ -210,6 +213,7 @@
       if (!token || !token.s) { pedirToken(); return mal(L('Un momento, preparando el envío… vuelve a pulsar «Enviar solicitud».', 'One moment, getting ready… please press “Send request” again.')); }
       var datos = { t: token.t, s: token.s, idioma: lang, pagina: w.location.href.split('#')[0] };
       ['ubicacion', 'material', 'acabado', 'formato', 'm2', 'nombre', 'correo', 'telefono', 'comentario', 'sitio_web'].forEach(function (n) { datos[n] = v(n); });
+      if (datos.material === '__otro') datos.material = L('Otro: ', 'Other: ') + (v('material_otro') || L('por definir', 'to be defined'));
       aviso.classList.remove('error', 'bien'); aviso.textContent = L('Enviando…', 'Sending…'); boton.disabled = true;
       fetch(SR.envio, { method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos) })
         .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j.ok, j: j }; }); })
@@ -392,11 +396,11 @@
   if (oLista && oImg) oLista.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b || b.getAttribute('aria-pressed') === 'true') return;
     $$('button', oLista).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-    var nombre = b.querySelector('span').textContent, uso = $('.obras-visor figcaption a');
+    var sp = b.querySelectorAll('span'), nombre = sp[0].textContent + (sp[1] ? ' · ' + sp[1].textContent : ''), uso = $('.obras-visor figcaption a');
     var cambiar = function () {
       oImg.onload = function () { oImg.classList.remove('cambiando'); };
       oImg.src = SR.base + 'assets/img/usos/' + b.dataset.img + '.webp'; oImg.alt = L(b.dataset.alt, b.dataset.altEn); oImg.removeAttribute('data-en-alt'); oNom.textContent = nombre;
-      if (uso) uso.dataset.uso = nombre;
+      if (uso) uso.dataset.uso = sp[0].textContent;
     };
     if (reduce) cambiar(); else { oImg.classList.add('cambiando'); setTimeout(cambiar, 250); }
   });

@@ -3,7 +3,7 @@ window.SR = {
   /* TELÉFONO: el anterior (+1 956 404 6619) ya no es válido. Escribir aquí el nuevo con lada internacional,
      p. ej. '+52 55 1234 5678', y aparece solo en tel:, WhatsApp, menú, contacto y pie. Vacío = no se muestra.
      telefonoEN (opcional) = número de EUA para la versión en inglés; si va vacío se usa el mismo. */
-  telefono: '',
+  telefono: '+52 442 344 5554', /* del portafolio de Stone Royale (18-nov) */
   telefonoEN: '',
   correo: 'alexvmh@stoneroyale.com.mx',
   /* INSTAGRAM: usuario real (captura de Alejandro, 18-nov). La página muestra el perfil oficial de Instagram
@@ -16,7 +16,9 @@ window.SR = {
   /* 18-nov (Alejandro, capturas + audios): no se manejan / descontinuados. Serpentino se queda.
      La fila de abajo de Blanco Arena estaba repetida («ya está arriba»): queda una sola, con su ficha. */
   ocultar: ['grano-de-sal', 'travertino-oro', 'blanco-arena', 'rokali', 'onix-agata', 'onix-exotico', 'onix-blanco', 'onix-lava', 'blanco-iceberg'],
-  tipos: { marmol: ['Mármol', 'Marble'], travertino: ['Travertino', 'Travertine'], onix: ['Ónix', 'Onyx'] },
+  /* granito y cuarcita listos para cuando los manejen: basta con añadir materiales de ese tipo al catálogo
+     y su filtro aparece solo. */
+  tipos: { marmol: ['Mármol', 'Marble'], travertino: ['Travertino', 'Travertine'], onix: ['Ónix', 'Onyx'], granito: ['Granito', 'Granite'], cuarcita: ['Cuarcita', 'Quartzite'] },
   // [slug de imagen, nombre, tipo, ficha]
   catalogo: [
     ['bego', 'Bego', 'marmol'],
