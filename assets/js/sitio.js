@@ -32,6 +32,7 @@
     e.preventDefault();
     cerrarMenu();
     if (a.dataset.uso) preseleccionar({ uso: a.dataset.uso });
+    if (a.dataset.material) preseleccionar({ material: a.dataset.material });
     irA(h);
   });
 
@@ -42,7 +43,7 @@
     cab.classList.toggle('solida', y > 40);
     cab.classList.toggle('oculta', y > 600 && y > ultimo + 4 && !d.body.classList.contains('menu-abierto'));
     if (y < ultimo - 4) cab.classList.remove('oculta');
-    if (wa) wa.classList.toggle('escondido', !!d.querySelector('.heroe') && y < w.innerHeight * .8);
+    var hz = $('.heroe'); if (wa) wa.classList.toggle('escondido', !!hz && y < hz.offsetHeight - w.innerHeight * .5);
     ultimo = y;
   }
   w.addEventListener('scroll', alScroll, { passive: true }); alScroll();
@@ -70,7 +71,7 @@
     });
     $$('[data-partir]').forEach(partir);
     $$('[data-idioma]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.idioma === lang)); });
-    pintarCatalogo(); pintarListas(); pintarSelects(); pintarFicha(primera);
+    pintarCatalogo(); pintarListas(); pintarSelects(); pintarFicha(primera); pintarPanel(false);
   }
   $$('[data-idioma]').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -203,6 +204,67 @@
     });
   }
 
+  /* ---------- Panel del mármol en la losa (héroe) ---------- */
+  var panel = $('#heroe-ficha'), sec = SR.heroe, enPanel = 0;
+  function datosMarmol(m) {
+    var ficha = m[3] && SR.fichas[m[3]];
+    var acab = ficha ? ficha.acabados.map(function (a) { return L(a[0], a[1]); }) : SR.acabados.map(function (a) { return L(a[0], a[1]); });
+    return {
+      nombre: m[1],
+      tipo: SR.tipos[m[2]][lang === 'en' ? 1 : 0],
+      desc: m[2] === 'marmol'
+        ? L('Roca metamórfica formada a partir de rocas calizas sometidas a altas temperaturas y presiones; su componente básico es el carbonato de calcio.', 'A metamorphic rock formed from limestone subjected to high temperatures and pressures; its basic component is calcium carbonate.')
+        : L('El ónix es de origen natural: cada pieza puede presentar variantes en sus tonos y vetas.', 'Onyx is a natural stone: each piece may vary in its tones and veins.'),
+      acabados: acab.join(' · '),
+      ficha: ficha ? 'ficha.html?m=' + m[3] : null
+    };
+  }
+  function pintarPanel(animar) {
+    if (!panel) return;
+    var m = sec.marmoles[enPanel], x = datosMarmol(m);
+    $('.hf-nombre', panel).textContent = x.nombre;
+    $('.hf-tipo', panel).textContent = x.tipo + (x.ficha ? ' · ' + L('con ficha de acabados', 'with finishes sheet') : '');
+    $('.hf-desc', panel).textContent = x.desc;
+    $('.hf-acabados', panel).textContent = x.acabados;
+    $('.hf-formatos', panel).textContent = SR.formatos.map(function (f) { return L(f[0], f[1]); }).join(' · ');
+    $('.hf-medidas', panel).textContent = L('De .305 × .305 a .60 × .60 × 1, largo libre y lámina promedio de 2.40 × 1.70 × 2 cm', 'From .305 × .305 to .60 × .60 × 1, free length and average slab of 2.40 × 1.70 × 2 cm');
+    $('.hf-usos', panel).textContent = SR.usos.filter(function (u) { return u[0] !== 'Otro'; }).map(function (u) { return L(u[0], u[1]); }).join(' · ');
+    var ver = $('.hf-ver', panel);
+    ver.href = x.ficha || '#catalogo';
+    ver.textContent = x.ficha ? L('Ver ficha', 'See sheet') : L('Ver en el catálogo', 'See in catalog');
+    $('.hf-cotizar', panel).dataset.material = x.nombre;
+    var mini = $('.hf-miniaturas', panel);
+    if (!mini.children.length) mini.innerHTML = sec.marmoles.map(function (mm, i) {
+      return '<button type="button" data-i="' + i + '" aria-label="' + mm[1] + '"><img src="assets/img/mat/' + mm[0] + '.webp" alt="" width="104" height="104"></button>';
+    }).join('');
+    $$('button', mini).forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.i === enPanel)); });
+    if (animar && gsap && !reduce) gsap.fromTo($$('.hf-a', panel), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .7, stagger: .05, ease: 'power3.out', overwrite: true });
+  }
+  function mostrarMarmol(i) {
+    if (i === enPanel) return;
+    enPanel = i; pintarPanel(true);
+    var est = $('.heroe-estatico img'); if (est) est.src = 'assets/img/mat/' + sec.marmoles[i][0] + '-hd.webp';
+    if (d.documentElement.classList.contains('sin-webgl')) { var n = $('#nombre-losa'); if (n) n.textContent = sec.marmoles[i][1]; }
+  }
+  d.addEventListener('sr:marmol', function (e) { mostrarMarmol(e.detail); });
+  // Sin WebGL: el mismo cálculo que la losa, sobre el avance del scroll
+  w.addEventListener('scroll', function () {
+    if (!panel || !d.documentElement.classList.contains('sin-webgl')) return;
+    var h = $('.heroe'), r = h.getBoundingClientRect(), tot = r.height - w.innerHeight;
+    var p = tot > 0 ? Math.min(1, Math.max(0, -r.top / tot)) : 0, q = Math.max(0, (p - sec.inicio) / (1 - sec.inicio));
+    var tr = Math.min(sec.marmoles.length - 1.0001, q * (sec.marmoles.length - 0.6)), i = Math.floor(tr);
+    mostrarMarmol((tr - i) > 0.78 ? i + 1 : i);
+  }, { passive: true });
+  // Miniaturas: llevan el scroll al punto donde ese mármol ocupa la losa
+  d.addEventListener('click', function (e) {
+    var b = e.target.closest('.hf-miniaturas button'); if (!b) return;
+    var i = +b.dataset.i, h = $('.heroe'), tot = h.offsetHeight - w.innerHeight;
+    var tramo = i === 0 ? 0.3 : i + 0.25;
+    var p = sec.inicio + (1 - sec.inicio) * (tramo / (sec.marmoles.length - 0.6));
+    var y = h.getBoundingClientRect().top + w.scrollY + p * tot;
+    if (lenis) lenis.scrollTo(y, { duration: 1.6 }); else w.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+  });
+
   aplicarIdioma(true);
 
   /* ---------- Revelados ---------- */
@@ -217,7 +279,8 @@
     if (!reduce) {
       gsap.from('.heroe h1 .palabra > span', { yPercent: 110, duration: 1.3, ease: 'power4.out', stagger: .06, delay: .25 });
       gsap.from('.heroe .entrada, .heroe-botones, .heroe-material', { opacity: 0, y: 20, duration: 1.2, ease: 'power3.out', delay: .8, stagger: .12 });
-      gsap.to('.heroe-texto', { opacity: 0, y: -60, ease: 'none', scrollTrigger: { trigger: '.heroe', start: 'top top', end: '28% top', scrub: true } });
+      gsap.to('.heroe-texto, .heroe-material', { opacity: 0, y: -60, ease: 'none', scrollTrigger: { trigger: '.heroe', start: 'top top', end: '9% top', scrub: true } });
+      gsap.fromTo('#heroe-ficha', { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.heroe', start: '8% top', end: '13% top', scrub: true } });
       gsap.to('.heroe-avance i', { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '.heroe', start: 'top top', end: 'bottom bottom', scrub: true } });
     }
   }

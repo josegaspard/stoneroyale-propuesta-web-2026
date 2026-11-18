@@ -46,5 +46,7 @@ window.SR = {
   },
   acabados: [['Natural', 'Natural'], ['Pulido mate', 'Matte polished'], ['Pulido y abrillantado', 'Polished and honed to shine'], ['Sanblasteado', 'Sandblasted'], ['Flameado y cepillado', 'Flamed and brushed'], ['Martelinado', 'Hammered'], ['Avejentado', 'Aged'], ['Tomboleado', 'Tumbled']],
   formatos: [['Placa', 'Slab'], ['Largos libres', 'Free lengths'], ['En formato', 'Cut to format'], ['Personalizado', 'Custom']],
+  // Héroe: [slug de imagen, nombre en catálogo, tipo, ficha]. 'inicio' = parte del scroll reservada al titular.
+  heroe: { inicio: 0.15, marmoles: [['blanco-iceberg', 'Blanco Iceberg', 'onix'], ['dorado-tepexi', 'Dorado Tepexi', 'marmol', 'dorado-tepeji'], ['onix-lava', 'Ónix Lava', 'onix'], ['sto-tomas', 'Santo Tomás', 'marmol', 'santo-tomas']] },
   usos: [['Regadera', 'Shower'], ['Encimera', 'Countertop'], ['Exterior', 'Exterior'], ['Paredes', 'Interior wall'], ['Alberca', 'Pool'], ['Lavadero', 'Backsplash'], ['Otro', 'Other']]
 };

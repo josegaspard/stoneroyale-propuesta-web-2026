@@ -9,12 +9,8 @@ const heroe = document.querySelector('.heroe');
 const nombre = document.getElementById('nombre-losa');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const MARMOLES = [
-  ['blanco-iceberg', 'Blanco Iceberg', '#catalogo'],
-  ['dorado-tepexi', 'Dorado Tepexi', 'ficha.html?m=dorado-tepeji'],
-  ['onix-lava', 'Ónix Lava', '#catalogo'],
-  ['sto-tomas', 'Santo Tomás', 'ficha.html?m=santo-tomas']
-];
+const SEC = window.SR.heroe;
+const MARMOLES = SEC.marmoles.map((m) => [m[0], m[1], m[3] ? 'ficha.html?m=' + m[3] : '#catalogo']);
 
 function sinWebGL() { doc.classList.add('sin-webgl'); }
 
@@ -100,7 +96,7 @@ function iniciar() {
     renderer.setSize(ancho, alto, false);
     camara.aspect = ancho / alto; camara.updateProjectionMatrix();
     const vis = 2 * Math.tan(THREE.MathUtils.degToRad(camara.fov / 2)) * camara.position.z;
-    if (movil) { grupo.position.set(vis * camara.aspect * 0.08, vis * 0.12, 0); grupo.scale.setScalar(Math.min(0.92, (vis * camara.aspect) / 2.4)); }
+    if (movil) { const bajo = alto < 700; grupo.position.set(vis * camara.aspect * 0.06, vis * (bajo ? 0.25 : 0.2), 0); grupo.scale.setScalar(Math.min(0.92, (vis * camara.aspect) / 2.4, (vis * (bajo ? 0.29 : 0.36)) / 2.1)); }
     else { grupo.position.set(vis * camara.aspect * 0.2, 0.05, 0); grupo.scale.setScalar(1.08); }
   }
   medir();
@@ -129,12 +125,13 @@ function iniciar() {
     const m = reduce ? 0 : 1;
 
     // Textura: 4 tramos, el cambio ocurre en el último 35 % de cada uno
-    const tramo = Math.min(MARMOLES.length - 1.0001, suave * (MARMOLES.length - 0.6));
+    const q = Math.max(0, (suave - SEC.inicio) / (1 - SEC.inicio));
+    const tramo = Math.min(MARMOLES.length - 1.0001, q * (MARMOLES.length - 0.6));
     const i = Math.floor(tramo), f = tramo - i;
     const mezcla = THREE.MathUtils.smoothstep(f, 0.55, 1);
     matFrente.map = texturas[i]; uni.uMap2.value = texturas[Math.min(i + 1, texturas.length - 1)]; uni.uMix.value = mezcla;
     const cerca = mezcla > 0.5 ? i + 1 : i;
-    if (cerca !== actual && nombre) { actual = cerca; nombre.textContent = MARMOLES[cerca][1]; nombre.href = MARMOLES[cerca][2]; }
+    if (cerca !== actual) { actual = cerca; if (nombre) { nombre.textContent = MARMOLES[cerca][1]; nombre.href = MARMOLES[cerca][2]; } document.dispatchEvent(new CustomEvent('sr:marmol', { detail: cerca })); }
 
     // Movimiento: giro con el scroll, inclinación con el ratón, flotación lenta
     grupo.rotation.y = -0.5 + suave * 0.95 + raton.x * 0.22 * m;
