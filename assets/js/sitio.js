@@ -366,12 +366,12 @@
   }
 
   /* ---------- Cantera ---------- */
-  var mapaSVG = '<svg viewBox="0 0 400 300" role="img" aria-label="' + L('Ruta de Querétaro a Estados Unidos', 'Route from Querétaro to the United States') + '">' +
+  var mapaSVG = '<svg viewBox="0 0 400 300" role="img" aria-label="' + L('De México a Estados Unidos', 'From Mexico to the United States') + '">' +
     '<circle cx="246" cy="206" r="5" fill="#A8854F"/><circle cx="246" cy="206" r="14" fill="none" stroke="#A8854F" stroke-opacity=".4"/>' +
     '<circle cx="150" cy="62" r="4" fill="#DCDBD6"/>' +
     '<path class="ruta" d="M246 206 C 260 140, 200 75, 150 62"/>' +
-    '<text x="246" y="238" text-anchor="middle">Querétaro</text><text x="150" y="40" text-anchor="middle">' + L('Estados Unidos', 'United States') + '</text>' +
-    '<text x="150" y="168" fill-opacity=".55">' + L('México', 'Mexico') + '</text></svg>';
+    '<text x="246" y="238" text-anchor="middle">' + L('México', 'Mexico') + '</text><text x="150" y="40" text-anchor="middle">' + L('Estados Unidos', 'United States') + '</text>' +
+    '</svg>';
   $$('.cantera-visual .mapa, .mapa-movil, .am-foto.mapa').forEach(function (el) { el.innerHTML = mapaSVG; });
   if ('IntersectionObserver' in w) $$('.am-foto.mapa').forEach(function (el) {
     new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { el.classList.add('activa'); o.disconnect(); } }, { threshold: .4 }).observe(el);

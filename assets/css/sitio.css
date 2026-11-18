@@ -499,7 +499,7 @@ button { font: inherit; color: inherit; }
 .colecciones { padding-top: clamp(4.5rem, 2.5rem + 7vw, 9.5rem); }
 .colecciones-cabeza { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem 2rem; margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem); }
 .colecciones-cabeza p { margin: 0; max-width: 46ch; color: #3E3D3A; }
-.colecciones-lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); }
+.colecciones-lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); }
 .colecciones-lista a { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: clamp(16rem, 10rem + 22vw, 34rem); padding: clamp(1.25rem, 1rem + 1.2vw, 2.5rem) var(--margen); color: var(--blanco); text-decoration: none; overflow: hidden; isolation: isolate; }
 .col-foto { position: absolute; inset: 0; z-index: -2; background: center / cover no-repeat; transition: transform 1.4s var(--curva-pesada); }
 .colecciones-lista a::after { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(13,13,13,.5); transition: background .6s var(--curva); }

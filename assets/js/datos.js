@@ -13,7 +13,9 @@ window.SR = {
   envio: 'https://josegaspard.dev/cotizador/stoneroyale.php',
   /* MATERIALES QUE NO SE MANEJAN: poner aquí el slug (primera columna del catálogo) y desaparecen del catálogo,
      del héroe y del cotizador. Ej.: ['serpentino', 'onix-lava'] */
-  ocultar: [],
+  /* 18-nov (Alejandro, capturas + audios): no se manejan / descontinuados. Serpentino se queda.
+     Blanco Arena = repetido de Mármol Arena («ya está arriba»). */
+  ocultar: ['grano-de-sal', 'travertino-oro', 'blanco-arena', 'rokali', 'onix-agata', 'onix-exotico', 'onix-blanco', 'onix-lava', 'blanco-iceberg'],
   tipos: { marmol: ['Mármol', 'Marble'], travertino: ['Travertino', 'Travertine'], onix: ['Ónix', 'Onyx'] },
   // [slug de imagen, nombre, tipo, ficha]
   catalogo: [
@@ -58,7 +60,7 @@ window.SR = {
   acabados: [['Natural', 'Natural'], ['Pulido mate', 'Matte polished'], ['Pulido y abrillantado', 'Polished and honed to shine'], ['Sanblasteado', 'Sandblasted'], ['Flameado y cepillado', 'Flamed and brushed'], ['Martelinado', 'Hammered'], ['Avejentado', 'Aged'], ['Tomboleado', 'Tumbled']],
   formatos: [['Placa', 'Slab'], ['Largos libres', 'Free lengths'], ['En formato', 'Cut to format'], ['Personalizado', 'Custom']],
   // Héroe: [slug de imagen, nombre en catálogo, tipo, ficha]. 'inicio' = parte del scroll reservada al titular.
-  heroe: { inicio: 0.15, marmoles: [['blanco-iceberg', 'Blanco Iceberg', 'onix'], ['dorado-tepexi', 'Dorado Tepexi', 'marmol', 'dorado-tepeji'], ['onix-lava', 'Ónix Lava', 'onix'], ['sto-tomas', 'Santo Tomás', 'marmol', 'santo-tomas']] },
+  heroe: { inicio: 0.15, marmoles: [['sto-tomas', 'Santo Tomás', 'marmol', 'santo-tomas'], ['beige-maya', 'Beige Maya', 'marmol', 'beige-maya'], ['dorado-tepexi', 'Dorado Tepexi', 'marmol', 'dorado-tepeji'], ['puebla-veta', 'Puebla Veta', 'travertino', 'travertino-puebla']] },
   usos: [['Regadera', 'Shower'], ['Encimera', 'Countertop'], ['Exterior', 'Exterior'], ['Paredes', 'Interior wall'], ['Alberca', 'Pool'], ['Lavadero', 'Backsplash'], ['Otro', 'Other']]
 };
 
