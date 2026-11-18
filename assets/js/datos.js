@@ -1,0 +1,50 @@
+/* Contenido real de stoneroyale.com.mx (catálogo, fichas, acabados y medidas). */
+window.SR = {
+  wa: '19564046619',
+  correo: 'alexvmh@stoneroyale.com.mx',
+  tel: '(956) 404-6619',
+  tipos: { marmol: ['Mármol', 'Marble'], travertino: ['Travertino', 'Travertine'], onix: ['Ónix', 'Onyx'] },
+  // [slug de imagen, nombre, tipo, ficha]
+  catalogo: [
+    ['bego', 'Bego', 'marmol'],
+    ['travertino-rojo', 'Travertino Rojo', 'travertino'],
+    ['puebla-fiorito', 'Puebla Fiorito', 'travertino', 'travertino-puebla'],
+    ['puebla-veta', 'Puebla Veta', 'travertino', 'travertino-puebla'],
+    ['xalapa-fiorito', 'Xalapa Fiorito', 'travertino', 'travertino-xalapa'],
+    ['xalapa-veta', 'Xalapa Veta', 'travertino', 'travertino-xalapa'],
+    ['beige-maya', 'Beige Maya', 'marmol', 'beige-maya'],
+    ['veneciano', 'Veneciano', 'marmol'],
+    ['crema-marfil', 'Crema Marfil', 'marmol'],
+    ['tikul', 'Tikul', 'marmol'],
+    ['aqua-blue', 'Aqua Blue', 'marmol'],
+    ['sto-tomas', 'Santo Tomás', 'marmol', 'santo-tomas'],
+    ['dorado-tepexi', 'Dorado Tepexi', 'marmol', 'dorado-tepeji'],
+    ['marmol-arena', 'Mármol Arena', 'marmol'],
+    ['cafe-cordoba', 'Café Córdoba', 'marmol'],
+    ['gris-tepeaca', 'Gris Tepeaca', 'marmol'],
+    ['negro-queretaro', 'Negro Querétaro', 'marmol'],
+    ['bellagio', 'Bellagio', 'marmol'],
+    ['grano-de-sal', 'Grano de Sal', 'marmol'],
+    ['travertino-oro', 'Travertino Oro', 'travertino'],
+    ['serpentino', 'Serpentino', 'marmol'],
+    ['blanco-arena', 'Blanco Arena', 'marmol', 'blanco-arena', 'fin/blanco-arena-mate'],
+    ['rokali', 'Rokali', 'marmol', 'rokali', 'fin/rokali-pulido'],
+    ['onix-agata', 'Ágata', 'onix'],
+    ['onix-exotico', 'Ónix Exótico', 'onix'],
+    ['onix-blanco', 'Ónix Blanco', 'onix'],
+    ['onix-lava', 'Ónix Lava', 'onix'],
+    ['blanco-iceberg', 'Blanco Iceberg', 'onix']
+  ],
+  fichas: {
+    'travertino-puebla': { nombre: 'Travertino Puebla', tipo: 'travertino', acabados: [['Fiorito', 'Fiorito', 'travertino-puebla-fiorito'], ['A la veta', 'Vein cut', 'travertino-puebla-a-la-veta'], ['Busardeado', 'Bush-hammered', 'travertino-puebla-busardeado']] },
+    'travertino-xalapa': { nombre: 'Travertino Xalapa', tipo: 'travertino', acabados: [['Fiorito', 'Fiorito', 'travertino-xalapa-fiorito'], ['A la veta', 'Vein cut', 'travertino-xalapa-a-la-veta'], ['Avejentado', 'Aged', 'travertino-xalapa-avejentado'], ['Al ácido', 'Acid-washed', 'travertino-xalapa-al-acido'], ['Al corte', 'Saw cut', 'travertino-xalapa-al-corte']] },
+    'beige-maya': { nombre: 'Beige Maya', tipo: 'marmol', acabados: [['Pulido', 'Polished', 'beige-maya-pulido'], ['A la veta', 'Vein cut', 'beige-maya-a-la-veta']] },
+    'blanco-arena': { nombre: 'Blanco Arena', tipo: 'marmol', acabados: [['Busardeado', 'Bush-hammered', 'blanco-arena-busardeado'], ['Mate', 'Matte', 'blanco-arena-mate']] },
+    'dorado-tepeji': { nombre: 'Dorado Tepeji', tipo: 'marmol', acabados: [['Pulido', 'Polished', 'dorado-tepeji-pulido'], ['Busardeado', 'Bush-hammered', 'dorado-tepeji-busardeado']] },
+    'santo-tomas': { nombre: 'Santo Tomás', tipo: 'marmol', acabados: [['Silver', 'Silver', 'santo-tomas-silver'], ['Busardeado', 'Bush-hammered', 'santo-tomas-busardeado'], ['Martelinado', 'Hammered', 'santo-tomas-martelinado'], ['Pulido', 'Polished', 'santo-tomas-pulido']] },
+    'rokali': { nombre: 'Rokali', tipo: 'marmol', acabados: [['Pulido', 'Polished', 'rokali-pulido'], ['Busardeado', 'Bush-hammered', 'rokali-busardeado']] }
+  },
+  acabados: [['Natural', 'Natural'], ['Pulido mate', 'Matte polished'], ['Pulido y abrillantado', 'Polished and honed to shine'], ['Sanblasteado', 'Sandblasted'], ['Flameado y cepillado', 'Flamed and brushed'], ['Martelinado', 'Hammered'], ['Avejentado', 'Aged'], ['Tomboleado', 'Tumbled']],
+  formatos: [['Placa', 'Slab'], ['Largos libres', 'Free lengths'], ['En formato', 'Cut to format'], ['Personalizado', 'Custom']],
+  usos: [['Regadera', 'Shower'], ['Encimera', 'Countertop'], ['Exterior', 'Exterior'], ['Paredes', 'Interior wall'], ['Alberca', 'Pool'], ['Lavadero', 'Backsplash'], ['Otro', 'Other']]
+};
