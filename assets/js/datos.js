@@ -1,8 +1,19 @@
 /* Contenido real de stoneroyale.com.mx (catálogo, fichas, acabados y medidas). */
 window.SR = {
-  wa: '19564046619',
+  /* TELÉFONO: el anterior (+1 956 404 6619) ya no es válido. Escribir aquí el nuevo con lada internacional,
+     p. ej. '+52 55 1234 5678', y aparece solo en tel:, WhatsApp, menú, contacto y pie. Vacío = no se muestra.
+     telefonoEN (opcional) = número de EUA para la versión en inglés; si va vacío se usa el mismo. */
+  telefono: '',
+  telefonoEN: '',
   correo: 'alexvmh@stoneroyale.com.mx',
-  tel: '(956) 404-6619',
+  /* INSTAGRAM: usuario sin @ (p. ej. 'stoneroyale') y, si se quiere, enlaces de publicaciones para incrustarlas. */
+  instagram: '',
+  instagramPosts: [],
+  /* Envío del cotizador (correo con antispam en servidor). */
+  envio: 'https://josegaspard.dev/cotizador/stoneroyale.php',
+  /* MATERIALES QUE NO SE MANEJAN: poner aquí el slug (primera columna del catálogo) y desaparecen del catálogo,
+     del héroe y del cotizador. Ej.: ['serpentino', 'onix-lava'] */
+  ocultar: [],
   tipos: { marmol: ['Mármol', 'Marble'], travertino: ['Travertino', 'Travertine'], onix: ['Ónix', 'Onyx'] },
   // [slug de imagen, nombre, tipo, ficha]
   catalogo: [
@@ -50,3 +61,16 @@ window.SR = {
   heroe: { inicio: 0.15, marmoles: [['blanco-iceberg', 'Blanco Iceberg', 'onix'], ['dorado-tepexi', 'Dorado Tepexi', 'marmol', 'dorado-tepeji'], ['onix-lava', 'Ónix Lava', 'onix'], ['sto-tomas', 'Santo Tomás', 'marmol', 'santo-tomas']] },
   usos: [['Regadera', 'Shower'], ['Encimera', 'Countertop'], ['Exterior', 'Exterior'], ['Paredes', 'Interior wall'], ['Alberca', 'Pool'], ['Lavadero', 'Backsplash'], ['Otro', 'Other']]
 };
+
+/* Rutas y origen de los archivos (en WordPress los archivos se sirven desde GitHub Pages). */
+(function (SR, c) {
+  c = window.SR_CFG || {};
+  SR.base = c.base || '';
+  SR.rutaInicio = c.inicio || 'index.html';
+  SR.rutaFicha = c.ficha || 'ficha.html';
+  var fuera = function (m) { return SR.ocultar.indexOf(m[0]) === -1; };
+  SR.catalogo = SR.catalogo.filter(fuera);
+  SR.heroe.marmoles = SR.heroe.marmoles.filter(fuera);
+  SR.numero = function (en) { return (en && SR.telefonoEN) || SR.telefono; };
+  SR.digitos = function (en) { return SR.numero(en).replace(/\D/g, ''); };
+})(window.SR);

@@ -10,7 +10,7 @@ const nombre = document.getElementById('nombre-losa');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const SEC = window.SR.heroe;
-const MARMOLES = SEC.marmoles.map((m) => [m[0], m[1], m[3] ? 'ficha.html?m=' + m[3] : '#catalogo']);
+const MARMOLES = SEC.marmoles.map((m) => [m[0], m[1], m[3] ? window.SR.rutaFicha + '?m=' + m[3] : '#catalogo']);
 
 function sinWebGL() { doc.classList.add('sin-webgl'); }
 
@@ -59,8 +59,8 @@ function iniciar() {
   };
   let cargadas = 0;
   const alCargar = () => { if (++cargadas === MARMOLES.length + 1) { lienzo.style.opacity = 1; } };
-  const texturas = MARMOLES.map(([s]) => recorte(cargador.load(`assets/img/mat/${s}-hd.webp`, alCargar, undefined, sinWebGL)));
-  const texNegro = recorte(cargador.load('assets/img/mat/negro-queretaro-hd.webp', alCargar, undefined, sinWebGL));
+  const texturas = MARMOLES.map(([s]) => recorte(cargador.load(`${window.SR.base}assets/img/mat/${s}-hd.webp`, alCargar, undefined, sinWebGL)));
+  const texNegro = recorte(cargador.load(window.SR.base + 'assets/img/mat/negro-queretaro-hd.webp', alCargar, undefined, sinWebGL));
 
   // Material de la losa frontal: mezcla dos fotos de mármol según el avance del scroll
   const uni = { uMap2: { value: texturas[1] }, uMix: { value: 0 } };

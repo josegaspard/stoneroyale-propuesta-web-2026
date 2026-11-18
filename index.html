@@ -40,7 +40,7 @@
   <a href="#cantera" data-en="Quarry">Cantera</a>
   <a href="#empresa" data-en="Company">Empresa</a>
   <a href="#cotizar" data-en="Get a quote">Cotizar</a>
-  <p class="meta">(956) 404-6619 · alexvmh@stoneroyale.com.mx</p>
+  <p class="meta"><span data-tel-texto hidden></span><a href="mailto:alexvmh@stoneroyale.com.mx">alexvmh@stoneroyale.com.mx</a></p>
 </div>
 
 <main id="inicio">
@@ -141,6 +141,7 @@
     <div class="contenedor proyectos-cabeza">
       <h2 class="t-xl revela" data-en="Project examples">Muestras de proyectos</h2>
       <p class="revela" data-en="Applications for all types of projects: a wide range of materials to fit your design.">Aplicaciones para todo tipo de proyectos: una amplia gama de materiales para satisfacer sus necesidades de diseño.</p>
+      <p class="meta revela nota-fotos" data-en="Reference photos. Soon: real projects by Stone Royale.">Fotos de referencia. Pronto, obras reales de Stone Royale.</p>
     </div>
     <div class="pista-envoltura">
       <div class="pista" id="pista">
@@ -206,32 +207,56 @@
     </div>
   </section>
 
+  <section class="seccion servicios pasos" id="como-cotizar">
+    <div class="contenedor">
+      <h2 class="t-xl revela" data-en="Getting a quote is simple">Cotizar con Stone Royale es simple</h2>
+      <ul>
+        <li class="revela"><h3 class="t-m" data-en="1. Choose your material">1. Elige tu material</h3><p data-en="From the catalog, or tell us the vein, finish and format you are looking for.">Desde el catálogo, o cuéntanos qué veta, acabado y formato buscas.</p></li>
+        <li class="revela"><h3 class="t-m" data-en="2. Get your quote">2. Recibe tu cotización</h3><p data-en="With price, availability and delivery times, straight from our own quarry in Tatatila, Veracruz.">Con precio, disponibilidad y tiempos de entrega, directo de nuestra cantera en Tatatila, Veracruz.</p></li>
+        <li class="revela"><h3 class="t-m" data-en="3. Receive it on site">3. Recíbelo en obra</h3><p data-en="We coordinate delivery anywhere in Mexico and export to the United States.">Coordinamos la entrega en todo México y exportamos a Estados Unidos.</p></li>
+      </ul>
+      <p class="revela" style="margin-top:2rem"><a class="boton" href="#cotizar" data-en="Get a quote">Cotiza tu material</a></p>
+    </div>
+  </section>
+
+  <section class="seccion instagram oscuro" id="instagram" aria-labelledby="ig-titulo">
+    <div class="contenedor">
+      <div class="ig-cabeza">
+        <h2 class="t-xl revela" id="ig-titulo" data-en="Follow us on Instagram">Síguenos en Instagram</h2>
+        <a class="enlace ig-perfil" id="ig-perfil" href="#" target="_blank" rel="noopener" hidden></a>
+      </div>
+      <div class="ig-rejilla" id="ig-rejilla"></div>
+      <p class="meta ig-nota" id="ig-nota" data-en="Our latest Instagram posts will appear here.">Aquí aparecerán nuestras últimas publicaciones de Instagram.</p>
+    </div>
+  </section>
+
   <section class="seccion cotizar" id="cotizar">
     <div class="contenedor rejilla">
       <div class="cotizar-texto revela">
         <h2 class="t-xl" data-en="Request a quote">Pide tu cotización</h2>
-        <p class="entrada" data-en="Tell us the material, the use and the approximate area. We’ll reply by WhatsApp or email.">Cuéntanos el material, el uso y los metros aproximados. Te respondemos por WhatsApp o por correo.</p>
+        <p class="entrada" data-en="Tell us where the project is, the material, finish, format and square meters. We’ll send you a quote by email.">Cuéntanos dónde es la obra, el material, el acabado, el formato y los metros cuadrados. Te enviamos la cotización por correo.</p>
         <ul class="contacto-lista">
           <li><span class="meta" data-en="Contact">Contacto</span><span>Alejandro Vázquez Mellado</span></li>
-          <li><span class="meta" data-en="Phone (USA)">Teléfono (EUA)</span><a href="tel:+19564046619">(956) 404-6619</a></li>
           <li><span class="meta" data-en="Email">Correo</span><a href="mailto:alexvmh@stoneroyale.com.mx">alexvmh@stoneroyale.com.mx</a></li>
-          <li><span class="meta">WhatsApp</span><a href="https://wa.me/19564046619" target="_blank" rel="noopener">+1 956 404 6619</a></li>
+          <li data-solo-tel hidden><span class="meta" data-en="Phone">Teléfono</span><a data-tel href="#"></a></li>
+          <li data-solo-tel hidden><span class="meta">WhatsApp</span><a data-wa data-tel-texto href="#" target="_blank" rel="noopener"></a></li>
         </ul>
       </div>
       <form class="formulario revela" id="formulario" novalidate>
-        <div class="campo"><label for="f-nombre" data-en="Name">Nombre</label><input id="f-nombre" name="nombre" autocomplete="name" required></div>
-        <div class="campo"><label for="f-correo" data-en="Email">Correo</label><input id="f-correo" name="correo" type="email" autocomplete="email" inputmode="email"></div>
-        <div class="campo"><label for="f-tel" data-en="Phone">Teléfono</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel"></div>
-        <div class="campo"><label for="f-pais" data-en="Delivery country">País de entrega</label><select id="f-pais" name="pais"><option>México</option><option data-en="United States">Estados Unidos</option><option data-en="Other">Otro</option></select></div>
+        <div class="campo ancho"><label for="f-ubicacion" data-en="Project location">Ubicación de la obra</label><input id="f-ubicacion" name="ubicacion" autocomplete="address-level2" placeholder="Ciudad, estado y país" data-en-placeholder="City, state and country" maxlength="120"></div>
         <div class="campo"><label for="f-material" data-en="Material">Material</label><select id="f-material" name="material"></select></div>
-        <div class="campo"><label for="f-uso" data-en="Use">Uso</label><select id="f-uso" name="uso"></select></div>
-        <div class="campo"><label for="f-m2" data-en="Approximate m²">Metros cuadrados aprox.</label><input id="f-m2" name="m2" inputmode="decimal"></div>
         <div class="campo"><label for="f-acabado" data-en="Finish">Acabado</label><select id="f-acabado" name="acabado"></select></div>
-        <div class="campo ancho"><label for="f-msg" data-en="Project details">Detalles del proyecto</label><textarea id="f-msg" name="mensaje"></textarea></div>
-        <p class="aviso" id="aviso" role="status"></p>
+        <div class="campo"><label for="f-formato" data-en="Format">Formato</label><select id="f-formato" name="formato"></select></div>
+        <div class="campo"><label for="f-m2" data-en="Square meters">Metros cuadrados</label><input id="f-m2" name="m2" inputmode="decimal" placeholder="Ej. 45" data-en-placeholder="E.g. 45" maxlength="9"></div>
+        <div class="campo"><label for="f-nombre" data-en="Name">Nombre</label><input id="f-nombre" name="nombre" autocomplete="name" required maxlength="80"></div>
+        <div class="campo"><label for="f-correo" data-en="Email">Correo</label><input id="f-correo" name="correo" type="email" autocomplete="email" inputmode="email" required maxlength="120"></div>
+        <div class="campo ancho"><label for="f-tel" data-en="Phone / WhatsApp (optional)">Teléfono / WhatsApp (opcional)</label><input id="f-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" maxlength="25"></div>
+        <div class="campo ancho"><label for="f-msg" data-en="Comments">Comentario</label><textarea id="f-msg" name="comentario" maxlength="2000"></textarea></div>
+        <div class="campo-trampa" aria-hidden="true"><label for="f-sitio">Sitio web</label><input id="f-sitio" name="sitio_web" tabindex="-1" autocomplete="off"></div>
+        <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
         <div class="acciones">
-          <button class="boton" type="submit" data-via="wa"><svg aria-hidden="true"><use href="#wa"/></svg><span data-en="Send by WhatsApp">Enviar por WhatsApp</span></button>
-          <button class="boton boton--claro" type="submit" data-via="correo"><span data-en="Send by email">Enviar por correo</span></button>
+          <button class="boton" type="submit"><span data-en="Send request">Enviar solicitud</span></button>
+          <p class="nota-envio" data-en="We reply by email, usually within one business day.">Te respondemos por correo, normalmente en un día hábil.</p>
         </div>
       </form>
     </div>
@@ -246,13 +271,13 @@
         <p data-en="Mexican marble, travertine and onyx. Our own mine in Tatatila, Veracruz. Sales in Mexico and the United States.">Mármol, travertino y ónix mexicanos. Mina propia en Tatatila, Veracruz. Venta en México y Estados Unidos.</p>
       </div>
       <div><h3 data-en="Site">Sitio</h3><ul><li><a href="#catalogo" data-en="Catalog">Catálogo</a></li><li><a href="#proyectos" data-en="Projects">Proyectos</a></li><li><a href="#cantera" data-en="Quarry">Cantera</a></li><li><a href="#empresa" data-en="Company">Empresa</a></li></ul></div>
-      <div><h3 data-en="Contact">Contacto</h3><ul><li><a href="tel:+19564046619">(956) 404-6619</a></li><li><a href="mailto:alexvmh@stoneroyale.com.mx">alexvmh@stoneroyale.com.mx</a></li><li><a href="https://wa.me/19564046619" target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
+      <div><h3 data-en="Contact">Contacto</h3><ul><li data-solo-tel hidden><a data-tel href="#"></a></li><li><a href="mailto:alexvmh@stoneroyale.com.mx">alexvmh@stoneroyale.com.mx</a></li><li data-solo-tel hidden><a data-wa href="#" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="#cotizar" data-en="Quote form">Cotizador</a></li></ul></div>
     </div>
     <div class="base"><span>® Stone Royale</span><span data-en="Redesign proposal · preview">Propuesta de rediseño · vista previa</span></div>
   </div>
 </footer>
 
-<a class="wa-fijo" href="https://wa.me/19564046619" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
+<a class="wa-fijo" data-wa data-solo-tel hidden href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
 <div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Foto ampliada"><button class="cerrar" type="button" aria-label="Cerrar">×</button><div><img alt=""><p></p></div></div>
 
 <script src="assets/vendor/gsap.min.js"></script>

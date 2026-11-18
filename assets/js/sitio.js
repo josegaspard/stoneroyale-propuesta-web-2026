@@ -31,7 +31,7 @@
     if (h.length < 2 || !$(h)) return;
     e.preventDefault();
     cerrarMenu();
-    if (a.dataset.uso) preseleccionar({ uso: a.dataset.uso });
+    if (a.dataset.uso) preseleccionar({ uso: a.parentNode.querySelector('.t-m').textContent });
     if (a.dataset.material) preseleccionar({ material: a.dataset.material });
     irA(h);
   });
@@ -69,7 +69,12 @@
       if (el.dataset.es === undefined) el.dataset.es = el.textContent.trim();
       el.textContent = lang === 'en' ? el.dataset.en : el.dataset.es;
     });
+    $$('[data-en-placeholder]').forEach(function (el) {
+      if (el.dataset.esPlaceholder === undefined) el.dataset.esPlaceholder = el.placeholder;
+      el.placeholder = lang === 'en' ? el.dataset.enPlaceholder : el.dataset.esPlaceholder;
+    });
     $$('[data-partir]').forEach(partir);
+    pintarContacto(); pintarInstagram();
     $$('[data-idioma]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.idioma === lang)); });
     pintarCatalogo(); pintarListas(); pintarSelects(); pintarFicha(primera); pintarPanel(false);
   }
@@ -82,12 +87,12 @@
 
   /* ---------- Catálogo ---------- */
   var filtro = 'todos';
-  function imgDe(m) { return 'assets/img/' + (m[4] ? m[4] : 'mat/' + m[0]) + '.webp'; }
+  function imgDe(m) { return SR.base + 'assets/img/' + (m[4] ? m[4] : 'mat/' + m[0]) + '.webp'; }
   function tarjeta(m) {
     var tipo = SR.tipos[m[2]][lang === 'en' ? 1 : 0];
     var cuerpo = '<div class="muestra"><img src="' + imgDe(m) + '" alt="' + m[1] + ', ' + tipo.toLowerCase() + '" width="640" height="640" loading="lazy"></div>' +
       '<h3>' + m[1] + '</h3><p class="meta"><span>' + tipo + '</span>' + (m[3] ? '<em>' + L('Ver acabados', 'See finishes') + '</em>' : '<span>' + L('Cotizar', 'Quote') + '</span>') + '</p>';
-    var dentro = m[3] ? '<a href="ficha.html?m=' + m[3] + '">' + cuerpo + '</a>' : '<button type="button" class="abrir" data-material="' + m[1] + '">' + cuerpo + '</button>';
+    var dentro = m[3] ? '<a href="' + SR.rutaFicha + '?m=' + m[3] + '">' + cuerpo + '</a>' : '<button type="button" class="abrir" data-material="' + m[1] + '">' + cuerpo + '</button>';
     return '<li class="material' + (filtro !== 'todos' && filtro !== m[2] ? ' fuera' : '') + '" data-tipo="' + m[2] + '">' + dentro + '</li>';
   }
   function pintarCatalogo() {
@@ -118,47 +123,103 @@
     if (f) f.innerHTML = SR.formatos.map(function (x) { return '<li>' + L(x[0], x[1]) + '</li>'; }).join('');
   }
 
-  /* ---------- Cotizador ---------- */
+  /* ---------- Teléfono (una sola variable en datos.js) ---------- */
+  function pintarContacto() {
+    var num = SR.numero(lang === 'en'), dig = SR.digitos(lang === 'en');
+    $$('[data-solo-tel]').forEach(function (el) { el.hidden = !num; });
+    $$('[data-tel-texto]').forEach(function (el) {
+      if (el.tagName === 'SPAN') { el.hidden = !num; el.textContent = num ? num + ' · ' : ''; } else el.textContent = num;
+    });
+    $$('[data-tel]').forEach(function (el) { el.href = num ? 'tel:+' + dig : '#'; el.textContent = num; });
+    $$('[data-wa]').forEach(function (el) { el.href = num ? 'https://wa.me/' + dig : '#'; });
+  }
+
+  /* ---------- Instagram ---------- */
+  function pintarInstagram() {
+    var rej = $('#ig-rejilla'); if (!rej) return;
+    var perfil = $('#ig-perfil'), nota = $('#ig-nota'), u = SR.instagram;
+    if (u) { perfil.hidden = false; perfil.href = 'https://www.instagram.com/' + u + '/'; perfil.textContent = '@' + u; }
+    if (u && SR.instagramPosts.length) {
+      if (rej.dataset.listo) return;
+      rej.dataset.listo = '1'; rej.classList.add('ig-incrustado'); if (nota) nota.hidden = true;
+      rej.innerHTML = SR.instagramPosts.slice(0, 6).map(function (url) {
+        return '<blockquote class="instagram-media" data-instgrm-permalink="' + url + '" data-instgrm-version="14"><a href="' + url + '" target="_blank" rel="noopener">Instagram</a></blockquote>';
+      }).join('');
+      var sc = d.createElement('script'); sc.async = true; sc.src = 'https://www.instagram.com/embed.js'; d.body.appendChild(sc);
+      return;
+    }
+    // Sin publicaciones cargadas: rejilla con sus propios mármoles que lleva al perfil (o al catálogo)
+    var destino = u ? 'https://www.instagram.com/' + u + '/' : '#catalogo';
+    rej.innerHTML = SR.catalogo.slice(0, 6).map(function (m) {
+      return '<a class="ig-celda" href="' + destino + '"' + (u ? ' target="_blank" rel="noopener"' : '') + '><img src="' + imgDe(m) + '" alt="' + m[1] + '" width="400" height="400" loading="lazy"><span>' + m[1] + '</span></a>';
+    }).join('');
+  }
+
+  /* ---------- Cotizador: ubicación → material → acabado → formato → m², luego datos de contacto ---------- */
+  function fichaDe(nombre) {
+    var m = SR.catalogo.filter(function (x) { return x[1] === nombre; })[0];
+    return m && m[3] ? SR.fichas[m[3]] : null;
+  }
+  function pintarAcabados() {
+    var sm = $('#f-material'), sa = $('#f-acabado'); if (!sa) return;
+    var va = sa.value, f = fichaDe(sm.value);
+    var lista = f ? f.acabados : SR.acabados;
+    sa.innerHTML = '<option value="">' + L('Por definir', 'To be defined') + '</option>' + lista.map(function (x) { return '<option value="' + x[0] + '">' + L(x[0], x[1]) + '</option>'; }).join('');
+    if (va && lista.some(function (x) { return x[0] === va; })) sa.value = va;
+  }
   function pintarSelects() {
-    var sm = $('#f-material'), su = $('#f-uso'), sa = $('#f-acabado');
+    var sm = $('#f-material'), sf = $('#f-formato');
     if (!sm) return;
-    var vm = sm.value, vu = su.value, va = sa.value;
+    var vm = sm.value, vf = sf.value;
     sm.innerHTML = '<option value="">' + L('Aún no lo sé', 'Not sure yet') + '</option>' + SR.catalogo.map(function (m) { return '<option>' + m[1] + '</option>'; }).join('');
-    su.innerHTML = SR.usos.map(function (u) { return '<option value="' + u[0] + '">' + L(u[0], u[1]) + '</option>'; }).join('');
-    sa.innerHTML = '<option value="">' + L('Por definir', 'To be defined') + '</option>' + SR.acabados.map(function (x) { return '<option value="' + x[0] + '">' + L(x[0], x[1]) + '</option>'; }).join('');
-    if (vm) sm.value = vm; if (vu) su.value = vu; if (va) sa.value = va;
+    sf.innerHTML = '<option value="">' + L('Por definir', 'To be defined') + '</option>' + SR.formatos.map(function (x) { return '<option value="' + x[0] + '">' + L(x[0], x[1]) + '</option>'; }).join('');
+    if (vm) sm.value = vm; if (vf) sf.value = vf;
+    pintarAcabados();
   }
   function preseleccionar(o) {
-    if (o.material && $('#f-material')) $('#f-material').value = o.material;
-    if (o.uso && $('#f-uso')) $('#f-uso').value = o.uso;
+    if (o.material && $('#f-material')) { $('#f-material').value = o.material; pintarAcabados(); }
+    var c = $('#f-msg');
+    if (o.uso && c && !c.value) c.value = L('Uso: ', 'Use: ') + o.uso + '. ';
   }
-  var form = $('#formulario');
-  if (form) form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var via = (e.submitter && e.submitter.dataset.via) || 'wa';
-    var v = function (n) { return (form.elements[n].value || '').trim(); };
-    var aviso = $('#aviso');
-    if (!v('nombre') || (!v('correo') && !v('tel'))) {
-      aviso.textContent = L('Escribe tu nombre y un correo o teléfono para poder responderte.', 'Add your name and an email or phone so we can reply.');
-      aviso.classList.add('error'); (v('nombre') ? form.elements.correo : form.elements.nombre).focus(); return;
-    }
-    aviso.classList.remove('error');
-    var lineas = [
-      L('Hola, quiero una cotización de Stone Royale.', 'Hi, I would like a quote from Stone Royale.'),
-      L('Nombre: ', 'Name: ') + v('nombre'),
-      v('correo') && (L('Correo: ', 'Email: ') + v('correo')),
-      v('tel') && (L('Teléfono: ', 'Phone: ') + v('tel')),
-      L('País de entrega: ', 'Delivery country: ') + v('pais'),
-      L('Material: ', 'Material: ') + (v('material') || L('por definir', 'to be defined')),
-      L('Uso: ', 'Use: ') + v('uso'),
-      v('acabado') && (L('Acabado: ', 'Finish: ') + v('acabado')),
-      v('m2') && (L('Metros cuadrados: ', 'Square meters: ') + v('m2')),
-      v('mensaje') && (L('Detalles: ', 'Details: ') + v('mensaje'))
-    ].filter(Boolean).join('\n');
-    if (via === 'wa') w.open('https://wa.me/' + SR.wa + '?text=' + encodeURIComponent(lineas), '_blank', 'noopener');
-    else w.location.href = 'mailto:' + SR.correo + '?subject=' + encodeURIComponent(L('Cotización', 'Quote') + ' · ' + (v('material') || 'Stone Royale')) + '&body=' + encodeURIComponent(lineas);
-    aviso.textContent = via === 'wa' ? L('Abrimos WhatsApp con tu mensaje listo. Solo pulsa enviar.', 'WhatsApp is open with your message ready. Just press send.') : L('Abrimos tu correo con el mensaje listo. Solo pulsa enviar.', 'Your email app is open with the message ready. Just press send.');
-  });
+  var form = $('#formulario'), token = null;
+  function pedirToken() {
+    if (token || !w.fetch) return;
+    token = {};
+    fetch(SR.envio, { method: 'GET', mode: 'cors', cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) { token = j; }).catch(function () { token = null; });
+  }
+  if (form) {
+    $('#f-material').addEventListener('change', pintarAcabados);
+    form.addEventListener('focusin', pedirToken);
+    if ('IntersectionObserver' in w) new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { pedirToken(); o.disconnect(); } }, { rootMargin: '600px' }).observe(form);
+    var pm = new URLSearchParams(w.location.search).get('material');
+    if (pm) setTimeout(function () { preseleccionar({ material: pm }); }, 0);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = function (n) { return (form.elements[n].value || '').trim(); };
+      var aviso = $('#aviso'), boton = $('button[type="submit"]', form);
+      var mal = function (msg, campo) { aviso.textContent = msg; aviso.classList.add('error'); aviso.classList.remove('bien'); if (campo) form.elements[campo].focus(); };
+      if (v('nombre').length < 2) return mal(L('Escribe tu nombre.', 'Please add your name.'), 'nombre');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('correo'))) return mal(L('Revisa tu correo: lo necesitamos para enviarte la cotización.', 'Please check your email: we need it to send you the quote.'), 'correo');
+      if (v('m2') && !/^\d{1,6}([.,]\d{1,2})?$/.test(v('m2'))) return mal(L('Escribe los metros cuadrados solo con números (ej. 45 o 12.5).', 'Use numbers only for square meters (e.g. 45 or 12.5).'), 'm2');
+      if (v('telefono') && !/^[0-9+()\s.-]{7,25}$/.test(v('telefono'))) return mal(L('Revisa el teléfono: solo números, espacios y +.', 'Please check the phone: numbers, spaces and + only.'), 'telefono');
+      if (!token || !token.s) { pedirToken(); return mal(L('Un momento, preparando el envío… vuelve a pulsar «Enviar solicitud».', 'One moment, getting ready… please press “Send request” again.')); }
+      var datos = { t: token.t, s: token.s, idioma: lang, pagina: w.location.href.split('#')[0] };
+      ['ubicacion', 'material', 'acabado', 'formato', 'm2', 'nombre', 'correo', 'telefono', 'comentario', 'sitio_web'].forEach(function (n) { datos[n] = v(n); });
+      aviso.classList.remove('error', 'bien'); aviso.textContent = L('Enviando…', 'Sending…'); boton.disabled = true;
+      fetch(SR.envio, { method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos) })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j.ok, j: j }; }); })
+        .then(function (r) {
+          boton.disabled = false;
+          if (r.ok) {
+            form.reset(); pintarAcabados(); token = null; pedirToken();
+            aviso.textContent = L('Gracias, recibimos tu solicitud. Te enviaremos la cotización a tu correo.', 'Thank you, we received your request. We will email you the quote.');
+            aviso.classList.add('bien');
+          } else if (r.j && r.j.msg === 'limite') mal(L('Recibimos varias solicitudes seguidas. Escríbenos a ' + SR.correo + '.', 'We received several requests in a row. Please email ' + SR.correo + '.'));
+          else { token = null; pedirToken(); mal(L('No se pudo enviar. Revisa los datos e inténtalo de nuevo, o escríbenos a ' + SR.correo + '.', 'It could not be sent. Check the details and try again, or email ' + SR.correo + '.')); }
+        })
+        .catch(function () { boton.disabled = false; mal(L('No se pudo enviar por un problema de conexión. Escríbenos a ' + SR.correo + '.', 'It could not be sent due to a connection problem. Please email ' + SR.correo + '.')); });
+    });
+  }
 
   /* ---------- Ficha de material ---------- */
   function pintarFicha(primera) {
@@ -171,27 +232,27 @@
     var actual = cont.dataset.acabado ? +cont.dataset.acabado : 0;
     var ac = f.acabados[actual] || f.acabados[0];
     cont.innerHTML =
-      '<div class="ficha-visual"><div class="grande"><img id="ficha-img" src="assets/img/fin/' + ac[2] + '.webp" alt="' + f.nombre + ' ' + L(ac[0], ac[1]).toLowerCase() + '" width="800" height="800"></div></div>' +
+      '<div class="ficha-visual"><div class="grande"><img id="ficha-img" src="' + SR.base + 'assets/img/fin/' + ac[2] + '.webp" alt="' + f.nombre + ' ' + L(ac[0], ac[1]).toLowerCase() + '" width="800" height="800"></div></div>' +
       '<div class="ficha-datos">' +
-      '<nav class="migas" aria-label="' + L('Ruta', 'Breadcrumb') + '"><a href="index.html#catalogo">' + L('Catálogo', 'Catalog') + '</a> / ' + tipo + '</nav>' +
+      '<nav class="migas" aria-label="' + L('Ruta', 'Breadcrumb') + '"><a href="' + SR.rutaInicio + '#catalogo">' + L('Catálogo', 'Catalog') + '</a> / ' + tipo + '</nav>' +
       '<h1 class="t-xl">' + f.nombre + '</h1>' +
       '<p class="ficha-desc">' + (f.tipo === 'marmol'
         ? L('El mármol es una roca metamórfica formada a partir de rocas calizas sometidas a altas temperaturas y presiones, que alcanza un alto grado de cristalización; su componente básico es el carbonato de calcio.', 'Marble is a metamorphic rock formed from limestone subjected to high temperatures and pressures, reaching a high degree of crystallization; its basic component is calcium carbonate.')
         : L('Travertino mexicano de las canteras con las que trabaja Stone Royale, disponible en ' + f.acabados.length + ' acabados.', 'Mexican travertine from the quarries Stone Royale works with, available in ' + f.acabados.length + ' finishes.')) + '</p>' +
       '<h2>' + L('Acabados', 'Finishes') + ' <span class="meta">(' + f.acabados.length + ')</span></h2>' +
       '<ul class="acabados-lista">' + f.acabados.map(function (a, i) {
-        return '<li><button type="button" data-i="' + i + '" aria-pressed="' + (i === actual) + '"><img src="assets/img/fin/' + a[2] + '.webp" alt="" width="200" height="200" loading="lazy"><span>' + L(a[0], a[1]) + '</span></button></li>';
+        return '<li><button type="button" data-i="' + i + '" aria-pressed="' + (i === actual) + '"><img src="' + SR.base + 'assets/img/fin/' + a[2] + '.webp" alt="" width="200" height="200" loading="lazy"><span>' + L(a[0], a[1]) + '</span></button></li>';
       }).join('') + '</ul>' +
       '<h2>' + L('Formatos', 'Formats') + '</h2><ul class="simple">' + SR.formatos.map(function (x) { return '<li>' + L(x[0], x[1]) + '</li>'; }).join('') + '</ul>' +
       '<h2>' + L('Medidas estándar', 'Standard sizes') + '</h2><ul class="simple"><li>.305 × .305 · .40 × .40 · .60 × .60 × 1</li><li>.305 / .40 / .60 × ' + L('largo libre', 'free length') + ' × 1</li><li>' + L('Lámina promedio: 2.40 × 1.70 × 2 cm', 'Average slab: 2.40 × 1.70 × 2 cm') + '</li></ul>' +
       '<p class="nota">' + L('Al ser piedra natural, cada pieza puede variar en tono y veta.', 'Being natural stone, each piece may vary in tone and vein.') + '</p>' +
-      '<div class="acciones"><a class="boton" target="_blank" rel="noopener" href="https://wa.me/' + SR.wa + '?text=' + encodeURIComponent(L('Hola, quiero cotizar ', 'Hi, I would like a quote for ') + f.nombre) + '"><svg aria-hidden="true"><use href="#wa"/></svg>' + L('Cotizar este material', 'Quote this material') + '</a>' +
-      '<a class="boton boton--claro" href="mailto:' + SR.correo + '?subject=' + encodeURIComponent(L('Cotización ', 'Quote ') + f.nombre) + '">' + L('Pedir por correo', 'Ask by email') + '</a></div>' +
+      '<div class="acciones"><a class="boton" href="' + SR.rutaInicio + '?material=' + encodeURIComponent(f.nombre) + '#cotizar">' + L('Cotizar este material', 'Quote this material') + '</a>' +
+      (SR.numero(lang === 'en') ? '<a class="boton boton--claro" target="_blank" rel="noopener" href="https://wa.me/' + SR.digitos(lang === 'en') + '?text=' + encodeURIComponent(L('Hola, quiero cotizar ', 'Hi, I would like a quote for ') + f.nombre) + '">WhatsApp</a>' : '') + '</div>' +
       '</div>';
     var otras = $('#otras');
     if (otras) otras.innerHTML = Object.keys(SR.fichas).filter(function (k) { return k !== id; }).map(function (k) {
       var o = SR.fichas[k];
-      return '<li class="material"><a href="ficha.html?m=' + k + '"><div class="muestra"><img src="assets/img/fin/' + o.acabados[0][2] + '.webp" alt="' + o.nombre + '" width="400" height="400" loading="lazy"></div><h3>' + o.nombre + '</h3><p class="meta"><span>' + o.acabados.length + ' ' + L('acabados', 'finishes') + '</span></p></a></li>';
+      return '<li class="material"><a href="' + SR.rutaFicha + '?m=' + k + '"><div class="muestra"><img src="' + SR.base + 'assets/img/fin/' + o.acabados[0][2] + '.webp" alt="' + o.nombre + '" width="400" height="400" loading="lazy"></div><h3>' + o.nombre + '</h3><p class="meta"><span>' + o.acabados.length + ' ' + L('acabados', 'finishes') + '</span></p></a></li>';
     }).join('');
     $$('.acabados-lista button', cont).forEach(function (b) {
       b.addEventListener('click', function () {
@@ -199,7 +260,7 @@
         cont.dataset.acabado = i;
         $$('.acabados-lista button', cont).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
         img.classList.add('saliendo');
-        setTimeout(function () { img.src = 'assets/img/fin/' + a[2] + '.webp'; img.alt = f.nombre + ' ' + L(a[0], a[1]).toLowerCase(); img.onload = function () { img.classList.remove('saliendo'); }; }, reduce ? 0 : 380);
+        setTimeout(function () { img.src = SR.base + 'assets/img/fin/' + a[2] + '.webp'; img.alt = f.nombre + ' ' + L(a[0], a[1]).toLowerCase(); img.onload = function () { img.classList.remove('saliendo'); }; }, reduce ? 0 : 380);
       });
     });
   }
@@ -216,7 +277,7 @@
         ? L('Roca metamórfica formada a partir de rocas calizas sometidas a altas temperaturas y presiones; su componente básico es el carbonato de calcio.', 'A metamorphic rock formed from limestone subjected to high temperatures and pressures; its basic component is calcium carbonate.')
         : L('El ónix es de origen natural: cada pieza puede presentar variantes en sus tonos y vetas.', 'Onyx is a natural stone: each piece may vary in its tones and veins.'),
       acabados: acab.join(' · '),
-      ficha: ficha ? 'ficha.html?m=' + m[3] : null
+      ficha: ficha ? SR.rutaFicha + '?m=' + m[3] : null
     };
   }
   function pintarPanel(animar) {
@@ -235,7 +296,7 @@
     $('.hf-cotizar', panel).dataset.material = x.nombre;
     var mini = $('.hf-miniaturas', panel);
     if (!mini.children.length) mini.innerHTML = sec.marmoles.map(function (mm, i) {
-      return '<button type="button" data-i="' + i + '" aria-label="' + mm[1] + '"><img src="assets/img/mat/' + mm[0] + '.webp" alt="" width="104" height="104"></button>';
+      return '<button type="button" data-i="' + i + '" aria-label="' + mm[1] + '"><img src="' + SR.base + 'assets/img/mat/' + mm[0] + '.webp" alt="" width="104" height="104"></button>';
     }).join('');
     $$('button', mini).forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.i === enPanel)); });
     if (animar && gsap && !reduce) gsap.fromTo($$('.hf-a', panel), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .7, stagger: .05, ease: 'power3.out', overwrite: true });
@@ -243,7 +304,7 @@
   function mostrarMarmol(i) {
     if (i === enPanel) return;
     enPanel = i; pintarPanel(true);
-    var est = $('.heroe-estatico img'); if (est) est.src = 'assets/img/mat/' + sec.marmoles[i][0] + '-hd.webp';
+    var est = $('.heroe-estatico img'); if (est) est.src = SR.base + 'assets/img/mat/' + sec.marmoles[i][0] + '-hd.webp';
     if (d.documentElement.classList.contains('sin-webgl')) { var n = $('#nombre-losa'); if (n) n.textContent = sec.marmoles[i][1]; }
   }
   d.addEventListener('sr:marmol', function (e) { mostrarMarmol(e.detail); });
