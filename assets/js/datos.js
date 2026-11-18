@@ -14,7 +14,7 @@ window.SR = {
   /* MATERIALES QUE NO SE MANEJAN: poner aquí el slug (primera columna del catálogo) y desaparecen del catálogo,
      del héroe y del cotizador. Ej.: ['serpentino', 'onix-lava'] */
   /* 18-nov (Alejandro, capturas + audios): no se manejan / descontinuados. Serpentino se queda.
-     Blanco Arena = repetido de Mármol Arena («ya está arriba»). */
+     La fila de abajo de Blanco Arena estaba repetida («ya está arriba»): queda una sola, con su ficha. */
   ocultar: ['grano-de-sal', 'travertino-oro', 'blanco-arena', 'rokali', 'onix-agata', 'onix-exotico', 'onix-blanco', 'onix-lava', 'blanco-iceberg'],
   tipos: { marmol: ['Mármol', 'Marble'], travertino: ['Travertino', 'Travertine'], onix: ['Ónix', 'Onyx'] },
   // [slug de imagen, nombre, tipo, ficha]
@@ -32,7 +32,7 @@ window.SR = {
     ['aqua-blue', 'Aqua Blue', 'marmol'],
     ['sto-tomas', 'Santo Tomás', 'marmol', 'santo-tomas'],
     ['dorado-tepexi', 'Dorado Tepexi', 'marmol', 'dorado-tepeji'],
-    ['marmol-arena', 'Mármol Arena', 'marmol'],
+    ['marmol-arena', 'Blanco Arena', 'marmol', 'blanco-arena'],
     ['cafe-cordoba', 'Café Córdoba', 'marmol'],
     ['gris-tepeaca', 'Gris Tepeaca', 'marmol'],
     ['negro-queretaro', 'Negro Querétaro', 'marmol'],

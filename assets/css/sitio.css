@@ -397,7 +397,6 @@ button { font: inherit; color: inherit; }
 .ig-seguir:focus-visible { outline: 2px solid var(--veta); outline-offset: 3px; }
 .ig-nombre { margin: .9rem 0 .2rem; font-size: 1rem; font-weight: 600; }
 .ig-bio { margin: 0; font-size: 1rem; line-height: 1.45; max-width: 46ch; color: var(--tinta); }
-.ig-dir { margin-top: .35rem; color: var(--piedra); }
 /* Perfil oficial de Instagram (embed.js): ancho fluido, sin el mínimo de 326 px que desbordaría a 320 px */
 .ig-embed { max-width: 540px; min-height: 22rem; margin: clamp(1.5rem, 1rem + 2vw, 2.5rem) auto 0; display: grid; place-items: center; }
 .ig-embed .instagram-media, .ig-embed iframe { min-width: 0 !important; width: 100% !important; max-width: 540px !important; margin: 0 auto !important; border-radius: 12px !important; }
