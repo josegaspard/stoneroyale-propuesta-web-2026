@@ -3,7 +3,7 @@ window.SR = {
   /* TELÉFONO: el anterior (+1 956 404 6619) ya no es válido. Escribir aquí el nuevo con lada internacional,
      p. ej. '+52 55 1234 5678', y aparece solo en tel:, WhatsApp, menú, contacto y pie. Vacío = no se muestra.
      telefonoEN (opcional) = número de EUA para la versión en inglés; si va vacío se usa el mismo. */
-  telefono: '+52 442 344 5554', /* del portafolio de Stone Royale (18-nov) */
+  telefono: '+52 442 432 8443', /* WhatsApp de Alejandro (señor Alex lo pidió en el grupo, 20-nov) */
   telefonoEN: '',
   correo: 'alexvmh@stoneroyale.com.mx',
   /* INSTAGRAM: usuario real (captura de Alejandro, 18-nov). La página muestra el perfil oficial de Instagram
