@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#FFFFFF">
 <link rel="preload" href="../assets/fonts/commissioner-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/css/sitio.css?v=1118u">
-<link rel="stylesheet" href="v2.css?v=1120a">
+<link rel="stylesheet" href="v2.css?v=1120c">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 38'%3E%3Crect x='9' y='9' width='20' height='27' fill='%23111'/%3E%3Crect x='3' y='2' width='20' height='27' fill='%238C8C8C'/%3E%3C/svg%3E">
 <script>document.documentElement.className = 'js'; window.SR_CFG = { base: '../', ficha: '../ficha.html', inicio: 'index.html' };</script>
 </head>
@@ -27,9 +27,9 @@
       <a href="#proyectos" data-en="Projects">Proyectos</a>
       <a href="#colecciones" data-en="Materials">Materiales</a>
       <a href="#a-medida" data-en="Made to measure">A medida</a>
-      <a href="#cotizar" data-en="Get a quote">Cotizar</a>
     </nav>
     <div style="display:flex;align-items:center;gap:.5rem">
+      <a class="boton boton--claro cabecera-cta" href="#cotizar" data-en="Request a quote">Pedir cotización</a>
       <div class="idioma" role="group" aria-label="Idioma"><button type="button" data-idioma="es" aria-pressed="true">ES</button><button type="button" data-idioma="en" aria-pressed="false">EN</button></div>
       <button class="menu-boton" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><i></i><i></i></button>
     </div>
@@ -85,11 +85,20 @@
   </section>
 
   <section class="cifras" aria-label="Stone Royale en cifras">
+    <div class="contenedor">
+      <div class="tarjeta-cotiza revela">
+        <p class="tarjeta-cotiza-titulo" data-en="Get a quote now with expert advice.">Cotiza ahora y recibe asesoría experta.</p>
+        <div class="botones-fila">
+          <a class="boton" data-wa data-solo-tel hidden href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg><span>WhatsApp <b class="tel-num" data-tel-texto></b></span></a>
+          <a class="boton boton--claro" href="#cotizar" data-en="Quote by email">Cotiza por correo</a>
+        </div>
+      </div>
+    </div>
     <ul class="contenedor cifras-lista">
-      <li class="revela"><span class="cifra">+10</span><span class="cifra-texto" data-en="years working stone">años trabajando la piedra</span></li>
+      <li class="revela"><span class="cifra">+10</span><span class="cifra-texto" data-en="years of experience">años de experiencia</span></li>
+      <li class="revela"><span class="cifra">+100</span><span class="cifra-texto" data-en="completed projects">proyectos realizados</span></li>
       <li class="revela"><span class="cifra" data-cifra="materiales"></span><span class="cifra-texto" data-en="materials in the catalog">materiales en catálogo</span></li>
-      <li class="revela"><span class="cifra" data-cifra="acabados"></span><span class="cifra-texto" data-en="types of finish">tipos de acabado</span></li>
-      <li class="revela"><span class="cifra cifra--palabra" data-en="Mexico and USA">México y EUA</span><span class="cifra-texto" data-en="sales and export">venta y exportación</span></li>
+      <li class="revela"><span class="cifra cifra--palabra" data-en="Mexico + USA">México + EUA</span><span class="cifra-texto" data-en="coverage and export">cobertura y exportación</span></li>
     </ul>
   </section>
 
@@ -123,29 +132,30 @@
     <div class="contenedor">
       <div class="tipos-cabeza revela">
         <h2 class="t-l" id="tipos-titulo" data-en="Projects by type">Proyectos por tipo</h2>
-        <p data-en="Real Stone Royale projects: façades, floors, bathrooms and marble furniture.">Obras reales de Stone Royale: fachadas, pisos, baños y muebles de mármol.</p>
+        <p data-en="Real Stone Royale projects: a hotel, a medical center, a residence and marble furniture.">Obras reales de Stone Royale: un hotel, un centro médico, una residencia y muebles de mármol.</p>
       </div>
-      <ul class="tipos-lista">
-        <li class="revela"><a href="#proyectos" data-obra="ca-regadera-marmol-blanco"><span class="tipo-foto"><img src="../assets/img/usos/ca-regadera-marmol-blanco.webp" alt="Regadera revestida en mármol blanco veteado, hotel Casa Abierta" data-en-alt="Shower clad in veined white marble, Casa Abierta hotel" loading="lazy"></span><span class="t-m" data-en="Hotels">Hoteles</span><span class="meta" data-en="Casa Abierta · bathrooms and marble furniture">Casa Abierta · baños y muebles de mármol</span></a></li>
-        <li class="revela"><a href="#proyectos" data-obra="pr-cordelia-fachada-travertino"><span class="tipo-foto"><img src="../assets/img/usos/pr-cordelia-fachada-travertino.webp" alt="Fachada de la plaza Cordelia en Travertino Xalapa al corte" data-en-alt="Plaza Cordelia façade in saw-cut Xalapa travertine" loading="lazy"></span><span class="t-m" data-en="Commercial">Comercial</span><span class="meta" data-en="Plaza Cordelia · façade in Xalapa travertine">Plaza Cordelia · fachada en Travertino Xalapa</span></a></li>
-        <li class="revela"><a href="#proyectos" data-obra="pr-rancho-piso-barra-santo-tomas"><span class="tipo-foto"><img src="../assets/img/usos/pr-rancho-piso-barra-santo-tomas.webp" alt="Piso y frente de barra en mármol Santo Tomás, Rancho del Fraile" data-en-alt="Floor and bar front in Santo Tomás marble, Rancho del Fraile" loading="lazy"></span><span class="t-m" data-en="Floors and bars">Pisos y barras</span><span class="meta" data-en="Rancho del Fraile · polished Santo Tomás">Rancho del Fraile · Santo Tomás pulido</span></a></li>
-        <li class="revela"><a href="#proyectos" data-obra="ca-mesa-comedor-marmol"><span class="tipo-foto"><img src="../assets/img/usos/ca-mesa-comedor-marmol.webp" alt="Mesa de comedor con cubierta de mármol Negro Querétaro" data-en-alt="Dining table with a Negro Querétaro marble top" loading="lazy"></span><span class="t-m" data-en="Marble furniture">Muebles de mármol</span><span class="meta" data-en="Dining and coffee tables in Negro Querétaro">Mesas de comedor y de centro en Negro Querétaro</span></a></li>
-      </ul>
     </div>
+    <ul class="tipos-franjas">
+      <li><a href="#proyectos" data-obra="ca-regadera-marmol-blanco"><img src="../assets/img/usos/ca-regadera-marmol-blanco.webp" alt="Regadera revestida en mármol blanco veteado, hotel Casa Abierta" data-en-alt="Shower clad in veined white marble, Casa Abierta hotel" loading="lazy"><span class="franja-texto"><span class="t-m" data-en="Hospitality">Hotelero</span><span class="meta" data-en="Casa Abierta · floors, bathrooms and furniture">Casa Abierta · pisos, baños y muebles</span></span></a></li>
+      <li><a href="#proyectos" data-obra="pr-vista-alamos-fachada"><img src="../assets/img/usos/pr-vista-alamos-fachada.webp" alt="Fachada en Travertino Xalapa al corte con el letrero del centro oftalmológico Vista Álamos" data-en-alt="Saw-cut Xalapa travertine façade with the Vista Álamos eye clinic sign" width="988" height="493" loading="lazy"><span class="franja-texto"><span class="t-m" data-en="Healthcare">Salud</span><span class="meta" data-en="Vista Álamos eye clinic · Xalapa travertine façade">Vista Álamos, centro oftalmológico · fachada en Travertino Xalapa</span></span></a></li>
+      <li><a href="#proyectos" data-obra="pr-rancho-piso-barra-santo-tomas"><img src="../assets/img/usos/pr-rancho-piso-barra-santo-tomas.webp" alt="Piso y frente de barra en mármol Santo Tomás, Rancho del Fraile" data-en-alt="Floor and bar front in Santo Tomás marble, Rancho del Fraile" loading="lazy"><span class="franja-texto"><span class="t-m" data-en="Residential">Residencial</span><span class="meta" data-en="Rancho del Fraile · floor and bar in polished Santo Tomás">Rancho del Fraile · piso y barra en Santo Tomás pulido</span></span></a></li>
+      <li><a href="#proyectos" data-obra="ca-mesa-comedor-marmol"><img src="../assets/img/usos/ca-mesa-comedor-marmol.webp" alt="Mesa de comedor con cubierta de mármol Negro Querétaro" data-en-alt="Dining table with a Negro Querétaro marble top" loading="lazy"><span class="franja-texto"><span class="t-m" data-en="Marble furniture">Muebles de mármol</span><span class="meta" data-en="Dining and coffee tables in Negro Querétaro">Mesas de comedor y de centro en Negro Querétaro</span></span></a></li>
+    </ul>
   </section>
 
   <section class="seccion proyectos oscuro" id="proyectos" aria-labelledby="proy-titulo">
     <div class="contenedor proyectos-cabeza">
       <h2 class="t-l revela" id="proy-titulo" data-en="Portfolio">Portafolio</h2>
-      <p class="meta revela nota-fotos" data-en="Plaza Cordelia, Rancho del Fraile and Casa Abierta. Casa Abierta photos: Sandra Hernández.">Plaza Cordelia, Rancho del Fraile y Casa Abierta. Fotos de Casa Abierta: Sandra Hernández.</p>
+      <p class="meta revela nota-fotos" data-en="Vista Álamos, Rancho del Fraile and Casa Abierta. Casa Abierta photos: Sandra Hernández.">Vista Álamos, Rancho del Fraile y Casa Abierta. Fotos de Casa Abierta: Sandra Hernández.</p>
     </div>
     <div class="contenedor obras">
       <figure class="obras-visor revela">
-        <button type="button" data-visor aria-label="Ampliar foto"><img id="obra-img" src="../assets/img/usos/pr-cordelia-fachada-travertino.webp" alt="Fachada de la plaza Cordelia revestida en Travertino Xalapa al corte" data-en-alt="Plaza Cordelia façade clad in saw-cut Xalapa travertine" width="927" height="789" loading="lazy"></button>
-        <figcaption><span class="t-m" id="obra-nombre">Fachada · Plaza Cordelia</span><a href="#cotizar" data-uso="Fachada" data-en="Quote">Cotizar</a></figcaption>
+        <button type="button" data-visor aria-label="Ampliar foto"><img id="obra-img" src="../assets/img/usos/pr-vista-alamos-fachada.webp" alt="Fachada en Travertino Xalapa al corte con el letrero del centro oftalmológico Vista Álamos" data-en-alt="Saw-cut Xalapa travertine façade with the Vista Álamos eye clinic sign" width="988" height="493" loading="lazy"></button>
+        <figcaption><span class="t-m" id="obra-nombre">Fachada · Vista Álamos</span><a href="#cotizar" data-uso="Fachada" data-en="Quote">Cotizar</a></figcaption>
       </figure>
       <ol class="obras-lista" id="obras-lista">
-        <li><button type="button" aria-pressed="true" data-img="pr-cordelia-fachada-travertino" data-alt="Fachada de la plaza Cordelia revestida en Travertino Xalapa al corte" data-alt-en="Plaza Cordelia façade clad in saw-cut Xalapa travertine"><span data-en="Façade">Fachada</span><span class="meta" data-en="Plaza Cordelia">Plaza Cordelia</span></button></li>
+        <li><button type="button" aria-pressed="true" data-img="pr-vista-alamos-fachada" data-alt="Fachada en Travertino Xalapa al corte con el letrero del centro oftalmológico Vista Álamos" data-alt-en="Saw-cut Xalapa travertine façade with the Vista Álamos eye clinic sign"><span data-en="Façade">Fachada</span><span class="meta" data-en="Vista Álamos">Vista Álamos</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="pr-cordelia-fachada-travertino" data-alt="Fachada revestida en Travertino Xalapa al corte, conjunto Vista Álamos" data-alt-en="Façade clad in saw-cut Xalapa travertine, Vista Álamos complex"><span data-en="Travertine façade">Fachada en travertino</span><span class="meta" data-en="Vista Álamos">Vista Álamos</span></button></li>
         <li><button type="button" aria-pressed="false" data-img="pr-rancho-piso-barra-santo-tomas" data-alt="Piso y frente de barra en mármol Santo Tomás pulido brillado, Rancho del Fraile" data-alt-en="Floor and bar front in high-polish Santo Tomás marble, Rancho del Fraile"><span data-en="Floor and bar">Piso y barra</span><span class="meta" data-en="Rancho del Fraile">Rancho del Fraile</span></button></li>
         <li><button type="button" aria-pressed="false" data-img="pr-rancho-salon-santo-tomas" data-alt="Salón con piso de mármol Santo Tomás pulido, Rancho del Fraile" data-alt-en="Hall with a polished Santo Tomás marble floor, Rancho del Fraile"><span data-en="Hall">Salón</span><span class="meta" data-en="Rancho del Fraile">Rancho del Fraile</span></button></li>
         <li><button type="button" aria-pressed="false" data-img="ca-regadera-marmol-blanco" data-alt="Regadera revestida en mármol blanco veteado con nicho, hotel Casa Abierta" data-alt-en="Shower clad in veined white marble with a niche, Casa Abierta hotel"><span data-en="Shower">Regadera</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
@@ -154,6 +164,10 @@
         <li><button type="button" aria-pressed="false" data-img="ca-mesa-comedor-marmol" data-alt="Mesa de comedor con cubierta de mármol Negro Querétaro, hotel Casa Abierta" data-alt-en="Dining table with a Negro Querétaro marble top, Casa Abierta hotel"><span data-en="Dining table">Mesa de comedor</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
         <li><button type="button" aria-pressed="false" data-img="ca-mesa-centro-marmol" data-alt="Mesa de centro redonda con cubierta de mármol Negro Querétaro, hotel Casa Abierta" data-alt-en="Round coffee table with a Negro Querétaro marble top, Casa Abierta hotel"><span data-en="Coffee table">Mesa de centro</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
       </ol>
+    </div>
+    <div class="contenedor respaldo revela">
+      <h3 class="t-m" data-en="Experience that backs us">Experiencia que nos respalda</h3>
+      <ul class="respaldo-lista" aria-label="Clientes"><li>Estadio Azteca</li><li>SPEC</li><li>SIQSA</li><li>ROCAL</li><li>CECSA</li><li>ZADE</li><li>Hotel Relox</li><li>Edificaciones Tres Ríos</li><li>El Batán</li><li>El Astillero</li><li>We Build</li><li>Estudios Alpha Omega</li></ul>
     </div>
   </section>
 
@@ -382,7 +396,6 @@
 (function (S) {
   function pon(k, v) { document.querySelectorAll('[data-cifra="' + k + '"]').forEach(function (e) { e.textContent = v; }); }
   pon('materiales', S.catalogo.length);
-  pon('acabados', S.acabados.length);
   /* Las tarjetas de «Proyectos por tipo» abren esa obra en el portafolio. */
   document.addEventListener('click', function (e) {
     var a = e.target.closest('[data-obra]'); if (!a) return;
