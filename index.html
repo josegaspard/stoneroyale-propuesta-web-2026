@@ -8,7 +8,7 @@
 <meta name="description" content="Venta de mármol y travertino mexicanos de alta calidad en México y Estados Unidos. Cotiza tu material por correo.">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="preload" href="assets/fonts/commissioner-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/sitio.css?v=1118u">
+<link rel="stylesheet" href="assets/css/sitio.css?v=1123a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 38'%3E%3Crect x='9' y='9' width='20' height='27' fill='%23111'/%3E%3Crect x='3' y='2' width='20' height='27' fill='%238C8C8C'/%3E%3C/svg%3E">
 <script>document.documentElement.className = 'js';</script>
 </head>
@@ -92,9 +92,9 @@
         <p><a class="enlace" href="#cantera" data-en="See how we work the stone →">Cómo trabajamos la piedra →</a></p>
       </div>
       <div class="criterio-fotos revela">
-        <img class="f1" src="assets/img/usos/cantera-marmol.webp" alt="Cantera de mármol a cielo abierto con bloques recién extraídos" data-en-alt="Open-pit marble quarry with freshly cut blocks" width="1200" height="1600" loading="lazy">
-        <img class="f2" src="assets/img/fin/santo-tomas-busardeado.webp" alt="Mármol Santo Tomás con acabado busardeado" width="800" height="800" loading="lazy">
-        <img class="f3" src="assets/img/usos/placas-taller.webp" alt="Placas de mármol blanco recargadas en el taller" data-en-alt="White marble slabs standing in the workshop" width="1600" height="1067" loading="lazy">
+        <img class="f1" src="assets/img/usos/ca-regadera-marmol-veta.webp" alt="Regadera con muros de mármol veteado, obra Casa Abierta" data-en-alt="Shower with veined marble walls, Casa Abierta project" width="1000" height="1231" loading="lazy">
+        <img class="f2" src="assets/img/usos/ca-cubierta-marmol-negro.webp" alt="Cubierta de mármol negro veteado en una mesa de comedor, obra Casa Abierta" data-en-alt="Veined black marble dining table top, Casa Abierta project" width="1000" height="600" loading="lazy">
+        <img class="f3" src="assets/img/usos/ca-muro-marmol-veta.webp" alt="Muro de mármol con veta natural en un baño, obra Casa Abierta" data-en-alt="Marble wall with natural veining in a bathroom, Casa Abierta project" width="840" height="940" loading="lazy">
       </div>
     </div>
   </section>
@@ -187,12 +187,12 @@
       </div>
       <ul class="amedida-lista">
         <li class="revela">
-          <div class="am-foto"><img src="assets/img/fin/santo-tomas-martelinado.webp" alt="Mármol Santo Tomás con acabado martelinado" width="800" height="800" loading="lazy"></div>
+          <div class="am-foto"><img src="assets/img/usos/ca-placa-marmol-veta.webp" alt="Placa de mármol con su veta natural, instalada en obra" data-en-alt="Marble slab with its natural veining, installed on site" width="750" height="740" loading="lazy"></div>
           <h3 class="t-m" data-en="Hand-picked">Selección a mano</h3>
           <p data-en="We hand-pick every block and every slab, so the finest marble reaches your project.">Seleccionamos a mano cada bloque y cada placa, para que a tu obra llegue el mármol más fino.</p>
         </li>
         <li class="revela">
-          <div class="am-foto"><img src="assets/img/usos/placas-taller-2.webp" alt="Placas de mármol y piedra natural en el taller, listas para corte" data-en-alt="Marble and natural stone slabs in the workshop, ready to cut" width="1600" height="1067" loading="lazy"></div>
+          <div class="am-foto"><img src="assets/img/usos/ca-piezas-marmol-formato.webp" alt="Muro de regadera en piezas de mármol a la medida" data-en-alt="Shower wall in made-to-measure marble pieces" width="1100" height="1139" loading="lazy"></div>
           <h3 class="t-m" data-en="Formats, thicknesses and finishes">Formatos, espesores y acabados</h3>
           <p data-en="Slabs, free lengths, cut-to-format pieces or custom work, in 1 or 2 cm, with the finish your project needs: polished, matte, bush-hammered, aged and more. We also make marble furniture, such as dining and coffee tables.">Placa, largos libres, piezas en formato o a la medida, en 1 o 2 cm, con el acabado que pide tu proyecto: pulido, mate, busardeado, avejentado y más. También hacemos muebles de mármol, como mesas de comedor y de centro.</p>
         </li>
@@ -286,7 +286,16 @@
         </ul>
       </div>
       <form class="formulario revela" id="formulario" novalidate>
-        <div class="campo ancho"><label for="f-ubicacion" data-en="Project location">Ubicación de la obra</label><input id="f-ubicacion" name="ubicacion" autocomplete="address-level2" placeholder="Ciudad, estado y país" data-en-placeholder="City, state and country" maxlength="120"></div>
+        <fieldset class="campo ancho grupo-ubicacion"><legend data-en="Project location">Ubicación de la obra</legend>
+          <div class="ubic-rejilla">
+            <div class="campo"><label for="f-pais" data-en="Country">País</label><select id="f-pais" name="pais" autocomplete="country-name"><option value="México" data-en="Mexico">México</option><option value="Estados Unidos" data-en="United States">Estados Unidos</option></select></div>
+            <div class="campo"><label for="f-cp" data-en="ZIP code">Código postal</label><input id="f-cp" name="cp" autocomplete="postal-code" inputmode="numeric" required maxlength="10" placeholder="Ej. 76000" data-en-placeholder="E.g. 78201"></div>
+            <div class="campo ancho"><label for="f-calle" data-en="Street and number">Calle y número</label><input id="f-calle" name="calle" autocomplete="address-line1" maxlength="120" placeholder="Ej. Av. Constituyentes 120, int. 4" data-en-placeholder="E.g. 120 Main St, Apt 4"></div>
+            <div class="campo"><label for="f-colonia" data-en="Neighborhood">Colonia</label><input id="f-colonia" name="colonia" autocomplete="address-line2" maxlength="80"></div>
+            <div class="campo"><label for="f-ciudad" data-en="City">Ciudad o municipio</label><input id="f-ciudad" name="ciudad" autocomplete="address-level2" required maxlength="80"></div>
+            <div class="campo ancho"><label for="f-estado" data-en="State">Estado</label><input id="f-estado" name="estado" autocomplete="address-level1" required maxlength="60"></div>
+          </div>
+        </fieldset>
         <div class="campo"><label for="f-material" data-en="Material">Material</label><select id="f-material" name="material"></select></div>
         <div class="campo ancho" id="campo-otro" hidden><label for="f-material-otro" data-en="Which material are you looking for?">¿Qué material buscas?</label><input id="f-material-otro" name="material_otro" maxlength="120" placeholder="Ej. granito Negro San Gabriel, cuarcita…" data-en-placeholder="E.g. Negro San Gabriel granite, quartzite…"></div>
         <div class="campo"><label for="f-acabado" data-en="Finish">Acabado</label><select id="f-acabado" name="acabado"></select></div>
@@ -328,7 +337,7 @@
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
 <script src="assets/js/datos.js?v=1120a"></script>
-<script src="assets/js/sitio.js?v=1118u"></script>
+<script src="assets/js/sitio.js?v=1123a"></script>
 <script type="module" src="assets/js/losa.js?v=1118u"></script>
 </body>
 </html>

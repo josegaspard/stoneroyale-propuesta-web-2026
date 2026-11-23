@@ -190,6 +190,27 @@
     if (o.uso && c && !c.value) c.value = L('Uso: ', 'Use: ') + o.uso + '. ';
   }
   var form = $('#formulario'), token = null;
+  function direccion() {
+    var g = function (n) { return form && form.elements[n] ? (form.elements[n].value || '').trim() : ''; };
+    var cp = g('cp') ? L('C.P. ', 'ZIP ') + g('cp') : '';
+    return [g('calle'), g('colonia') ? L('Col. ', '') + g('colonia') : '', cp, g('ciudad'), g('estado'), g('pais')].filter(Boolean).join(', ');
+  }
+  /* WhatsApp del cotizador: lleva lo que ya se llenó del formulario (material, acabado, formato, m² y dirección). */
+  $$('.cotizar-wa [data-wa]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (!form || a.getAttribute('href') === '#') return;
+      var g = function (n) { return (form.elements[n] && form.elements[n].value || '').trim(); };
+      var mat = g('material') === '__otro' ? g('material_otro') : g('material');
+      var l = [L('Hola, quiero cotizar:', 'Hi, I would like a quote:')];
+      if (mat) l.push(L('Material: ', 'Material: ') + mat);
+      if (g('acabado')) l.push(L('Acabado: ', 'Finish: ') + g('acabado'));
+      if (g('formato')) l.push(L('Formato: ', 'Format: ') + g('formato'));
+      if (g('m2')) l.push(L('Metros cuadrados: ', 'Square meters: ') + g('m2'));
+      if (g('calle') || g('colonia') || g('cp') || g('ciudad') || g('estado')) l.push(L('Ubicación de la obra: ', 'Project location: ') + direccion());
+      if (g('nombre')) l.push(L('Nombre: ', 'Name: ') + g('nombre'));
+      a.href = a.href.split('?')[0] + (l.length > 1 ? '?text=' + encodeURIComponent(l.join('\n')) : '');
+    });
+  });
   function pedirToken() {
     if (token || !w.fetch) return;
     token = {};
@@ -210,9 +231,14 @@
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('correo'))) return mal(L('Revisa tu correo: lo necesitamos para enviarte la cotización.', 'Please check your email: we need it to send you the quote.'), 'correo');
       if (v('m2') && !/^\d{1,6}([.,]\d{1,2})?$/.test(v('m2'))) return mal(L('Escribe los metros cuadrados solo con números (ej. 45 o 12.5).', 'Use numbers only for square meters (e.g. 45 or 12.5).'), 'm2');
       if (v('telefono') && !/^[0-9+()\s.-]{7,25}$/.test(v('telefono'))) return mal(L('Revisa el teléfono: solo números, espacios y +.', 'Please check the phone: numbers, spaces and + only.'), 'telefono');
+      var usa = v('pais') === 'Estados Unidos';
+      if (!(usa ? /^\d{5}(-\d{4})?$/ : /^\d{5}$/).test(v('cp'))) return mal(usa ? L('Escribe el código postal (ZIP) de 5 dígitos.', 'Please add the 5-digit ZIP code.') : L('Escribe el código postal de 5 dígitos de la obra.', 'Please add the 5-digit postal code.'), 'cp');
+      if (v('ciudad').length < 2) return mal(L('Escribe la ciudad o municipio de la obra.', 'Please add the city.'), 'ciudad');
+      if (v('estado').length < 2) return mal(L('Escribe el estado de la obra.', 'Please add the state.'), 'estado');
       if (!token || !token.s) { pedirToken(); return mal(L('Un momento, preparando el envío… vuelve a pulsar «Enviar solicitud».', 'One moment, getting ready… please press “Send request” again.')); }
       var datos = { t: token.t, s: token.s, idioma: lang, pagina: w.location.href.split('#')[0] };
-      ['ubicacion', 'material', 'acabado', 'formato', 'm2', 'nombre', 'correo', 'telefono', 'comentario', 'sitio_web'].forEach(function (n) { datos[n] = v(n); });
+      ['pais', 'calle', 'colonia', 'cp', 'ciudad', 'estado', 'material', 'acabado', 'formato', 'm2', 'nombre', 'correo', 'telefono', 'comentario', 'sitio_web'].forEach(function (n) { datos[n] = v(n); });
+      datos.ubicacion = direccion().slice(0, 120);
       if (datos.material === '__otro') datos.material = L('Otro: ', 'Other: ') + (v('material_otro') || L('por definir', 'to be defined'));
       aviso.classList.remove('error', 'bien'); aviso.textContent = L('Enviando…', 'Sending…'); boton.disabled = true;
       fetch(SR.envio, { method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos) })
