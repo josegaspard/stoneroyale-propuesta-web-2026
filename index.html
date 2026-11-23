@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Stone Royale · Mármol mexicano de alta calidad</title>
+<title>Stone Royale · Mármol mexicano de alta calidad · versión de prueba</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Venta de mármol y travertino mexicanos de alta calidad en México y Estados Unidos. Cotiza tu material por correo.">
+<meta name="description" content="Venta de mármol y travertino mexicanos de alta calidad en México y Estados Unidos. Cotiza tu material por WhatsApp o por correo.">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="preload" href="assets/fonts/commissioner-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/sitio.css?v=1123a">
+<link rel="stylesheet" href="assets/css/sitio.css?v=1123b">
+<link rel="stylesheet" href="v2/v2.css?v=1123b">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 38'%3E%3Crect x='9' y='9' width='20' height='27' fill='%23111'/%3E%3Crect x='3' y='2' width='20' height='27' fill='%238C8C8C'/%3E%3C/svg%3E">
-<script>document.documentElement.className = 'js';</script>
+<script>document.documentElement.className = 'js'; window.SR_CFG = { base: '', ficha: 'ficha.html', inicio: 'index.html' };</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -22,23 +23,23 @@
   <div class="contenedor">
     <a class="marca" href="#inicio" aria-label="Stone Royale, inicio"><svg class="iso" aria-hidden="true"><use href="#iso"/></svg><span>STONE <b>ROYALE</b></span></a>
     <nav class="nav" aria-label="Principal">
-      <a href="#colecciones" data-en="Collections">Colecciones</a>
-      <a href="#cantera" data-en="Made to measure">A medida</a>
+      <a href="#empresa" data-en="Services">Servicios</a>
       <a href="#proyectos" data-en="Projects">Proyectos</a>
-      <a href="#empresa" data-en="Company">Empresa</a>
-      <a href="#cotizar" data-en="Get a quote">Cotizar</a>
+      <a href="#colecciones" data-en="Materials">Materiales</a>
+      <a href="#a-medida" data-en="Made to measure">A medida</a>
     </nav>
     <div style="display:flex;align-items:center;gap:.5rem">
+      <a class="boton boton--claro cabecera-cta" href="#cotizar" data-en="Request a quote">Pedir cotización</a>
       <div class="idioma" role="group" aria-label="Idioma"><button type="button" data-idioma="es" aria-pressed="true">ES</button><button type="button" data-idioma="en" aria-pressed="false">EN</button></div>
       <button class="menu-boton" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><i></i><i></i></button>
     </div>
   </div>
 </header>
 <div class="menu" id="menu">
-  <a href="#colecciones" data-en="Collections">Colecciones</a>
-  <a href="#cantera" data-en="Made to measure">A medida</a>
+  <a href="#empresa" data-en="Services">Servicios</a>
   <a href="#proyectos" data-en="Projects">Proyectos</a>
-  <a href="#empresa" data-en="Company">Empresa</a>
+  <a href="#colecciones" data-en="Materials">Materiales</a>
+  <a href="#a-medida" data-en="Made to measure">A medida</a>
   <a href="#cotizar" data-en="Get a quote">Cotizar</a>
   <p class="meta"><span data-tel-texto hidden></span><a href="mailto:alexvmh@stoneroyale.com.mx">alexvmh@stoneroyale.com.mx</a></p>
 </div>
@@ -49,14 +50,14 @@
       <canvas id="losa" aria-hidden="true"></canvas>
       <div class="heroe-texto">
         <h1 class="heroe-titulo">
-          <span class="linea suave" data-en="High-quality Mexican marble.">Mármol mexicano de alta calidad.</span>
-          <span class="linea suave" data-en="We cut it to your project’s measure.">Lo cortamos a la medida de tu obra.</span>
-          <span class="linea fuerte" data-en="From the quarry to your project.">De la cantera a tu proyecto.</span>
+          <span class="linea suave" data-en="High-quality Mexican marble">Mármol mexicano de alta calidad</span>
+          <span class="linea suave" data-en="We cut it to your project’s measure">Lo cortamos a la medida de tu obra</span>
+          <span class="linea fuerte" data-en="Ready for your project">Listo para tu proyecto</span>
         </h1>
         <p class="entrada" data-en="Mexican marble and travertine for Mexico and the United States. A Mexican-American company.">Mármol y travertino mexicanos para México y Estados Unidos. Empresa mexicano-americana.</p>
         <div class="heroe-botones">
-          <a class="boton" href="#cotizar" data-en="Quote your material">Cotiza tu material</a>
-          <a class="boton boton--claro" href="#colecciones" data-en="Explore the collection">Explorar colección</a>
+          <a class="boton" data-wa data-solo-tel hidden href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg><span data-en="Quote on WhatsApp">Cotiza por WhatsApp</span></a>
+          <a class="boton boton--claro" href="#cotizar" data-en="Quote by email">Cotiza por correo</a>
         </div>
       </div>
       <div class="heroe-estatico" aria-hidden="true"><div class="losa"><img src="assets/img/mat/sto-tomas-hd.webp" alt="" width="800" height="800" fetchpriority="high"></div></div>
@@ -83,13 +84,41 @@
     </div>
   </section>
 
+  <section class="cifras" aria-label="Stone Royale en cifras">
+    <div class="contenedor">
+      <div class="tarjeta-cotiza revela">
+        <p class="tarjeta-cotiza-titulo" data-en="Get a quote now with expert advice.">Cotiza ahora y recibe asesoría experta.</p>
+        <div class="botones-fila">
+          <a class="boton" data-wa data-solo-tel hidden href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg><span>WhatsApp <b class="tel-num" data-tel-texto></b></span></a>
+          <a class="boton boton--claro" href="#cotizar" data-en="Quote by email">Cotiza por correo</a>
+        </div>
+      </div>
+    </div>
+    <ul class="contenedor cifras-lista">
+      <li class="revela"><span class="cifra">+10</span><span class="cifra-texto" data-en="years of experience">años de experiencia</span></li>
+      <li class="revela"><span class="cifra">+100</span><span class="cifra-texto" data-en="completed projects">proyectos realizados</span></li>
+      <li class="revela"><span class="cifra" data-cifra="materiales"></span><span class="cifra-texto" data-en="materials in the catalog">materiales en catálogo</span></li>
+      <li class="revela"><span class="cifra cifra--palabra" data-en="Mexico + USA">México + EUA</span><span class="cifra-texto" data-en="coverage and export">cobertura y exportación</span></li>
+    </ul>
+  </section>
+
   <section class="seccion criterio" id="empresa" aria-labelledby="criterio-titulo">
     <div class="contenedor criterio-rejilla">
       <div class="criterio-texto revela">
-        <h2 class="t-l" id="criterio-titulo" data-en="We know every stone, from the quarry to your project.">Conocemos cada piedra, de la cantera a tu obra.</h2>
-        <p data-en="For more than 10 years, Stone Royale has specialized in extracting, transforming and selling top-quality stone in Mexico and the United States. We work in different formats and categories, mainly of national origin, and we can also offer alternatives and recommendations.">Desde hace más de 10 años, Stone Royale se especializa en la extracción, transformación y venta de piedras de la más alta calidad en México y Estados Unidos. Trabajamos en diferentes formatos y categorías, principalmente de origen nacional, y también podemos ofrecer alternativas y recomendaciones de producto.</p>
-        <p data-en="With a rich history in architecture and sculpture since the ancient Mesoamerican civilizations, Mexican marble is recognized worldwide for its quality.">Con una rica historia en arquitectura y escultura desde las antiguas civilizaciones mesoamericanas, los mármoles mexicanos son reconocidos a nivel mundial por su calidad.</p>
-        <p><a class="enlace" href="#cantera" data-en="See how we work the stone →">Cómo trabajamos la piedra →</a></p>
+        <h2 class="t-l" id="criterio-titulo" data-en="Services for your project">Servicios para tu obra</h2>
+        <p data-en="For more than 10 years, Stone Royale has specialized in transforming and selling top-quality stone in Mexico and the United States. We work in different formats and categories, and we can also offer alternatives and product recommendations.">Desde hace más de 10 años, Stone Royale se especializa en la transformación y venta de piedras de la más alta calidad en México y Estados Unidos. Trabajamos en diferentes formatos y categorías, y también podemos ofrecer alternativas y recomendaciones de producto.</p>
+        <ul class="servicios-lista">
+          <li data-en="We hand-pick every block and every slab">Seleccionamos a mano cada bloque y cada placa</li>
+          <li data-en="Cut to measure: slab, free lengths, cut to format or custom">Corte a la medida: placa, largos libres, en formato o personalizado</li>
+          <li data-en="1 and 2 cm thick, with the finish your project needs">Espesores de 1 y 2 cm, con el acabado que pide tu proyecto</li>
+          <li data-en="Marble furniture: dining and coffee tables">Muebles de mármol: mesas de comedor y de centro</li>
+          <li data-en="We source materials that are not in the catalog">Conseguimos materiales que no están en el catálogo</li>
+          <li data-en="Delivery anywhere in Mexico and export to the United States">Entrega en todo México y exportación a Estados Unidos</li>
+        </ul>
+        <div class="botones-fila">
+          <a class="boton" data-wa data-solo-tel hidden href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg><span data-en="Talk to us">Escríbenos</span></a>
+          <a class="boton boton--claro" href="#catalogo" data-en="See the catalog">Ver catálogo</a>
+        </div>
       </div>
       <div class="criterio-fotos revela">
         <img class="f1" src="assets/img/usos/ca-regadera-marmol-veta.webp" alt="Regadera con muros de mármol veteado, obra Casa Abierta" data-en-alt="Shower with veined marble walls, Casa Abierta project" width="1000" height="1231" loading="lazy">
@@ -99,62 +128,70 @@
     </div>
   </section>
 
-  <section class="seccion pasos" id="como-cotizar" aria-labelledby="pasos-titulo">
+  <section class="seccion tipos" id="tipos" aria-labelledby="tipos-titulo">
     <div class="contenedor">
-      <h2 class="t-l revela" id="pasos-titulo" data-en="Getting a quote from Stone Royale is simple">Cotizar con Stone Royale es simple</h2>
-      <ol class="pasos-lista">
-        <li class="revela"><span class="paso-n">1</span><h3 class="t-m" data-en="Choose your material">Elige tu material</h3><p data-en="From the catalog, or tell us the vein, finish and format you are looking for.">Desde el catálogo, o cuéntanos qué veta, acabado y formato buscas.</p></li>
-        <li class="revela"><span class="paso-n">2</span><h3 class="t-m" data-en="Get your quote">Recibe tu cotización</h3><p data-en="With price, availability and delivery times, straight to your inbox.">Con precio, disponibilidad y tiempos de entrega, directo a tu correo.</p></li>
-        <li class="revela"><span class="paso-n">3</span><h3 class="t-m" data-en="Receive it on site">Recíbelo en obra</h3><p data-en="We coordinate delivery anywhere in Mexico and export to the United States.">Coordinamos la entrega en todo México y exportamos a Estados Unidos.</p></li>
+      <div class="tipos-cabeza revela">
+        <h2 class="t-l" id="tipos-titulo" data-en="Projects by type">Proyectos por tipo</h2>
+        <p data-en="Real Stone Royale projects: a hotel, a medical center, a residence and marble furniture.">Obras reales de Stone Royale: un hotel, un centro médico, una residencia y muebles de mármol.</p>
+      </div>
+    </div>
+    <ul class="tipos-franjas">
+      <li><a href="#proyectos" data-obra="ca-regadera-marmol-blanco"><img src="assets/img/usos/ca-regadera-marmol-blanco.webp" alt="Regadera revestida en mármol blanco veteado, hotel Casa Abierta" data-en-alt="Shower clad in veined white marble, Casa Abierta hotel" loading="lazy"><span class="franja-texto"><span class="t-m" data-en="Hospitality">Hotelero</span><span class="meta" data-en="Casa Abierta · floors, bathrooms and furniture">Casa Abierta · pisos, baños y muebles</span></span></a></li>
+      <li><a href="#proyectos" data-obra="pr-vista-alamos-fachada"><img src="assets/img/usos/pr-vista-alamos-fachada.webp" alt="Fachada en Travertino Xalapa al corte con el letrero del centro oftalmológico Vista Álamos" data-en-alt="Saw-cut Xalapa travertine façade with the Vista Álamos eye clinic sign" width="988" height="493" loading="lazy"><span class="franja-texto"><span class="t-m" data-en="Healthcare">Salud</span><span class="meta" data-en="Vista Álamos eye clinic · Xalapa travertine façade">Vista Álamos, centro oftalmológico · fachada en Travertino Xalapa</span></span></a></li>
+      <li><a href="#proyectos" data-obra="pr-rancho-piso-barra-santo-tomas"><img src="assets/img/usos/pr-rancho-piso-barra-santo-tomas.webp" alt="Piso y frente de barra en mármol Santo Tomás, Rancho del Fraile" data-en-alt="Floor and bar front in Santo Tomás marble, Rancho del Fraile" loading="lazy"><span class="franja-texto"><span class="t-m" data-en="Residential">Residencial</span><span class="meta" data-en="Rancho del Fraile · floor and bar in polished Santo Tomás">Rancho del Fraile · piso y barra en Santo Tomás pulido</span></span></a></li>
+      <li><a href="#proyectos" data-obra="ca-mesa-comedor-marmol"><img src="assets/img/usos/ca-mesa-comedor-marmol.webp" alt="Mesa de comedor con cubierta de mármol Negro Querétaro" data-en-alt="Dining table with a Negro Querétaro marble top" loading="lazy"><span class="franja-texto"><span class="t-m" data-en="Marble furniture">Muebles de mármol</span><span class="meta" data-en="Dining and coffee tables in Negro Querétaro">Mesas de comedor y de centro en Negro Querétaro</span></span></a></li>
+    </ul>
+  </section>
+
+  <section class="seccion proyectos oscuro" id="proyectos" aria-labelledby="proy-titulo">
+    <div class="contenedor proyectos-cabeza">
+      <h2 class="t-l revela" id="proy-titulo" data-en="Portfolio">Portafolio</h2>
+      <p class="meta revela nota-fotos" data-en="Vista Álamos, Rancho del Fraile and Casa Abierta. Casa Abierta photos: Sandra Hernández.">Vista Álamos, Rancho del Fraile y Casa Abierta. Fotos de Casa Abierta: Sandra Hernández.</p>
+    </div>
+    <div class="contenedor obras">
+      <figure class="obras-visor revela">
+        <button type="button" data-visor aria-label="Ampliar foto"><img id="obra-img" src="assets/img/usos/pr-vista-alamos-fachada.webp" alt="Fachada en Travertino Xalapa al corte con el letrero del centro oftalmológico Vista Álamos" data-en-alt="Saw-cut Xalapa travertine façade with the Vista Álamos eye clinic sign" width="988" height="493" loading="lazy"></button>
+        <figcaption><span class="t-m" id="obra-nombre">Fachada · Vista Álamos</span><a href="#cotizar" data-uso="Fachada" data-en="Quote">Cotizar</a></figcaption>
+      </figure>
+      <ol class="obras-lista" id="obras-lista">
+        <li><button type="button" aria-pressed="true" data-img="pr-vista-alamos-fachada" data-alt="Fachada en Travertino Xalapa al corte con el letrero del centro oftalmológico Vista Álamos" data-alt-en="Saw-cut Xalapa travertine façade with the Vista Álamos eye clinic sign"><span data-en="Façade">Fachada</span><span class="meta" data-en="Vista Álamos">Vista Álamos</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="pr-cordelia-fachada-travertino" data-alt="Fachada revestida en Travertino Xalapa al corte, conjunto Vista Álamos" data-alt-en="Façade clad in saw-cut Xalapa travertine, Vista Álamos complex"><span data-en="Travertine façade">Fachada en travertino</span><span class="meta" data-en="Vista Álamos">Vista Álamos</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="pr-rancho-piso-barra-santo-tomas" data-alt="Piso y frente de barra en mármol Santo Tomás pulido brillado, Rancho del Fraile" data-alt-en="Floor and bar front in high-polish Santo Tomás marble, Rancho del Fraile"><span data-en="Floor and bar">Piso y barra</span><span class="meta" data-en="Rancho del Fraile">Rancho del Fraile</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="pr-rancho-salon-santo-tomas" data-alt="Salón con piso de mármol Santo Tomás pulido, Rancho del Fraile" data-alt-en="Hall with a polished Santo Tomás marble floor, Rancho del Fraile"><span data-en="Hall">Salón</span><span class="meta" data-en="Rancho del Fraile">Rancho del Fraile</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="ca-regadera-marmol-blanco" data-alt="Regadera revestida en mármol blanco veteado con nicho, hotel Casa Abierta" data-alt-en="Shower clad in veined white marble with a niche, Casa Abierta hotel"><span data-en="Shower">Regadera</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="ca-bano-regadera-veteada" data-alt="Baño con regadera de mármol veteado y lavabo sobre cubierta de mármol, hotel Casa Abierta" data-alt-en="Bathroom with a veined marble shower and a sink on a marble top, Casa Abierta hotel"><span data-en="Full bathroom">Baño completo</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="ca-lavabo-cubierta-marmol" data-alt="Lavabo sobre cubierta de mármol junto a la regadera de mármol, hotel Casa Abierta" data-alt-en="Sink on a marble top next to the marble shower, Casa Abierta hotel"><span data-en="Vanity top">Encimera de baño</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="ca-mesa-comedor-marmol" data-alt="Mesa de comedor con cubierta de mármol Negro Querétaro, hotel Casa Abierta" data-alt-en="Dining table with a Negro Querétaro marble top, Casa Abierta hotel"><span data-en="Dining table">Mesa de comedor</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
+        <li><button type="button" aria-pressed="false" data-img="ca-mesa-centro-marmol" data-alt="Mesa de centro redonda con cubierta de mármol Negro Querétaro, hotel Casa Abierta" data-alt-en="Round coffee table with a Negro Querétaro marble top, Casa Abierta hotel"><span data-en="Coffee table">Mesa de centro</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
       </ol>
-      <p class="revela pasos-cta"><a class="boton" href="#cotizar" data-en="Request a quote">Pide tu cotización</a></p>
+    </div>
+    <div class="contenedor respaldo revela">
+      <h3 class="t-m" data-en="Experience that backs us">Experiencia que nos respalda</h3>
+      <ul class="respaldo-lista" aria-label="Clientes"><li>Estadio Azteca</li><li>SPEC</li><li>SIQSA</li><li>ROCAL</li><li>CECSA</li><li>ZADE</li><li>Hotel Relox</li><li>Edificaciones Tres Ríos</li><li>El Batán</li><li>El Astillero</li><li>We Build</li><li>Estudios Alpha Omega</li></ul>
     </div>
   </section>
 
-  <section class="seccion destacado oscuro" id="destacado" aria-labelledby="destacado-titulo">
-    <div class="contenedor">
-      <div class="destacado-cabeza revela">
-        <h2 class="t-l" id="destacado-titulo" data-en="One stone, many ways to live with it">Una piedra, muchas formas de vivirla</h2>
-        <a class="enlace" href="#catalogo" data-en="See the full catalog →">Ver todo el catálogo →</a>
+  <section class="banda-cta oscuro" aria-labelledby="hablar-titulo">
+    <div class="contenedor banda-cta-rejilla revela">
+      <div>
+        <h2 class="t-xl" id="hablar-titulo" data-en="Talk to our team">Habla con nuestro equipo</h2>
+        <p class="entrada" data-en="We help you choose the material, finish and format for your project.">Te ayudamos a elegir el material, el acabado y el formato para tu obra.</p>
       </div>
-      <div class="destacado-rejilla">
-        <figure class="destacado-visual revela">
-          <div class="dv-marco">
-            <img class="dv-img activa" data-vista="placa" src="assets/img/mat/sto-tomas-hd.webp" alt="Placa de mármol Santo Tomás pulido" data-en-alt="Polished Santo Tomás marble slab" width="800" height="800" loading="lazy">
-            <img class="dv-img" data-vista="obra" src="assets/img/fin/santo-tomas-busardeado.webp" alt="Mármol Santo Tomás con acabado busardeado" data-en-alt="Santo Tomás marble with a bush-hammered finish" width="800" height="800" loading="lazy">
-          </div>
-          <div class="dv-conmutador" role="group" aria-label="Cambiar vista">
-            <button type="button" data-vista="placa" aria-pressed="true" data-en="Polished">Pulido</button>
-            <button type="button" data-vista="obra" aria-pressed="false" data-en="Bush-hammered">Busardeado</button>
-          </div>
-          <figcaption class="meta dv-nota" data-en="The same marble in two finishes.">El mismo mármol en dos acabados.</figcaption>
-        </figure>
-        <div class="destacado-datos revela">
-          <p class="meta" data-en="Marble · Mexico">Mármol · México</p>
-          <h3 class="destacado-nombre">Santo Tomás</h3>
-          <p data-en="Greyish-brown marble with fine veining. Polished, it shows off the vein; bush-hammered, hammered or silver, it takes on a lighter, textured surface. As a natural stone, each piece may vary in tone and veining.">Mármol de tono gris pardo con vetas finas. En pulido luce la veta; en busardeado, martelinado o silver queda una superficie más clara y con textura. Por ser piedra natural, cada pieza puede variar en tono y veta.</p>
-          <dl class="destacado-lista">
-            <div><dt data-en="Formats">Formatos</dt><dd data-en="Slab, free lengths, cut to format, custom">Placa, largos libres, en formato, personalizado</dd></div>
-            <div><dt data-en="Thickness">Espesor</dt><dd data-en="1 cm and 2 cm · average slab 2.40 × 1.70 × 2 cm">1 cm y 2 cm · lámina promedio 2.40 × 1.70 × 2 cm</dd></div>
-            <div><dt data-en="Finishes">Acabados</dt><dd data-en="Polished, bush-hammered, hammered and silver">Pulido, busardeado, martelinado y silver</dd></div>
-          </dl>
-          <div class="destacado-acciones">
-            <a class="boton" href="#cotizar" data-material="Santo Tomás" data-en="Quote this material">Cotizar este material</a>
-            <a class="enlace" href="ficha.html?m=santo-tomas" data-en="See its finishes">Ver sus acabados</a>
-          </div>
-        </div>
+      <div class="botones-fila">
+        <a class="boton" data-wa data-solo-tel hidden href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg><span>WhatsApp <b class="tel-num" data-tel-texto></b></span></a>
+        <a class="boton boton--claro" href="#cotizar" data-en="Request a quote">Pide tu cotización</a>
       </div>
     </div>
   </section>
 
   <section class="colecciones" id="colecciones" aria-labelledby="col-titulo">
     <div class="contenedor colecciones-cabeza">
-      <h2 class="t-l revela" id="col-titulo" data-en="Stone with its own character">Piedra con carácter propio</h2>
-      <p class="revela" data-en="An exceptional collection from Mexico’s most prestigious quarries.">Una colección proveniente de las canteras más prestigiosas de México.</p>
+      <h2 class="t-l revela" id="col-titulo" data-en="Materials by type">Materiales por tipo</h2>
+      <p class="revela" data-en="Marble and travertine, hand-picked, in slabs or made to measure.">Mármol y travertino seleccionados a mano, en placa o a la medida.</p>
     </div>
     <ul class="colecciones-lista">
-      <li><a href="#catalogo" data-filtro-ir="marmol"><span class="col-foto" style="background-image:url(assets/img/mat/sto-tomas-hd.webp)" aria-hidden="true"></span><span class="col-num">I</span><span class="col-nombre" data-en="Marble">Mármol</span><span class="col-cuenta" data-cuenta="marmol"></span><span class="col-flecha" aria-hidden="true">→</span></a></li>
-      <li><a href="#catalogo" data-filtro-ir="travertino"><span class="col-foto" style="background-image:url(assets/img/mat/puebla-veta-hd.webp)" aria-hidden="true"></span><span class="col-num">II</span><span class="col-nombre" data-en="Travertine">Travertino</span><span class="col-cuenta" data-cuenta="travertino"></span><span class="col-flecha" aria-hidden="true">→</span></a></li>
+      <li><a href="#catalogo" data-filtro-ir="marmol"><span class="col-foto" style="background-image:url(assets/img/mat/sto-tomas-hd.webp)" aria-hidden="true"></span><span class="col-nombre" data-en="Marble">Mármol</span><span class="col-cuenta" data-cuenta="marmol"></span><span class="col-flecha" aria-hidden="true">→</span></a></li>
+      <li><a href="#catalogo" data-filtro-ir="travertino"><span class="col-foto" style="background-image:url(assets/img/mat/puebla-veta-hd.webp)" aria-hidden="true"></span><span class="col-nombre" data-en="Travertine">Travertino</span><span class="col-cuenta" data-cuenta="travertino"></span><span class="col-flecha" aria-hidden="true">→</span></a></li>
     </ul>
   </section>
 
@@ -179,11 +216,47 @@
     </div>
   </section>
 
-  <section class="seccion amedida" id="cantera" aria-labelledby="amedida-titulo">
+  <section class="seccion destacado oscuro" id="destacado" aria-labelledby="destacado-titulo">
+    <div class="contenedor">
+      <div class="destacado-cabeza revela">
+        <h2 class="t-l" id="destacado-titulo" data-en="One stone, many ways to live with it">Una piedra, muchas formas de vivirla</h2>
+        <a class="enlace" href="#catalogo" data-en="See the full catalog →">Ver todo el catálogo →</a>
+      </div>
+      <div class="destacado-rejilla">
+        <figure class="destacado-visual revela">
+          <div class="dv-marco">
+            <img class="dv-img activa" data-vista="placa" src="assets/img/mat/sto-tomas-hd.webp" alt="Placa de mármol Santo Tomás pulido" data-en-alt="Polished Santo Tomás marble slab" width="800" height="800" loading="lazy">
+            <img class="dv-img" data-vista="obra" src="assets/img/fin/santo-tomas-busardeado.webp" alt="Mármol Santo Tomás con acabado busardeado" data-en-alt="Santo Tomás marble with a bush-hammered finish" width="800" height="800" loading="lazy">
+          </div>
+          <div class="dv-conmutador" role="group" aria-label="Cambiar vista">
+            <button type="button" data-vista="placa" aria-pressed="true" data-en="Polished">Pulido</button>
+            <button type="button" data-vista="obra" aria-pressed="false" data-en="Bush-hammered">Busardeado</button>
+          </div>
+          <figcaption class="meta dv-nota" data-en="The same marble in two finishes.">El mismo mármol en dos acabados.</figcaption>
+        </figure>
+        <div class="destacado-datos revela">
+          <p class="meta" data-en="Marble">Mármol</p>
+          <h3 class="destacado-nombre">Santo Tomás</h3>
+          <p data-en="Greyish-brown marble with fine veining. Polished, it shows off the vein; bush-hammered, hammered or silver, it takes on a lighter, textured surface. As a natural stone, each piece may vary in tone and veining.">Mármol de tono gris pardo con vetas finas. En pulido luce la veta; en busardeado, martelinado o silver queda una superficie más clara y con textura. Por ser piedra natural, cada pieza puede variar en tono y veta.</p>
+          <dl class="destacado-lista">
+            <div><dt data-en="Formats">Formatos</dt><dd data-en="Slab, free lengths, cut to format, custom">Placa, largos libres, en formato, personalizado</dd></div>
+            <div><dt data-en="Thickness">Espesor</dt><dd data-en="1 cm and 2 cm · average slab 2.40 × 1.70 × 2 cm">1 cm y 2 cm · lámina promedio 2.40 × 1.70 × 2 cm</dd></div>
+            <div><dt data-en="Finishes">Acabados</dt><dd data-en="Polished, bush-hammered, hammered and silver">Pulido, busardeado, martelinado y silver</dd></div>
+          </dl>
+          <div class="destacado-acciones">
+            <a class="boton" href="#cotizar" data-material="Santo Tomás" data-en="Quote this material">Cotizar este material</a>
+            <a class="enlace" href="ficha.html?m=santo-tomas" data-en="See its finishes">Ver sus acabados</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion amedida" id="a-medida" aria-labelledby="amedida-titulo">
     <div class="contenedor">
       <div class="amedida-cabeza revela">
         <h2 class="t-l" id="amedida-titulo" data-en="Made to measure: formats, thicknesses and finishes">A medida: formatos, espesores y acabados</h2>
-        <p data-en="We are experts in every stage of marble production, from quarry extraction to transformation and final delivery.">Somos expertos en cada etapa de la producción de mármol, desde la extracción en cantera hasta la transformación y la entrega final.</p>
+        <p data-en="We cut and finish every piece to suit your project, from the slab to final delivery.">Cortamos y damos acabado a cada pieza según tu proyecto, de la placa a la entrega final.</p>
       </div>
       <ul class="amedida-lista">
         <li class="revela">
@@ -227,26 +300,15 @@
     </div>
   </section>
 
-  <section class="seccion proyectos oscuro" id="proyectos" aria-labelledby="proy-titulo">
-    <div class="contenedor proyectos-cabeza">
-      <h2 class="t-l revela" id="proy-titulo" data-en="Projects that speak for us">Proyectos que hablan por nosotros</h2>
-      <p class="meta revela nota-fotos" data-en="Real Stone Royale projects: façades, floors, bathrooms and marble furniture. Casa Abierta photos: Sandra Hernández.">Obras reales de Stone Royale: fachadas, pisos, baños y muebles de mármol. Fotos de Casa Abierta: Sandra Hernández.</p>
-    </div>
-    <div class="contenedor obras">
-      <figure class="obras-visor revela">
-        <button type="button" data-visor aria-label="Ampliar foto"><img id="obra-img" src="assets/img/usos/pr-cordelia-fachada-travertino.webp" alt="Fachada de la plaza Cordelia revestida en Travertino Xalapa al corte" data-en-alt="Plaza Cordelia façade clad in saw-cut Xalapa travertine" width="927" height="789" loading="lazy"></button>
-        <figcaption><span class="t-m" id="obra-nombre">Fachada · Plaza Cordelia</span><a href="#cotizar" data-uso="Fachada" data-en="Quote">Cotizar</a></figcaption>
-      </figure>
-      <ol class="obras-lista" id="obras-lista">
-        <li><button type="button" aria-pressed="true" data-img="pr-cordelia-fachada-travertino" data-alt="Fachada de la plaza Cordelia revestida en Travertino Xalapa al corte" data-alt-en="Plaza Cordelia façade clad in saw-cut Xalapa travertine"><span data-en="Façade">Fachada</span><span class="meta" data-en="Plaza Cordelia">Plaza Cordelia</span></button></li>
-        <li><button type="button" aria-pressed="false" data-img="pr-rancho-piso-barra-santo-tomas" data-alt="Piso y frente de barra en mármol Santo Tomás pulido brillado, Rancho del Fraile" data-alt-en="Floor and bar front in high-polish Santo Tomás marble, Rancho del Fraile"><span data-en="Floor and bar">Piso y barra</span><span class="meta" data-en="Rancho del Fraile">Rancho del Fraile</span></button></li>
-        <li><button type="button" aria-pressed="false" data-img="pr-rancho-salon-santo-tomas" data-alt="Salón con piso de mármol Santo Tomás pulido, Rancho del Fraile" data-alt-en="Hall with a polished Santo Tomás marble floor, Rancho del Fraile"><span data-en="Hall">Salón</span><span class="meta" data-en="Rancho del Fraile">Rancho del Fraile</span></button></li>
-        <li><button type="button" aria-pressed="false" data-img="ca-regadera-marmol-blanco" data-alt="Regadera revestida en mármol blanco veteado con nicho, hotel Casa Abierta" data-alt-en="Shower clad in veined white marble with a niche, Casa Abierta hotel"><span data-en="Shower">Regadera</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
-        <li><button type="button" aria-pressed="false" data-img="ca-bano-regadera-veteada" data-alt="Baño con regadera de mármol veteado y lavabo sobre cubierta de mármol, hotel Casa Abierta" data-alt-en="Bathroom with a veined marble shower and a sink on a marble top, Casa Abierta hotel"><span data-en="Full bathroom">Baño completo</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
-        <li><button type="button" aria-pressed="false" data-img="ca-lavabo-cubierta-marmol" data-alt="Lavabo sobre cubierta de mármol junto a la regadera de mármol, hotel Casa Abierta" data-alt-en="Sink on a marble top next to the marble shower, Casa Abierta hotel"><span data-en="Vanity top">Encimera de baño</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
-        <li><button type="button" aria-pressed="false" data-img="ca-mesa-comedor-marmol" data-alt="Mesa de comedor con cubierta de mármol Negro Querétaro, hotel Casa Abierta" data-alt-en="Dining table with a Negro Querétaro marble top, Casa Abierta hotel"><span data-en="Dining table">Mesa de comedor</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
-        <li><button type="button" aria-pressed="false" data-img="ca-mesa-centro-marmol" data-alt="Mesa de centro redonda con cubierta de mármol Negro Querétaro, hotel Casa Abierta" data-alt-en="Round coffee table with a Negro Querétaro marble top, Casa Abierta hotel"><span data-en="Coffee table">Mesa de centro</span><span class="meta" data-en="Casa Abierta">Casa Abierta</span></button></li>
+  <section class="seccion pasos" id="como-cotizar" aria-labelledby="pasos-titulo">
+    <div class="contenedor">
+      <h2 class="t-l revela" id="pasos-titulo" data-en="Getting a quote from Stone Royale is simple">Cotizar con Stone Royale es simple</h2>
+      <ol class="pasos-lista">
+        <li class="revela"><span class="paso-n">1</span><h3 class="t-m" data-en="Choose your material">Elige tu material</h3><p data-en="From the catalog, or tell us the vein, finish and format you are looking for.">Desde el catálogo, o cuéntanos qué veta, acabado y formato buscas.</p></li>
+        <li class="revela"><span class="paso-n">2</span><h3 class="t-m" data-en="Get your quote">Recibe tu cotización</h3><p data-en="With price, availability and delivery times, by WhatsApp or email.">Con precio, disponibilidad y tiempos de entrega, por WhatsApp o por correo.</p></li>
+        <li class="revela"><span class="paso-n">3</span><h3 class="t-m" data-en="Receive it on site">Recíbelo en obra</h3><p data-en="We coordinate delivery anywhere in Mexico and export to the United States.">Coordinamos la entrega en todo México y exportamos a Estados Unidos.</p></li>
       </ol>
+      <p class="revela pasos-cta"><a class="boton" href="#cotizar" data-en="Request a quote">Pide tu cotización</a></p>
     </div>
   </section>
 
@@ -277,6 +339,7 @@
       <div class="cotizar-texto revela">
         <h2 class="t-xl" data-en="Request a quote">Pide tu cotización</h2>
         <p class="entrada" data-en="Tell us where the project is, the material, finish, format and square meters. We’ll send you a quote by email.">Cuéntanos dónde es la obra, el material, el acabado, el formato y los metros cuadrados. Te enviamos la cotización por correo.</p>
+        <p class="cotizar-wa" data-solo-tel hidden><a class="boton" data-wa href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg><span data-en="Prefer WhatsApp? Write to us">¿Prefieres WhatsApp? Escríbenos</span></a></p>
         <ul class="contacto-lista">
           <li><span class="meta" data-en="Contact">Contacto</span><span>Alejandro Vázquez Mellado</span></li>
           <li><span class="meta" data-en="Email">Correo</span><a href="mailto:alexvmh@stoneroyale.com.mx">alexvmh@stoneroyale.com.mx</a></li>
@@ -323,10 +386,10 @@
         <a class="marca" href="#inicio"><svg class="iso" aria-hidden="true" style="width:1.6rem;height:1.9rem"><use href="#iso"/></svg><span>STONE <b>ROYALE</b></span></a>
         <p data-en="Mexican marble and travertine. Sales in Mexico and the United States.">Mármol y travertino mexicanos. Venta en México y Estados Unidos.</p>
       </div>
-      <div><h3 data-en="Site">Sitio</h3><ul><li><a href="#catalogo" data-en="Catalog">Catálogo</a></li><li><a href="#proyectos" data-en="Projects">Proyectos</a></li><li><a href="#cantera" data-en="Made to measure">A medida</a></li><li><a href="#empresa" data-en="Company">Empresa</a></li></ul></div>
+      <div><h3 data-en="Site">Sitio</h3><ul><li><a href="#empresa" data-en="Services">Servicios</a></li><li><a href="#proyectos" data-en="Projects">Proyectos</a></li><li><a href="#catalogo" data-en="Catalog">Catálogo</a></li><li><a href="#a-medida" data-en="Made to measure">A medida</a></li></ul></div>
       <div><h3 data-en="Contact">Contacto</h3><ul><li data-solo-tel hidden><a data-tel href="#"></a></li><li><a href="mailto:alexvmh@stoneroyale.com.mx">alexvmh@stoneroyale.com.mx</a></li><li><a href="https://www.instagram.com/stoneroyale_/" target="_blank" rel="noopener">Instagram</a></li><li data-solo-tel hidden><a data-wa href="#" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="#cotizar" data-en="Quote form">Cotizador</a></li></ul></div>
     </div>
-    <div class="base"><span>® Stone Royale</span><span data-en="Redesign proposal · preview">Propuesta de rediseño · vista previa</span></div>
+    <div class="base"><span>® Stone Royale</span><span data-en="Redesign proposal · test version">Propuesta de rediseño · versión de prueba</span></div>
   </div>
 </footer>
 
@@ -337,7 +400,19 @@
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
 <script src="assets/js/datos.js?v=1120a"></script>
-<script src="assets/js/sitio.js?v=1123a"></script>
+<script>
+/* Cifras de la v2: salen de datos.js (materiales visibles y acabados), nunca escritas a mano. */
+(function (S) {
+  function pon(k, v) { document.querySelectorAll('[data-cifra="' + k + '"]').forEach(function (e) { e.textContent = v; }); }
+  pon('materiales', S.catalogo.length);
+  /* Las tarjetas de «Proyectos por tipo» abren esa obra en el portafolio. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-obra]'); if (!a) return;
+    var b = document.querySelector('#obras-lista [data-img="' + a.dataset.obra + '"]'); if (b) b.click();
+  });
+})(window.SR);
+</script>
+<script src="assets/js/sitio.js?v=1123b"></script>
 <script type="module" src="assets/js/losa.js?v=1118u"></script>
 </body>
 </html>
