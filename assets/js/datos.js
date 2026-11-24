@@ -23,18 +23,18 @@ window.SR = {
   catalogo: [
     ['bego', 'Bego', 'marmol'],
     ['travertino-rojo', 'Travertino Rojo', 'travertino'],
-    ['puebla-fiorito', 'Puebla Fiorito', 'travertino', 'travertino-puebla'],
-    ['puebla-veta', 'Puebla Veta', 'travertino', 'travertino-puebla'],
-    ['xalapa-fiorito', 'Xalapa Fiorito', 'travertino', 'travertino-xalapa'],
-    ['xalapa-veta', 'Xalapa Veta', 'travertino', 'travertino-xalapa'],
-    ['beige-maya', 'Beige Maya', 'marmol', 'beige-maya'],
+    ['puebla-fiorito', 'Puebla Fiorito', 'travertino'],
+    ['puebla-veta', 'Puebla Veta', 'travertino'],
+    ['xalapa-fiorito', 'Xalapa Fiorito', 'travertino'],
+    ['xalapa-veta', 'Xalapa Veta', 'travertino'],
+    ['beige-maya', 'Beige Maya', 'marmol'],
     ['veneciano', 'Veneciano', 'marmol'],
     ['crema-marfil', 'Crema Marfil', 'marmol'],
     ['tikul', 'Tikul', 'marmol'],
     ['aqua-blue', 'Aqua Blue', 'marmol'],
-    ['sto-tomas', 'Santo Tomás', 'marmol', 'santo-tomas'],
-    ['dorado-tepexi', 'Dorado Tepexi', 'marmol', 'dorado-tepeji'],
-    ['marmol-arena', 'Blanco Arena', 'marmol', 'blanco-arena'],
+    ['sto-tomas', 'Santo Tomás', 'marmol'],
+    ['dorado-tepexi', 'Dorado Tepexi', 'marmol'],
+    ['marmol-arena', 'Blanco Arena', 'marmol'],
     ['cafe-cordoba', 'Café Córdoba', 'marmol'],
     ['gris-tepeaca', 'Gris Tepeaca', 'marmol'],
     ['negro-queretaro', 'Negro Querétaro', 'marmol'],
@@ -42,14 +42,16 @@ window.SR = {
     ['grano-de-sal', 'Grano de Sal', 'marmol'],
     ['travertino-oro', 'Travertino Oro', 'travertino'],
     ['serpentino', 'Serpentino', 'marmol'],
-    ['blanco-arena', 'Blanco Arena', 'marmol', 'blanco-arena', 'fin/blanco-arena-mate'],
-    ['rokali', 'Rokali', 'marmol', 'rokali', 'fin/rokali-pulido'],
+    ['blanco-arena', 'Blanco Arena', 'marmol'],
+    ['rokali', 'Rokali', 'marmol'],
     ['onix-agata', 'Ágata', 'onix'],
     ['onix-exotico', 'Ónix Exótico', 'onix'],
     ['onix-blanco', 'Ónix Blanco', 'onix'],
     ['onix-lava', 'Ónix Lava', 'onix'],
     ['blanco-iceberg', 'Blanco Iceberg', 'onix']
   ],
+  /* 23-nov (Alejandro, audios 18:41): TODOS los mármoles admiten TODOS los acabados (lista «acabados» de abajo).
+     Nada de fichas con acabados distintos por mármol ni el acabado «a la veta»: ya no se enlazan. */
   fichas: {
     'travertino-puebla': { nombre: 'Travertino Puebla', tipo: 'travertino', acabados: [['Fiorito', 'Fiorito', 'travertino-puebla-fiorito'], ['A la veta', 'Vein cut', 'travertino-puebla-a-la-veta'], ['Busardeado', 'Bush-hammered', 'travertino-puebla-busardeado']] },
     'travertino-xalapa': { nombre: 'Travertino Xalapa', tipo: 'travertino', acabados: [['Fiorito', 'Fiorito', 'travertino-xalapa-fiorito'], ['A la veta', 'Vein cut', 'travertino-xalapa-a-la-veta'], ['Avejentado', 'Aged', 'travertino-xalapa-avejentado'], ['Al ácido', 'Acid-washed', 'travertino-xalapa-al-acido'], ['Al corte', 'Saw cut', 'travertino-xalapa-al-corte']] },
@@ -62,7 +64,7 @@ window.SR = {
   acabados: [['Natural', 'Natural'], ['Pulido mate', 'Matte polished'], ['Pulido y abrillantado', 'Polished and honed to shine'], ['Sanblasteado', 'Sandblasted'], ['Flameado y cepillado', 'Flamed and brushed'], ['Martelinado', 'Hammered'], ['Avejentado', 'Aged'], ['Tomboleado', 'Tumbled']],
   formatos: [['Placa', 'Slab'], ['Largos libres', 'Free lengths'], ['En formato', 'Cut to format'], ['Personalizado', 'Custom']],
   // Héroe: [slug de imagen, nombre en catálogo, tipo, ficha]. 'inicio' = parte del scroll reservada al titular.
-  heroe: { inicio: 0.15, marmoles: [['sto-tomas', 'Santo Tomás', 'marmol', 'santo-tomas'], ['beige-maya', 'Beige Maya', 'marmol', 'beige-maya'], ['dorado-tepexi', 'Dorado Tepexi', 'marmol', 'dorado-tepeji'], ['puebla-veta', 'Puebla Veta', 'travertino', 'travertino-puebla']] },
+  heroe: { inicio: 0.15, marmoles: [['sto-tomas', 'Santo Tomás', 'marmol'], ['beige-maya', 'Beige Maya', 'marmol'], ['dorado-tepexi', 'Dorado Tepexi', 'marmol'], ['puebla-veta', 'Puebla Veta', 'travertino']] },
   usos: [['Regadera', 'Shower'], ['Encimera', 'Countertop'], ['Exterior', 'Exterior'], ['Paredes', 'Interior wall'], ['Alberca', 'Pool'], ['Lavadero', 'Backsplash'], ['Otro', 'Other']]
 };
 
