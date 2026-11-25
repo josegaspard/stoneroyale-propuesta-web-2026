@@ -6,7 +6,8 @@
   var $ = function (s, c) { return (c || d).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || d).querySelectorAll(s)); };
   var lang = 'es';
-  try { lang = localStorage.getItem('sr-idioma') || 'es'; } catch (e) {}
+  var CFG = w.SR_CFG || {};
+  if (CFG.lang) lang = CFG.lang; else try { lang = localStorage.getItem('sr-idioma') || 'es'; } catch (e) {}
   var L = function (es, en) { return lang === 'en' ? (en || es) : es; };
 
   /* ---------- Scroll suave ---------- */
@@ -85,6 +86,7 @@
   }
   $$('[data-idioma]').forEach(function (b) {
     b.addEventListener('click', function () {
+      if (CFG.urls && CFG.urls[b.dataset.idioma] && b.dataset.idioma !== lang) { w.location.href = CFG.urls[b.dataset.idioma] + w.location.hash; return; }
       lang = b.dataset.idioma; try { localStorage.setItem('sr-idioma', lang); } catch (e) {}
       aplicarIdioma(false); if (ST) ST.refresh();
     });
